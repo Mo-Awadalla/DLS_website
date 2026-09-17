@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HomeOnlyNotice } from "@/components/HomeOnlyNotice";
 import { SectionHeading } from "@/components/SectionHeading";
 import { siteConfig } from "@/data/site";
 import { venue } from "@/data/venue";
@@ -7,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = { title: "Venue & travel", description: "Venue, travel, accessibility, and accommodation information for Disaster Law Symposium 2026.", alternates: { canonical: "/venue" } };
 
 export default function VenuePage() {
+  if (siteConfig.landingOnly) return <HomeOnlyNotice />;
+
   return (
     <>
       <section className="page-hero page-hero-venue"><div className="page-shell page-hero-inner"><p className="kicker">Find your way here</p><h1>Make the<br /><em>connection.</em></h1><p>John Jay College of Criminal Justice is confirmed as the 2026 venue. This page will become your practical field guide as travel details are finalized.</p></div></section>

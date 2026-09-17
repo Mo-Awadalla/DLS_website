@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { AgendaTimeline } from "@/components/AgendaTimeline";
 import { RegistrationCTA } from "@/components/RegistrationCTA";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -20,7 +19,6 @@ export default function HomePage() {
             <p className="hero-institutional-lede">A working session for the people who keep emergency systems accountable.</p>
             <div className="hero-actions">
               <RegistrationCTA />
-              <Link className="button hero-button-outline" href="/program">Explore the program <span aria-hidden="true">↓</span></Link>
             </div>
           </div>
           <aside className="hero-institutional-panel" aria-label="Event facts">
@@ -48,13 +46,9 @@ export default function HomePage() {
 
       <section className="program-preview section-pad section-tint">
         <div className="page-shell">
-          <div className="section-heading-row"><SectionHeading eyebrow="A day in sequence" title="The program" body="Four CLE courses and the conversations between them." /><Link className="arrow-link" href="/program">View complete agenda <span aria-hidden="true">↗</span></Link></div>
+          <div className="section-heading-row"><SectionHeading eyebrow="A day in sequence" title="The program" body="Four CLE courses and the conversations between them." /></div>
           <AgendaTimeline sessions={landingSessions} compact />
         </div>
-      </section>
-
-      <section className="home-cta">
-        <div className="page-shell cta-inner"><div><p className="eyebrow eyebrow-light"><span className="eyebrow-line" />Plan to be there</p><h2>Make room for the hard questions.</h2></div><RegistrationCTA /></div>
       </section>
     </>
   );
