@@ -1,7 +1,6 @@
+import Image from "next/image";
 import { AgendaTimeline } from "@/components/AgendaTimeline";
 import { RegistrationCTA } from "@/components/RegistrationCTA";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { sessions } from "@/data/sessions";
 import { siteConfig } from "@/data/site";
 
@@ -10,25 +9,24 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="hero hero-institutional">
-        <div className="page-shell hero-institutional-inner">
+      <section className="hero hero-skyline">
+        <div className="page-shell hero-skyline-inner">
           <div className="hero-institutional-copy">
             <p className="kicker">Disaster Law Symposium 2026</p>
             <h1>Law at the<br />Crossroads.</h1>
-            <p className="hero-institutional-lede">A working session for the people who keep emergency systems accountable.</p>
+            <p className="hero-institutional-lede">Strengthening systems for a new era of disasters.</p>
             <div className="hero-actions">
               <RegistrationCTA />
             </div>
           </div>
-          <aside className="hero-institutional-panel" aria-label="Event facts">
-            <Badge>At a glance</Badge>
-            <h2>Strengthening systems for a new era of disasters.</h2>
-            <Separator className="hero-panel-rule" />
-            <div className="hero-fact-row"><span>When</span><strong>{siteConfig.dateLabel}</strong></div>
-            <div className="hero-fact-row"><span>Where</span><strong>{siteConfig.venueLabel}</strong></div>
-            <div className="hero-fact-row"><span>Format</span><strong>In-person · CLE eligible</strong></div>
-            <p className="hero-panel-foot">Four CLE courses · one day in sequence</p>
-          </aside>
+          <figure className="hero-skyline-photo">
+            <Image src="/assets/nyc-skyline.jpg" alt="Midtown Manhattan skyline beneath a blue sky" fill priority sizes="(max-width: 760px) 100vw, 55vw" />
+          </figure>
+          <dl className="hero-event-details">
+            <div><dt>Date</dt><dd>{siteConfig.dateLabel}</dd></div>
+            <div><dt>Venue</dt><dd>{siteConfig.venueLabel}</dd></div>
+            <div><dt>Program</dt><dd>In person · Four CLE courses</dd></div>
+          </dl>
         </div>
       </section>
 
