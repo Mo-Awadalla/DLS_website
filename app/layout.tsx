@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     url: siteConfig.canonicalUrl,
     siteName: siteConfig.name,
     type: "website",
-    images: [{ url: "/assets/bridge.jpg", width: 4500, height: 5625, alt: "Brooklyn Bridge in deep blue light" }],
+    images: [{ url: "/assets/nyc-skyline.jpg", width: 1800, height: 1200, alt: "Midtown Manhattan skyline" }],
   },
   robots: { index: true, follow: true },
 };
