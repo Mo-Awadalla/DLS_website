@@ -1,13 +1,12 @@
 import { AgendaTimeline } from "@/components/AgendaTimeline";
 import { RegistrationCTA } from "@/components/RegistrationCTA";
-import { SectionHeading } from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { sessions } from "@/data/sessions";
 import { siteConfig } from "@/data/site";
 
 export default function HomePage() {
-  const landingSessions = sessions.filter((session) => session.type !== "keynote").slice(0, 7);
+  const landingSessions = sessions.filter((session) => session.type !== "keynote");
 
   return (
     <>
@@ -15,7 +14,7 @@ export default function HomePage() {
         <div className="page-shell hero-institutional-inner">
           <div className="hero-institutional-copy">
             <p className="kicker">Disaster Law Symposium 2026</p>
-            <h1>Law at the<br /><em>Crossroads.</em></h1>
+            <h1>Law at the<br />Crossroads.</h1>
             <p className="hero-institutional-lede">A working session for the people who keep emergency systems accountable.</p>
             <div className="hero-actions">
               <RegistrationCTA />
@@ -35,18 +34,14 @@ export default function HomePage() {
 
       <section className="thesis-section section-pad">
         <div className="page-shell thesis-grid">
-          <SectionHeading eyebrow="The 2026 thesis" title="Disasters expose the seams in our systems." body="The law sits at every intersection: between public safety and privacy, speed and due process, transparency and operational security, individual rights and collective resilience." />
-          <div className="thesis-points">
-            <div><span className="point-number">01</span><h3>See the whole system</h3><p>Bring emergency managers, counsel, technologists, reporters, and advocates into the same room.</p></div>
-            <div><span className="point-number">02</span><h3>Practice under pressure</h3><p>Translate legal principles into decisions that hold up when infrastructure, funding, and certainty are strained.</p></div>
-            <div><span className="point-number">03</span><h3>Build what lasts</h3><p>Leave with sharper questions and stronger relationships for the next disaster landscape.</p></div>
-          </div>
+          <h2>Legal decisions under emergency conditions.</h2>
+          <p>At John Jay College of Criminal Justice, four courses will examine how lawyers oversee emergency AI tools, protect civil rights, maintain client representation during outages, and prepare for overlapping disasters. The day brings these questions into one program, with time for discussion and a closing networking reception.</p>
         </div>
       </section>
 
       <section className="program-preview section-pad section-tint">
         <div className="page-shell">
-          <div className="section-heading-row"><SectionHeading eyebrow="A day in sequence" title="The program" body="Four CLE courses and the conversations between them." /></div>
+          <div className="section-heading-row"><div className="section-heading"><h2>The program</h2><p>October 29 · All times Eastern. CLE approval pending.</p></div></div>
           <AgendaTimeline sessions={landingSessions} compact />
         </div>
       </section>

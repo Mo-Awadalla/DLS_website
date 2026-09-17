@@ -4,10 +4,13 @@ import { siteConfig } from "@/data/site";
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="page-shell footer-contact">
+      <div className="page-shell footer-contact" id="registration-updates">
         <div className="footer-contact-copy">
-          <p className="eyebrow"><span className="eyebrow-line" />Questions?</p>
-          <h2>Questions about the symposium?</h2>
+          <h2>Registration updates</h2>
+          <p>Ask the symposium team to email you when registration opens.</p>
+          <a className="button button-amber" href={`mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent("Registration updates — Disaster Law Symposium 2026")}&body=${encodeURIComponent("Please email me when registration opens for the October 29, 2026 Disaster Law Symposium. Thank you.")}`}>Request updates by email</a>
+          <p className="notification-note">Opens your email app. Send the message to request an update; this does not register you for the event.</p>
+          <h3>Questions about the symposium?</h3>
           <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail} <span aria-hidden="true">↗</span></a>
         </div>
       </div>
