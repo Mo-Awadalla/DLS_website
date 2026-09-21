@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { sitePath } from "@/lib/site-path";
 import { TopicsSection } from "@/components/TopicsSection";
-import { overview } from "@/data/overview";
+import { publishedEvent } from "@/data/published-event";
 
 export default function HomePage() {
   return (
@@ -10,20 +10,20 @@ export default function HomePage() {
         <Image className="signal-skyline" src={sitePath("/assets/nyc-skyline.jpg")} alt="" fill priority sizes="100vw" />
         <div className="signal-scrim" aria-hidden="true" />
         <div className="page-shell hero-content">
-          <p className="eyebrow">{overview.title}</p>
-          <h1 id="hero-title">Law at the<br /><span>Crossroads.</span></h1>
-          <p className="hero-tagline">{overview.tagline}</p>
+          <p className="eyebrow">{publishedEvent.title}</p>
+          <h1 id="hero-title">{publishedEvent.themeDisplay[0]}<br /><span>{publishedEvent.themeDisplay[1]}</span></h1>
+          <p className="hero-tagline">{publishedEvent.tagline}</p>
           <dl className="event-facts">
-            <div><dt>Date</dt><dd><time dateTime={overview.date.iso}>{overview.date.label}</time></dd></div>
-            <div><dt>Venue</dt><dd>{overview.venue.name}</dd></div>
+            <div><dt>Date</dt><dd><time dateTime={publishedEvent.date.iso}>{publishedEvent.date.label}</time></dd></div>
+            <div><dt>Venue</dt><dd>{publishedEvent.venue.name}</dd></div>
           </dl>
-          <a className="button" href={overview.calendarPath} download="disaster-law-symposium-2026.ics">
+          <a className="button" href={publishedEvent.calendarPath} download={publishedEvent.calendarPath.split("/").pop()}>
             Save the date <span aria-hidden="true">↓</span>
           </a>
         </div>
       </section>
 
-      <TopicsSection />
+      <TopicsSection introduction={publishedEvent.introduction} topics={publishedEvent.topics} />
     </>
   );
 }

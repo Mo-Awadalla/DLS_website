@@ -1,10 +1,12 @@
+import { releaseManifest } from "./scripts/release-manifest.mjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
-  output: "export",
-  trailingSlash: true,
+  basePath: process.env[releaseManifest.environment.basePath] || "",
+  output: releaseManifest.staticExport.output,
+  trailingSlash: releaseManifest.staticExport.trailingSlash,
   images: {
-    unoptimized: true,
+    unoptimized: releaseManifest.staticExport.imagesUnoptimized,
   },
 };
 

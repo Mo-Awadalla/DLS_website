@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans, Source_Serif_4 } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { overview } from "@/data/overview";
+import { publishedEvent } from "@/data/published-event";
 import "./globals.css";
 
 const displayFont = Source_Serif_4({
@@ -22,26 +22,26 @@ const bodyFont = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(overview.canonicalUrl),
+  metadataBase: new URL(publishedEvent.canonicalUrl),
   title: {
-    default: `${overview.title} | October 29 at John Jay College of Criminal Justice`,
-    template: `%s | ${overview.name}`,
+    default: `${publishedEvent.title} | ${publishedEvent.date.label} at ${publishedEvent.venue.name}`,
+    template: `%s | ${publishedEvent.name}`,
   },
-  description: overview.description,
-  alternates: { canonical: overview.canonicalUrl },
+  description: publishedEvent.description,
+  alternates: { canonical: publishedEvent.canonicalUrl },
   openGraph: {
-    title: overview.title,
-    description: overview.description,
-    url: overview.canonicalUrl,
-    siteName: overview.name,
+    title: publishedEvent.title,
+    description: publishedEvent.description,
+    url: publishedEvent.canonicalUrl,
+    siteName: publishedEvent.name,
     type: "website",
-    images: [{ url: `${overview.canonicalUrl}/assets/nyc-skyline.jpg`, width: 1800, height: 1200, alt: "Midtown Manhattan skyline" }],
+    images: [{ url: `${publishedEvent.canonicalUrl}/assets/nyc-skyline.jpg`, width: 1800, height: 1200, alt: "Midtown Manhattan skyline" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: overview.title,
-    description: overview.description,
-    images: [`${overview.canonicalUrl}/assets/nyc-skyline.jpg`],
+    title: publishedEvent.title,
+    description: publishedEvent.description,
+    images: [`${publishedEvent.canonicalUrl}/assets/nyc-skyline.jpg`],
   },
   robots: { index: true, follow: true },
 };
