@@ -5,10 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node scripts/preview.mjs",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "graphify:update": "graphify update ."
+    "graphify:update": "graphify update .",
+    "prebuild": "node scripts/clean-export.mjs",
+    "postbuild": "node scripts/verify-export.mjs",
+    "preview": "node scripts/preview.mjs",
+    "verify:export": "node scripts/verify-export.mjs"
   },
   "dependencies": {
     "next": "14.2.5",

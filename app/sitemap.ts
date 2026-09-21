@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/data/site";
+import { overview } from "@/data/overview";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: siteConfig.canonicalUrl, changeFrequency: "monthly", priority: 1 }];
+  return [{ url: overview.canonicalUrl, changeFrequency: "monthly", priority: 1 }];
 }
