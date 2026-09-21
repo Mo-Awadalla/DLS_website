@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/data/site";
+import { overview } from "@/data/overview";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/program", "/register", "/speakers", "/sponsors", "/venue", "/staging"],
     },
-    sitemap: `${siteConfig.canonicalUrl}/sitemap.xml`,
+    sitemap: `${overview.canonicalUrl}/sitemap.xml`,
   };
 }
