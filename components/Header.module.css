@@ -1,0 +1,25 @@
+.header {
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  color: #f6f2e9;
+}
+
+.homeLink {
+  display: block;
+  flex-shrink: 0;
+}
+
+.homeLink:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: -3px;
+}
+
+.logo {
+  display: block;
+  width: 220px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
