@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { resolve, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import { getBasePath, getCanonicalUrl, releaseManifest } from "./release-manifest.mjs";
 
-const root = fileURLToPath(new URL("../out/", import.meta.url));
+const root = fileURLToPath(new URL(`../${releaseManifest.exportDirectory}/`, import.meta.url));
 function filesIn(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = resolve(directory, entry.name);
@@ -12,18 +13,31 @@ function filesIn(directory) {
 }
 const files = filesIn(root);
 const paths = files.map((path) => relative(root, path));
-assert.deepEqual(paths.filter((path) => path.endsWith(".html")).sort(), ["404.html", "404/index.html", "index.html"], "Only overview and framework 404 pages may ship");
-for (const route of ["program", "speakers", "register", "sponsors", "venue", "staging"]) {
-  assert(!existsSync(resolve(root, route)), `Unpublished route exported: ${route}`);
+const routeOutput = (route) => {
+  if (route === "/") return "index.html";
+  const path = route.replace(/^\//, "");
+  return path.endsWith("/") ? `${path}index.html` : path;
+};
+const expectedRoutes = releaseManifest.routes.public.map(routeOutput);
+const allowedFiles = new Set([
+  ...expectedRoutes,
+  ...releaseManifest.staticExport.frameworkFiles,
+  ...releaseManifest.publicAssets.map((asset) => asset.replace(/^\//, "")),
+]);
+const unexpectedFiles = paths.filter((path) => !allowedFiles.has(path) && !releaseManifest.staticExport.generatedDirectories.some((directory) => path.startsWith(directory)));
+assert.deepEqual(unexpectedFiles, [], "Only manifest-listed routes, assets, and framework output may ship");
+for (const route of releaseManifest.routes.retired) {
+  const path = route.replace(/^\//, "").replace(/\/$/, "");
+  assert(!existsSync(resolve(root, path)), `Unpublished route exported: ${route}`);
 }
-assert.deepEqual(paths.filter((path) => path.startsWith("assets/")).sort(), ["assets/nyc-skyline.jpg", "assets/nycem-logo-transparent.png"]);
+assert.deepEqual(paths.filter((path) => path.startsWith("assets/")).sort(), releaseManifest.publicAssets.map((asset) => asset.replace(/^\//, "")).sort());
 assert(!paths.some((path) => /\.(pdf|map)$/i.test(path)), "Private PDFs or source maps were exported");
 for (const file of files.filter((path) => /\.(html|txt|js|css|json)$/i.test(path))) {
   assert(!/Jeh Johnson|Keynote Address|editorial draft|Request updates by email|CLE approval|Cybersecurity, Privacy, and Data Protection credits|redesign-staging|urban-signal-date/.test(readFileSync(file, "utf8")), `Unpublished content in ${relative(root, file)}`);
 }
 const home = readFileSync(resolve(root, "index.html"), "utf8");
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const canonicalUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || "http://localhost:3000").replace(/\/$/, "");
+const basePath = getBasePath();
+const canonicalUrl = getCanonicalUrl();
 assert(!home.includes("Stay tuned for the 2026 Symposium"), "The placeholder must not ship");
 for (const path of ["/assets/nyc-skyline.jpg", "/assets/nycem-logo-transparent.png", "/disaster-law-symposium-2026.ics"]) {
   assert(home.includes(`"${basePath}${path}"`), `Missing deployment prefix for ${path}`);
