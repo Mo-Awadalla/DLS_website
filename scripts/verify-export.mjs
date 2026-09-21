@@ -23,7 +23,7 @@ for (const file of files.filter((path) => /\.(html|txt|js|css|json)$/i.test(path
 }
 const home = readFileSync(resolve(root, "index.html"), "utf8");
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const canonicalUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mo-awadalla.github.io/DLS_website";
+const canonicalUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || "http://localhost:3000").replace(/\/$/, "");
 assert(!home.includes("Stay tuned for the 2026 Symposium"), "The placeholder must not ship");
 for (const path of ["/assets/nyc-skyline.jpg", "/assets/nycem-logo-transparent.png", "/disaster-law-symposium-2026.ics"]) {
   assert(home.includes(`"${basePath}${path}"`), `Missing deployment prefix for ${path}`);
