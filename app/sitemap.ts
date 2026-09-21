@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { overview } from "@/data/overview";
+import { publishedEvent } from "@/data/published-event";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: overview.canonicalUrl, changeFrequency: "monthly", priority: 1 }];
+  return [{ url: publishedEvent.canonicalUrl, changeFrequency: "monthly", priority: 1 }];
 }

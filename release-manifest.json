@@ -1,0 +1,43 @@
+{
+  "exportDirectory": "out",
+  "environment": {
+    "basePath": "NEXT_PUBLIC_BASE_PATH",
+    "canonicalUrl": "NEXT_PUBLIC_SITE_URL",
+    "canonicalUrlFallback": "URL"
+  },
+  "routes": {
+    "public": [
+      "/",
+      "/disaster-law-symposium-2026.ics"
+    ],
+    "calendar": "/disaster-law-symposium-2026.ics",
+    "retired": [
+      "/program/",
+      "/speakers/",
+      "/register/",
+      "/sponsors/",
+      "/venue/",
+      "/staging/",
+      "/staging/hero/"
+    ]
+  },
+  "publicAssets": [
+    "/assets/nyc-skyline.jpg",
+    "/assets/nycem-logo-transparent.png"
+  ],
+  "staticExport": {
+    "output": "export",
+    "trailingSlash": true,
+    "imagesUnoptimized": true,
+    "frameworkFiles": [
+      "404.html",
+      "404/index.html",
+      "index.txt",
+      "robots.txt",
+      "sitemap.xml"
+    ],
+    "generatedDirectories": [
+      "_next/"
+    ]
+  }
+}

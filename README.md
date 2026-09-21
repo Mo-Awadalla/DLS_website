@@ -17,7 +17,7 @@ The production preview runs at http://localhost:3000 (`PORT=3001 npm run preview
 
 ## Publishing
 
-The website is hosted on Netlify. `netlify.toml` sets the build command to `npm run build` and the publish directory to `out`, making the approved Next.js landing page the default homepage. The old root HTML placeholder is removed. Netlify's connected repository should deploy the `main` branch.
+The website is hosted on Netlify. `netlify.toml` runs `npm run release:check && npm run build` and publishes `out`, making the approved Next.js landing page the default homepage. The release contract is shared in [`release-manifest.json`](release-manifest.json) and validated before the build. Netlify's connected repository should deploy the `main` branch.
 
 Netlify serves the page at `/` without a repository prefix. Its built-in `URL` environment variable supplies the canonical address for metadata and the sitemap; `NEXT_PUBLIC_SITE_URL` can override that address. Local builds fall back to http://localhost:3000. The site is a static export and does not need the Netlify Next.js server runtime.
 
@@ -28,6 +28,6 @@ Netlify serves the page at `/` without a repository prefix. Its built-in `URL` e
 - All other content routes return the custom 404. Configure the static host to serve `404.html` with status 404, not a homepage fallback.
 - `sitemap.xml` lists only the homepage.
 
-Approved copy lives in `data/overview.ts`, independent of draft agenda and speaker content. Public assets contain only the logo and skyline. See [Phase 1 constraints and later-phase handoff](docs/PHASE-1.md) and [photograph credits](docs/ASSET-CREDITS.md).
+Approved copy lives in `data/published-event.ts`, the single active published-event module. Public assets contain only the logo and skyline. See [Phase 1 constraints and later-phase handoff](docs/PHASE-1.md) and [photograph credits](docs/ASSET-CREDITS.md).
 
-Previous route entrypoints, staging designs, stylesheet, and unpublished images are retained in `archive/phase-0/`. The stakeholder PDF remains in `artifacts/`; original sources remain in `legacy/` and `SRC/`. These are local materials and are not exported.
+Historical route entrypoints and the independent topic proposal are retained only in `archive/phase-0/` and `archive/staging-topics/` as reference material. They have no runtime guarantee and are not imported or exported. The stakeholder PDF remains in `artifacts/`.

@@ -9,6 +9,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "graphify:update": "graphify update .",
+    "release:check": "node scripts/release-check.mjs",
     "prebuild": "node scripts/clean-export.mjs",
     "postbuild": "node scripts/verify-export.mjs",
     "preview": "node scripts/preview.mjs",

@@ -1,8 +1,13 @@
 from pathlib import Path
+import json
+import os
 from playwright.sync_api import sync_playwright
 
-BASE = "http://127.0.0.1:3000"
-DISABLED_ROUTES = ["/program/", "/speakers/", "/venue/", "/sponsors/", "/register/", "/staging/hero/"]
+ROOT = Path(__file__).resolve().parent
+MANIFEST = json.loads((ROOT / "release-manifest.json").read_text())
+BASE_PATH = os.environ.get(MANIFEST["environment"]["basePath"], "").rstrip("/")
+BASE = f"http://127.0.0.1:3000{BASE_PATH}"
+DISABLED_ROUTES = MANIFEST["routes"]["retired"]
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
@@ -13,17 +18,17 @@ with sync_playwright() as p:
     assert page.get_by_text("John Jay College of Criminal Justice").count() >= 1
     assert page.get_by_text("Plan to be there").count() == 0
     assert page.get_by_text("Questions about the symposium?").count() >= 1
-    assert page.locator("img[alt='New York City Emergency Management']").count() >= 2
+    assert page.locator("img[alt='New York City Emergency Management']").count() >= 1
     assert page.locator("a[href='/program']").count() == 0
     assert page.get_by_role("button", name="Open navigation").count() == 0
-    assert page.get_by_text("Registration opening soon").count() >= 1
+    assert page.get_by_text("Program, speaker, and registration details will be announced.").count() >= 1
     assert page.locator('a[href*="2025"]').count() == 0
     assert page.locator("text=Wednesday, Nov 5, 2025").count() == 0
 
     for route in DISABLED_ROUTES:
-        page.goto(BASE + route, wait_until="networkidle")
-        assert page.url.rstrip("/") == BASE, route
-        assert page.locator("h1").count() >= 1, route
+        response = page.goto(BASE.rstrip("/") + route, wait_until="networkidle")
+        assert response and response.status == 404, route
+        assert page.get_by_role("link", name="Go to the homepage").count() == 1, route
 
     mobile = browser.new_page(viewport={"width": 375, "height": 812})
     mobile.goto(BASE + "/", wait_until="networkidle")

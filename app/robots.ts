@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next";
-import { overview } from "@/data/overview";
+import manifest from "@/release-manifest.json";
+import { publishedEvent } from "@/data/published-event";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/program", "/register", "/speakers", "/sponsors", "/venue", "/staging"],
+      disallow: manifest.routes.retired.map((route) => route.replace(/\/$/, "")),
     },
-    sitemap: `${overview.canonicalUrl}/sitemap.xml`,
+    sitemap: `${publishedEvent.canonicalUrl}/sitemap.xml`,
   };
 }
