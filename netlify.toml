@@ -1,0 +1,15 @@
+[build]
+  base = "."
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_PUBLIC_BASE_PATH = ""
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[[headers]]
+  for = "/disaster-law-symposium-2026.ics"
+  [headers.values]
+    Content-Type = "text/calendar; charset=utf-8"
+    Content-Disposition = 'attachment; filename="disaster-law-symposium-2026.ics"'
