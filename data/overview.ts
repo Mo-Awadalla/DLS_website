@@ -36,7 +36,7 @@ export const overview: OverviewContent = {
   },
   organization: "New York City Emergency Management",
   contactEmail: "disasterlawsymposium@oem.nyc.gov",
-  canonicalUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://mo-awadalla.github.io/DLS_website",
+  canonicalUrl: (process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || "http://localhost:3000").replace(/\/$/, ""),
   description:
     "Disaster Law Symposium 2026: Law at the Crossroads. October 29, 2026 at John Jay College of Criminal Justice in New York City. Explore AI governance, rights and equity, continuity of representation, and cascading disaster risks.",
   calendarPath: sitePath("/disaster-law-symposium-2026.ics"),

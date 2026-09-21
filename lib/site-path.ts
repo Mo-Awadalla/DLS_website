@@ -1,4 +1,4 @@
-/** Public URLs must include the project prefix when hosted on GitHub Pages. */
+/** Optional path prefix for hosts that publish beneath a subdirectory. */
 export function sitePath(path: string) {
   return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${path}`;
 }

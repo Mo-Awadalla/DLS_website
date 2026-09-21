@@ -24,8 +24,8 @@ Later speaker work must use explicitly approved speaker names, biographies, imag
 
 ## Release and preview
 
-`npm run build` first removes `.next/` and `out/`, builds a static export, and verifies its publication boundary. The owner approved publishing the landing page at https://mo-awadalla.github.io/DLS_website/. The Pages workflow deploys only the verified `out/` directory on pushes to `main`; it does not publish the repository root or staging sources.
+`npm run build` first removes `.next/` and `out/`, builds a static export, and verifies its publication boundary. The owner approved publishing the landing page on Netlify. `netlify.toml` configures Netlify to build and publish only the verified `out/` directory from the connected repository's `main` branch, rather than the repository root or staging sources.
 
 `npm run preview` (or `npm start`) serves `out/` on http://localhost:3000. Set `PORT` to choose another port. It serves missing paths with the exported `404.html` and HTTP 404; it does not rewrite missing paths to the homepage.
 
-The production static host uses `404.html` for missing routes. The calendar download link supplies a filename. Pages configuration supplies the deployment base path and canonical URL at build time. No backend is needed; the calendar route handler runs during the build.
+Netlify uses `404.html` for missing routes. The calendar download link and Netlify headers supply a filename and calendar content type. Netlify's built-in `URL` variable supplies the canonical URL at build time, unless overridden with `NEXT_PUBLIC_SITE_URL`. No backend is needed; the calendar route handler runs during the build.

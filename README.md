@@ -17,9 +17,9 @@ The production preview runs at http://localhost:3000 (`PORT=3001 npm run preview
 
 ## Publishing
 
-The default page is https://mo-awadalla.github.io/DLS_website/. Pushes to `main` run `.github/workflows/pages.yml`, which builds and verifies the approved Next.js page and publishes only `out/` to GitHub Pages. Pages uses GitHub Actions rather than the old root HTML placeholder.
+The website is hosted on Netlify. `netlify.toml` sets the build command to `npm run build` and the publish directory to `out`, making the approved Next.js landing page the default homepage. The old root HTML placeholder is removed. Netlify's connected repository should deploy the `main` branch.
 
-The workflow supplies `NEXT_PUBLIC_BASE_PATH` and `NEXT_PUBLIC_SITE_URL` from Pages configuration so images, calendar links, metadata, and the sitemap use the published address. Ordinary local builds omit the prefix.
+Netlify serves the page at `/` without a repository prefix. Its built-in `URL` environment variable supplies the canonical address for metadata and the sitemap; `NEXT_PUBLIC_SITE_URL` can override that address. Local builds fall back to http://localhost:3000. The site is a static export and does not need the Netlify Next.js server runtime.
 
 ## Published content
 
