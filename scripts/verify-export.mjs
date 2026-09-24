@@ -49,7 +49,7 @@ for (const [, url] of home.matchAll(/(?:src|href)="(\/[^"]*)"/g)) {
   const path = url.slice(basePath.length).split(/[?#]/)[0];
   assert(existsSync(resolve(root, `.${path}`)), `Missing public resource: ${url}`);
 }
-for (const fact of ["October 29, 2026", "John Jay College of Criminal Justice", "AI governance", "Rights and equity", "Continuity of legal representation", "Cascading disaster risks", "Save the date"]) assert(home.includes(fact), `Missing overview content: ${fact}`);
+for (const fact of ["October 29, 2026", "John Jay College of Criminal Justice", "AI governance", "Rights and equity", "Continuity of Operations", "Cascading disaster risks", "Save the date"]) assert(home.includes(fact), `Missing overview content: ${fact}`);
 for (const id of ["overview", "topics", "main-content"]) assert(home.includes(`id="${id}"`));
 assert(!home.includes('id="venue"'), "The standalone venue section was removed");
 assert(!home.includes("Staging comparison"), "Staging controls must not ship");
