@@ -1,7 +1,9 @@
 .header {
   position: absolute;
-  inset: 0 auto auto 0;
+  inset: 0 0 auto;
   z-index: 2;
+  width: var(--shell);
+  margin-inline: auto;
   display: flex;
   align-items: flex-start;
   color: #f6f2e9;
@@ -10,6 +12,8 @@
 .homeLink {
   display: block;
   flex-shrink: 0;
+  /* The transparent artwork has an 11px left inset at this display size. */
+  margin-left: -11px;
 }
 
 .homeLink:focus-visible {
