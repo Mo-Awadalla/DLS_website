@@ -62,11 +62,11 @@ export const publishedEvent = {
   },
   canonicalUrl: canonicalUrl(),
   description:
-    "Disaster Law Symposium 2026: Law at the Crossroads. October 29, 2026 at John Jay College of Criminal Justice in New York City. Explore AI governance, rights and equity, continuity of representation, and cascading disaster risks.",
+    "Disaster Law Symposium 2026: Law at the Crossroads. October 29, 2026 at John Jay College of Criminal Justice in New York City. Explore AI governance, rights and equity, continuity of operations, and cascading disaster risks.",
   calendarPath: sitePath(manifest.routes.calendar),
   announcement: "Program, speaker, and registration details will be announced.",
   introduction:
-    "Disasters test the systems people depend on—and the laws that hold them together. This symposium brings four connected questions into focus: how we govern emerging technology, protect rights, sustain legal representation, and prepare for overlapping crises.",
+    "Disasters test the systems people depend on—and the laws that hold them together. This symposium brings four connected questions into focus: how we govern emerging technology, protect rights, sustain legal operations, and prepare for overlapping crises.",
   topics: [
     {
       id: "ai-governance",
@@ -79,9 +79,9 @@ export const publishedEvent = {
       summary: "Protecting civil liberties and due process, and addressing the unequal impacts of disasters on communities.",
     },
     {
-      id: "continuity-of-representation",
-      title: "Continuity of legal representation",
-      summary: "Maintaining client communication, confidentiality, and representation when outages or displacement disrupt legal practice.",
+      id: "continuity-of-operations",
+      title: "Continuity of Operations",
+      summary: "Addressing the ethical and operational challenges attorneys face when disaster conditions disrupt business operations, government offices, legal service organizations or the courts.",
     },
     {
       id: "cascading-risks",
