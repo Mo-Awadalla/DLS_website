@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = json.loads((ROOT / 'release-manifest.json').read_text())
 BASE_PATH = os.environ.get(MANIFEST['environment']['basePath'], '').rstrip('/')
-BASE = f'http://localhost:3000{BASE_PATH}'
+BASE = f"{os.environ.get('SITE_BASE_URL', 'http://localhost:3000').rstrip('/')}{BASE_PATH}"
 CALENDAR_ROUTE = MANIFEST['routes']['calendar']
 RETIRED_ROUTES = MANIFEST['routes']['retired'] + ['/assets/jiahao-chen.jpg', '/artifacts/disaster-law-symposium-2026-staging.pdf']
 OUTPUT = Path(__file__).resolve().parents[1] / 'artifacts/phase-1-charcoal'
@@ -23,7 +23,7 @@ with sync_playwright() as p:
     page.on('console', lambda message: errors.append(message.text) if message.type == 'error' else None)
     failed = []
     page.on('requestfailed', lambda request: failed.append(request.url))
-    for width, height, label in [(1440, 1000, 'desktop'), (768, 1024, 'tablet'), (390, 844, 'mobile'), (320, 800, None), (679, 900, None), (680, 900, None), (681, 900, None), (899, 900, None), (900, 900, None), (901, 900, None)]:
+    for width, height, label in [(1920, 1080, 'wide-desktop'), (1440, 1000, 'desktop'), (768, 1024, 'tablet'), (390, 844, 'mobile'), (320, 800, None), (679, 900, None), (680, 900, None), (681, 900, None), (899, 900, None), (900, 900, None), (901, 900, None)]:
         page.set_viewport_size({'width': width, 'height': height})
         assert page.goto(BASE).status == 200
         page.wait_for_load_state('networkidle')
@@ -38,6 +38,7 @@ with sync_playwright() as p:
             facts: rect('.event-facts'), button: rect('.hero-content .button'),
             imagesLoaded: [...document.images].every(image => image.complete && image.naturalWidth > 0),
             logo: rect('header img'), header: rect('header'), identity: rect('.hero-content .eyebrow'),
+            contactHeading: rect('.footer-contact h2'), contactLink: rect('.contact-link'),
             logoFilter: getComputedStyle(document.querySelector('header img')).filter};
         }''')
         assert metrics['scrollWidth'] == width, metrics
@@ -45,8 +46,13 @@ with sync_playwright() as p:
         assert metrics['facts']['bottom'] <= metrics['button']['y'], metrics
         assert metrics['button']['bottom'] < metrics['hero']['bottom'], metrics
         assert metrics['imagesLoaded'] and metrics['logoFilter'] == 'brightness(0) invert(1)'
-        assert metrics['logo']['x'] == 0 and metrics['logo']['y'] == 0, metrics
-        assert metrics['header']['height'] <= 75 and metrics['header']['width'] <= 220, metrics
+        assert abs(metrics['header']['x'] - metrics['identity']['x']) < 1, metrics
+        assert abs(metrics['logo']['x'] + 220 * 130 / 2500 - metrics['identity']['x']) < 1, metrics
+        assert metrics['logo']['y'] == 0 and metrics['header']['height'] <= 75, metrics
+        assert abs(metrics['contactHeading']['x'] - metrics['contactLink']['x']) < 1, metrics
+        assert metrics['contactHeading']['bottom'] < metrics['contactLink']['y'], metrics
+        if width == 320:
+            assert metrics['contactLink']['height'] < 50, metrics
         assert metrics['hero']['y'] == 0, metrics
         assert metrics['logo']['bottom'] < metrics['identity']['y'], metrics
         assert page.get_by_role('navigation').count() == 0
@@ -58,7 +64,8 @@ with sync_playwright() as p:
             page.screenshot(path=str(OUTPUT / f'{label}.png'), full_page=True)
         results['viewports'].append(metrics)
 
-    results['header'] = 'Official transparent logo rendered white overlays hero at x=0/y=0; hero starts at y=0; no white header band, navigation, or adjacent text'
+    results['header'] = 'Official transparent logo rendered white overlays hero; its visible left edge aligns with hero content; no white header band, navigation, or adjacent text'
+    results['footer'] = 'Contact email aligns below its heading at every tested viewport'
 
     # Exercise the real browser download and inspect its file.
     page.goto(BASE)

@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="page-shell footer-contact">
         <div><p className="eyebrow">Stay in touch</p><h2>Questions about the symposium?</h2><p>{publishedEvent.announcement}</p></div>
-        <a className="text-link contact-link" href={`mailto:${publishedEvent.contact.email}`}>{publishedEvent.contact.email} <span aria-hidden="true">↗</span></a>
+        <a className="text-link contact-link" href={`mailto:${publishedEvent.contact.email}`}>{publishedEvent.contact.email}</a>
       </div>
       <div className="page-shell footer-bottom">
         <span>{publishedEvent.organization}</span>
