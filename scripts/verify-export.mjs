@@ -19,8 +19,12 @@ const routeOutput = (route) => {
   return path.endsWith("/") ? `${path}index.html` : path;
 };
 const expectedRoutes = releaseManifest.routes.public.map(routeOutput);
+const rscPayloads = releaseManifest.routes.public
+  .filter((route) => route !== "/" && route !== releaseManifest.routes.calendar)
+  .map((route) => `${route.replace(/^\//, "").replace(/\/$/, "")}/index.txt`);
 const allowedFiles = new Set([
   ...expectedRoutes,
+  ...rscPayloads,
   ...releaseManifest.staticExport.frameworkFiles,
   ...releaseManifest.publicAssets.map((asset) => asset.replace(/^\//, "")),
 ]);
@@ -51,13 +55,12 @@ for (const [, url] of home.matchAll(/(?:src|href)="(\/[^"]*)"/g)) {
 }
 for (const fact of ["October 29, 2026", "John Jay College of Criminal Justice", "AI governance", "Rights and equity", "Continuity of Operations", "Cascading disaster risks", "Save the date"]) assert(home.includes(fact), `Missing overview content: ${fact}`);
 for (const id of ["overview", "topics", "main-content"]) assert(home.includes(`id="${id}"`));
-assert(!home.includes('id="venue"'), "The standalone venue section was removed");
 assert(!home.includes("Staging comparison"), "Staging controls must not ship");
 assert(home.includes('href="mailto:disasterlawsymposium@oem.nyc.gov"'));
 assert(home.includes('name="twitter:description"'));
 assert(readFileSync(resolve(root, "404.html"), "utf8").includes("Go to the homepage"));
 const sitemap = readFileSync(resolve(root, "sitemap.xml"), "utf8");
-assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]), [canonicalUrl]);
+assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]), [canonicalUrl, `${canonicalUrl}/venue`]);
 const calendar = readFileSync(resolve(root, "disaster-law-symposium-2026.ics"), "utf8");
 assert(!/(?<!\r)\n/.test(calendar), "Calendar must use CRLF");
 assert(calendar.split("\r\n").every((line) => Buffer.byteLength(line) <= 75), "Calendar line exceeds 75 octets");
