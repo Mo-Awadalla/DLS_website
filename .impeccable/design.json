@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-29T21:15:05Z",
+  "title": "Design System: Disaster Law Symposium 2026",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Terracotta",
+        "canonical": "#984b33",
+        "tonalRamp": [
+          "oklch(15% 0.1097 38.0)",
+          "oklch(25% 0.1097 38.0)",
+          "oklch(35% 0.1097 38.0)",
+          "oklch(45% 0.1097 38.0)",
+          "oklch(55% 0.1097 38.0)",
+          "oklch(65% 0.1097 38.0)",
+          "oklch(75% 0.1097 38.0)",
+          "oklch(95% 0.1097 38.0)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Deep Terracotta",
+        "canonical": "#783922",
+        "tonalRamp": [
+          "oklch(15% 0.0950 40.2)",
+          "oklch(25% 0.0950 40.2)",
+          "oklch(35% 0.0950 40.2)",
+          "oklch(45% 0.0950 40.2)",
+          "oklch(55% 0.0950 40.2)",
+          "oklch(65% 0.0950 40.2)",
+          "oklch(75% 0.0950 40.2)",
+          "oklch(95% 0.0950 40.2)"
+        ]
+      },
+      "primary-pressed": {
+        "role": "primary",
+        "displayName": "Pressed Terracotta",
+        "canonical": "#65301e",
+        "tonalRamp": [
+          "oklch(15% 0.0818 39.2)",
+          "oklch(25% 0.0818 39.2)",
+          "oklch(35% 0.0818 39.2)",
+          "oklch(45% 0.0818 39.2)",
+          "oklch(55% 0.0818 39.2)",
+          "oklch(65% 0.0818 39.2)",
+          "oklch(75% 0.0818 39.2)",
+          "oklch(95% 0.0818 39.2)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Warm Canvas",
+        "canonical": "#f5f5f2",
+        "tonalRamp": [
+          "oklch(15% 0.0040 106.5)",
+          "oklch(25% 0.0040 106.5)",
+          "oklch(35% 0.0040 106.5)",
+          "oklch(45% 0.0040 106.5)",
+          "oklch(55% 0.0040 106.5)",
+          "oklch(65% 0.0040 106.5)",
+          "oklch(75% 0.0040 106.5)",
+          "oklch(95% 0.0040 106.5)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Stone Surface",
+        "canonical": "#ecece8",
+        "tonalRamp": [
+          "oklch(15% 0.0053 106.5)",
+          "oklch(25% 0.0053 106.5)",
+          "oklch(35% 0.0053 106.5)",
+          "oklch(45% 0.0053 106.5)",
+          "oklch(55% 0.0053 106.5)",
+          "oklch(65% 0.0053 106.5)",
+          "oklch(75% 0.0053 106.5)",
+          "oklch(95% 0.0053 106.5)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#fafaf7",
+        "tonalRamp": [
+          "oklch(15% 0.0040 106.5)",
+          "oklch(25% 0.0040 106.5)",
+          "oklch(35% 0.0040 106.5)",
+          "oklch(45% 0.0040 106.5)",
+          "oklch(55% 0.0040 106.5)",
+          "oklch(65% 0.0040 106.5)",
+          "oklch(75% 0.0040 106.5)",
+          "oklch(95% 0.0040 106.5)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Charcoal Ink",
+        "canonical": "#262724",
+        "tonalRamp": [
+          "oklch(15% 0.0056 121.8)",
+          "oklch(25% 0.0056 121.8)",
+          "oklch(35% 0.0056 121.8)",
+          "oklch(45% 0.0056 121.8)",
+          "oklch(55% 0.0056 121.8)",
+          "oklch(65% 0.0056 121.8)",
+          "oklch(75% 0.0056 121.8)",
+          "oklch(95% 0.0056 121.8)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#5e605a",
+        "tonalRamp": [
+          "oklch(15% 0.0097 121.8)",
+          "oklch(25% 0.0097 121.8)",
+          "oklch(35% 0.0097 121.8)",
+          "oklch(45% 0.0097 121.8)",
+          "oklch(55% 0.0097 121.8)",
+          "oklch(65% 0.0097 121.8)",
+          "oklch(75% 0.0097 121.8)",
+          "oklch(95% 0.0097 121.8)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d3d4cd",
+        "tonalRamp": [
+          "oklch(15% 0.0096 113.2)",
+          "oklch(25% 0.0096 113.2)",
+          "oklch(35% 0.0096 113.2)",
+          "oklch(45% 0.0096 113.2)",
+          "oklch(55% 0.0096 113.2)",
+          "oklch(65% 0.0096 113.2)",
+          "oklch(75% 0.0096 113.2)",
+          "oklch(95% 0.0096 113.2)"
+        ]
+      },
+      "hero-canvas": {
+        "role": "neutral",
+        "displayName": "Hero Charcoal",
+        "canonical": "#171717",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.9)",
+          "oklch(25% 0.0000 89.9)",
+          "oklch(35% 0.0000 89.9)",
+          "oklch(45% 0.0000 89.9)",
+          "oklch(55% 0.0000 89.9)",
+          "oklch(65% 0.0000 89.9)",
+          "oklch(75% 0.0000 89.9)",
+          "oklch(95% 0.0000 89.9)"
+        ]
+      },
+      "hero-ink": {
+        "role": "neutral",
+        "displayName": "Hero Warm White",
+        "canonical": "#f6f2e9",
+        "tonalRamp": [
+          "oklch(15% 0.0127 86.8)",
+          "oklch(25% 0.0127 86.8)",
+          "oklch(35% 0.0127 86.8)",
+          "oklch(45% 0.0127 86.8)",
+          "oklch(55% 0.0127 86.8)",
+          "oklch(65% 0.0127 86.8)",
+          "oklch(75% 0.0127 86.8)",
+          "oklch(95% 0.0127 86.8)"
+        ]
+      },
+      "hero-accent": {
+        "role": "primary",
+        "displayName": "Hero Coral",
+        "canonical": "#ff794f",
+        "tonalRamp": [
+          "oklch(15% 0.1735 37.9)",
+          "oklch(25% 0.1735 37.9)",
+          "oklch(35% 0.1735 37.9)",
+          "oklch(45% 0.1735 37.9)",
+          "oklch(55% 0.1735 37.9)",
+          "oklch(65% 0.1735 37.9)",
+          "oklch(75% 0.1735 37.9)",
+          "oklch(95% 0.1735 37.9)"
+        ]
+      },
+      "hero-accent-display": {
+        "role": "primary",
+        "displayName": "Pale Hero Coral",
+        "canonical": "#ffa27f",
+        "tonalRamp": [
+          "oklch(15% 0.1210 41.3)",
+          "oklch(25% 0.1210 41.3)",
+          "oklch(35% 0.1210 41.3)",
+          "oklch(45% 0.1210 41.3)",
+          "oklch(55% 0.1210 41.3)",
+          "oklch(65% 0.1210 41.3)",
+          "oklch(75% 0.1210 41.3)",
+          "oklch(95% 0.1210 41.3)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Editorial Display",
+        "purpose": "Responsive event and page headings."
+      },
+      "headline": {
+        "displayName": "Section Heading",
+        "purpose": "Venue and section headings."
+      },
+      "body": {
+        "displayName": "Functional Text",
+        "purpose": "Addresses, explanations, and logistics."
+      },
+      "navigation-label": {
+        "displayName": "Navigation Label",
+        "purpose": "Uppercase site navigation links."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-press",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Action and tab transitions."
+      },
+      {
+        "name": "primary-transition",
+        "value": "150ms background-color; 160ms transform",
+        "purpose": "Primary action hover and press states."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "content-tighten",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile",
+        "value": "680px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The default terracotta action used for a clear next step.",
+      "html": "<button class=\"ds-button\">Get directions</button>",
+      "css": ".ds-button { background: var(--accent); color: var(--canvas); border: 0; border-radius: 0; min-height: 48px; padding: 12px 19.2px; font: 600 14px/1.4 'IBM Plex Sans', sans-serif; transition: background-color 150ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-button:hover { background: var(--accent-hover); } .ds-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; } .ds-button:active { background: var(--accent-pressed); transform: scale(.97); }"
+    },
+    {
+      "name": "Booking Action",
+      "kind": "button",
+      "refersTo": "button-booking",
+      "description": "A light action control in the terracotta booking band.",
+      "html": "<a class=\"ds-booking\" href=\"#\">Book your room <span aria-hidden=\"true\">\u2192</span></a>",
+      "css": ".ds-booking { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 52px; padding: 14px 20px; background: var(--paper); color: var(--ink); border-radius: 0; font: 500 15px/1.4 'IBM Plex Sans', sans-serif; text-decoration: none; transition: background-color 150ms ease; } .ds-booking:hover { background: var(--surface); } .ds-booking:focus-visible { outline: 3px solid var(--paper); outline-offset: 5px; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "navigation-label",
+      "description": "An uppercase link with a fine underline for hover and active states.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\" aria-current=\"page\">Venue</a>",
+      "css": ".ds-nav-link { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding-block: 8px; color: #f6f2e9; font: 500 14px/1.5 'IBM Plex Sans', sans-serif; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; } .ds-nav-link::after { content: ''; position: absolute; inset: auto 0 0; height: 1.5px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 250ms cubic-bezier(.23, 1, .32, 1); } .ds-nav-link:hover::after, .ds-nav-link[aria-current='page']::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid #f6f2e9; outline-offset: 4px; }"
+    },
+    {
+      "name": "Destination Tabs",
+      "kind": "custom",
+      "refersTo": "primary",
+      "description": "Equal-width venue and hotel choices with a moving active indicator.",
+      "html": "<div class=\"ds-tabs\"><button aria-selected=\"true\">Venue</button><button aria-selected=\"false\">Hotel</button></div>",
+      "css": ".ds-tabs { display: flex; border-bottom: 1px solid var(--line); } .ds-tabs button { position: relative; flex: 1; min-height: 44px; padding: 8px 12px 12px; border: 0; background: transparent; color: var(--muted); font: 500 14px/1.4 'IBM Plex Sans', sans-serif; } .ds-tabs button[aria-selected='true'] { color: var(--accent); } .ds-tabs button[aria-selected='true']::after { content: ''; position: absolute; inset: auto 0 -1px; height: 2px; background: var(--accent); } .ds-tabs button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Street Grid Schematic",
+      "kind": "custom",
+      "refersTo": "surface",
+      "description": "A quiet, explicitly not-to-scale location marker paired with real directions.",
+      "html": "<div class=\"ds-map\" role=\"img\" aria-label=\"Schematic street grid, not to scale\"><span>WEST 59TH STREET</span><i aria-hidden=\"true\"></i><small>Schematic \u00b7 not to scale</small></div>",
+      "css": ".ds-map { position: relative; height: 240px; overflow: hidden; background-color: var(--surface); background-image: repeating-linear-gradient(0deg, transparent 0 42px, var(--paper) 42px 58px), repeating-linear-gradient(90deg, transparent 0 62px, var(--paper) 62px 78px); color: var(--muted); font: 600 11px/1.4 'IBM Plex Sans', sans-serif; letter-spacing: .08em; } .ds-map span { position: absolute; top: 42%; left: 16px; } .ds-map i { position: absolute; top: 52%; left: 45%; width: 18px; height: 18px; background: var(--accent); border: 5px solid var(--paper); border-radius: 50%; outline: 8px solid color-mix(in srgb, var(--accent) 18%, transparent); } .ds-map small { position: absolute; right: 12px; bottom: 10px; padding: 5px 8px; background: var(--paper); font-size: 11px; letter-spacing: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Civic Field Guide",
+    "overview": "The visual language treats event information as a clear guide through a public institution: calm, legible, and anchored in place. Source Serif 4 gives headings an editorial voice; IBM Plex Sans keeps navigation, addresses, and practical details direct. Warm neutral surfaces and hairline rules organize the pages. The venue experience makes room for each step of a visit, while the landing page uses a darker skyline hero with a brighter coral accent as a local variation.",
+    "keyCharacteristics": [
+      "Editorial serif headings paired with functional sans-serif text.",
+      "Warm neutral surfaces, charcoal ink, and terracotta actions.",
+      "Open layouts organized by spacing, contrast, and thin rules.",
+      "Square controls and a restrained, responsive navigation system."
+    ],
+    "rules": [
+      {
+        "name": "The One Action Accent Rule",
+        "body": "Use terracotta to mark actions and active wayfinding. The coral pair belongs to the dark landing hero, where it maintains contrast over the skyline image.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voice Rule",
+        "body": "Keep display headings in Source Serif 4 and functional text in IBM Plex Sans; use weight and size to establish hierarchy rather than bolding every heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Keep resting content flat. Use tone and separators to distinguish sections before adding elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep Source Serif 4 for display headings and IBM Plex Sans for functional text.",
+      "Do use the terracotta accent for actions, active states, and wayfinding.",
+      "Do preserve the open section spacing, square controls, and visible keyboard focus.",
+      "Do label schematic maps as not to scale and link directions to a real map service."
+    ],
+    "donts": [
+      "Don't add shadowed cards as the default layout; current hierarchy comes from spacing, fills, and hairlines.",
+      "Don't imply a walking route or geographic accuracy in the schematic map.",
+      "Don't publish unconfirmed room, entrance, or program details as facts."
+    ]
+  }
+}
