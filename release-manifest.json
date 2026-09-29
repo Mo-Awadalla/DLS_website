@@ -8,6 +8,7 @@
   "routes": {
     "public": [
       "/",
+      "/venue/",
       "/disaster-law-symposium-2026.ics"
     ],
     "calendar": "/disaster-law-symposium-2026.ics",
@@ -16,7 +17,6 @@
       "/speakers/",
       "/register/",
       "/sponsors/",
-      "/venue/",
       "/staging/",
       "/staging/hero/"
     ]

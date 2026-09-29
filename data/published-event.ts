@@ -21,9 +21,22 @@ export type PublishedEvent = Readonly<{
   }>;
   venue: Readonly<{
     name: string;
+    address: string;
+    cityState: string;
+    zip: string;
     area: string;
     city: string;
-    mapUrl: string;
+  }>;
+  hotel: Readonly<{
+    name: string;
+    address: string;
+    cityState: string;
+    zip: string;
+    phone: string;
+    bookingUrl: string;
+    bookingDeadline: string;
+    bookingDeadlineIso: string;
+    walkingDistance: string;
   }>;
   organization: string;
   contact: Readonly<{
@@ -52,9 +65,22 @@ export const publishedEvent = {
   },
   venue: {
     name: "John Jay College of Criminal Justice",
+    address: "524 West 59th Street",
+    cityState: "New York, NY",
+    zip: "10019",
     area: "Manhattan / New York City",
     city: "New York City",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=John+Jay+College+of+Criminal+Justice+New+York+City",
+  },
+  hotel: {
+    name: "Hilton Garden Inn New York/Central Park South-Midtown West",
+    address: "237 West 54th Street",
+    cityState: "New York, NY",
+    zip: "10019",
+    phone: "+1 212-253-6000",
+    bookingUrl: "https://www.hilton.com/en/attend-my-event/disasterlawsymposiumoct2026/",
+    bookingDeadline: "October 7, 2026",
+    bookingDeadlineIso: "2026-10-07",
+    walkingDistance: "10-minute walk from venue",
   },
   organization: "New York City Emergency Management",
   contact: {
