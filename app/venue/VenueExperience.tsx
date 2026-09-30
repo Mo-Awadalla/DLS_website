@@ -10,9 +10,11 @@ const directionsUrl = (name: string, address: string, cityState: string, zip: st
   `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${name}, ${address}, ${cityState} ${zip}`)}`;
 const venueMapUrl = directionsUrl(event.venue.name, event.venue.address, event.venue.cityState, event.venue.zip);
 const hotelMapUrl = directionsUrl(event.hotel.name, event.hotel.address, event.hotel.cityState, event.hotel.zip);
+const venueEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(`${event.venue.name}, ${event.venue.address}, ${event.venue.cityState} ${event.venue.zip}`)}&output=embed`;
+const hotelEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(`${event.hotel.name}, ${event.hotel.address}, ${event.hotel.cityState} ${event.hotel.zip}`)}&output=embed`;
 const destinations = [
-  { id: "venue", label: "Venue", name: event.venue.name, address: event.venue.address, mapUrl: venueMapUrl, street: "West 59th Street" },
-  { id: "hotel", label: "Hotel", name: event.hotel.name, address: event.hotel.address, mapUrl: hotelMapUrl, street: "West 54th Street" },
+  { id: "venue", label: "Venue", name: event.venue.name, address: event.venue.address, mapUrl: venueMapUrl, embedUrl: venueEmbedUrl },
+  { id: "hotel", label: "Hotel", name: event.hotel.name, address: event.hotel.address, mapUrl: hotelMapUrl, embedUrl: hotelEmbedUrl },
 ] as const;
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
@@ -28,37 +30,19 @@ function ExternalLink({ href, children, className = styles.link, label }: { href
 }
 
 function DestinationMap({ destination }: { destination: (typeof destinations)[number] }) {
-  const targetY = destination.id === "venue" ? 142 : 230;
-  const mapTitleId = `map-title-${destination.id}`;
-  const mapDescriptionId = `map-description-${destination.id}`;
-
   return (
     <>
       <div className={styles.mapFrame}>
-        <svg className={styles.mapArtwork} viewBox="0 0 720 340" role="img" aria-labelledby={`${mapTitleId} ${mapDescriptionId}`} preserveAspectRatio="xMinYMid slice">
-          <title id={mapTitleId}>{destination.name}</title>
-          <desc id={mapDescriptionId}>A simple street-grid schematic marking {destination.address}. It is not to scale and does not show a walking route.</desc>
-          <rect className={styles.mapGround} width="720" height="340" />
-          <g className={styles.mapRoads} aria-hidden="true">
-            <path d="M0 56H720 M0 142H720 M0 230H720 M0 316H720" />
-            <path d="M72 0V340 M192 0V340 M312 0V340 M432 0V340 M552 0V340 M672 0V340" />
-          </g>
-          <g className={styles.mapGridEdges} aria-hidden="true">
-            <path d="M0 39H720 M0 73H720 M0 125H720 M0 159H720 M0 213H720 M0 247H720 M0 299H720 M0 333H720" />
-            <path d="M55 0V340 M89 0V340 M175 0V340 M209 0V340 M295 0V340 M329 0V340 M415 0V340 M449 0V340 M535 0V340 M569 0V340 M655 0V340 M689 0V340" />
-          </g>
-          <path className={styles.mapTargetStreet} d={`M0 ${targetY}H720`} aria-hidden="true" />
-          <text className={styles.mapStreetLabel} x="20" y={targetY - 13} aria-hidden="true">{destination.street.toUpperCase()}</text>
-          <g className={styles.mapMarker} transform={`translate(310 ${targetY})`} aria-hidden="true">
-            <circle className={styles.mapMarkerHalo} r="25" />
-            <path className={styles.mapMarkerShape} d="M0-20c-10.5 0-19 8.3-19 18.6C-19 13 0 30 0 30S19 13 19-1.4C19-11.7 10.5-20 0-20Z" />
-            <circle className={styles.mapMarkerCore} cy="-2" r="5.5" />
-          </g>
-        </svg>
-        <span className={styles.mapScale}>Schematic · not to scale</span>
+        <iframe
+          className={styles.mapEmbed}
+          src={destination.embedUrl}
+          title={`Map showing ${destination.name}`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
       </div>
       <div className={styles.mapCaption}><span>{destination.address}</span><ExternalLink href={destination.mapUrl} label={`Get directions to ${destination.name}`}>Get directions</ExternalLink></div>
-      <p className={styles.mapFallback}>Open directions in Google Maps for a route to this location.</p>
     </>
   );
 }

@@ -26,20 +26,11 @@
 .tabIndicator { position: absolute; left: 0; bottom: -1px; width: 50%; height: 2px; background: var(--accent); pointer-events: none; transform: translateX(0); transition: transform 180ms var(--ease-press); }
 .hotelSelected { transform: translateX(100%); }
 .tabContent { margin-top: 16px; }
-.mapFrame { position: relative; height: 340px; overflow: hidden; background: var(--surface); }
-.mapArtwork { display: block; width: 100%; height: 100%; }
-.mapGround { fill: var(--surface); }
-.mapRoads path { fill: none; stroke: var(--paper); stroke-width: 28px; }
-.mapGridEdges path { fill: none; stroke: var(--line); stroke-width: 1px; }
-.mapStreetLabel { fill: var(--muted); font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 1.1px; }
-.mapMarkerHalo { fill: color-mix(in srgb, var(--accent) 18%, transparent); }
-.mapMarkerShape { fill: var(--accent); }
-.mapMarkerCore { fill: var(--paper); }
-.mapScale { position: absolute; right: 14px; bottom: 12px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); padding: 5px 8px; font-size: .6875rem; line-height: 1.4; }
+.mapFrame { position: relative; height: 340px; overflow: hidden; background: var(--surface); border-radius: 4px; }
+.mapEmbed { display: block; width: 100%; height: 100%; border: 0; }
 .mapCaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; margin-top: 14px; }
 .mapCaption > span { font-size: .8125rem; }
 .mapCaption .link { padding-bottom: 5px; }
-.mapFallback { color: var(--muted); font-size: .75rem; line-height: 1.5; margin-top: 4px; }
 .hotel { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.35fr; column-gap: 96px; border-top: 1px solid var(--line); margin-top: 88px; padding-top: 80px; }
 .hotel > * { min-width: 0; }
 .hotel h2 { font-size: clamp(2rem, 2.8vw, 2.5rem); }
@@ -90,7 +81,6 @@
   .travel { margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--line); }
   .travel h2 { font-size: 2rem; }
   .mapFrame { height: 310px; }
-  .mapFallback { font-size: .75rem; max-width: none; }
   .hotel { display: block; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--line); }
   .hotel h2 { font-size: 1.875rem; max-width: 24ch; }
   .hotel .address { margin-top: 20px; }
