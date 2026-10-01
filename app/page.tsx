@@ -17,10 +17,6 @@ export default function HomePage() {
             <div><dt>Date</dt><dd><time dateTime={publishedEvent.date.iso}>{publishedEvent.date.label}</time></dd></div>
             <div><dt>Venue</dt><dd>{publishedEvent.venue.name}</dd></div>
           </dl>
-          <div className="calendar-action">
-            <a className="button" href={publishedEvent.calendarPath} download={publishedEvent.calendarPath.split("/").pop()} aria-describedby="calendar-reminder-note">Save the date</a>
-            <p className="hero-action-note" id="calendar-reminder-note">All-day calendar reminder</p>
-          </div>
         </div>
       </section>
 

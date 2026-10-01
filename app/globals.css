@@ -64,8 +64,6 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .button:active { background: var(--accent-pressed); }
 .button:active:not(:focus-visible) { transform: scale(.97); }
 .button:focus-visible { transform: none; transition: none; }
-.calendar-action { display: flex; flex-direction: column; align-items: flex-start; gap: .4rem; }
-.hero-action-note { color: var(--ink); font-size: .75rem; line-height: 1.4; }
 
 .topics-section { padding-block: 6rem; }
 .topics-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 6vw, 5.5rem); }
