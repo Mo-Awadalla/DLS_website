@@ -45,6 +45,7 @@ export type PublishedEvent = Readonly<{
   canonicalUrl: string;
   description: string;
   calendarPath: string;
+  registrationUrl: string;
   announcement: string;
   introduction: string;
   topics: readonly PublishedTopic[];
@@ -90,7 +91,8 @@ export const publishedEvent = {
   description:
     "Disaster Law Symposium 2026: Law at the Crossroads. October 29, 2026 at John Jay College of Criminal Justice in New York City. Explore AI governance, rights and equity, continuity of operations, and cascading disaster risks.",
   calendarPath: sitePath(manifest.routes.calendar),
-  announcement: "Program, speaker, and registration details will be announced.",
+  registrationUrl: "https://events.zoom.us/ev/AsHFA0irP2t67JdWfX_Zxhamap59FzTzvn4mPZbsuG1ZzDs_dpsv~AsUnMxBiWXsQs7nYZns6rmNZJLxj27uBtmt42vBt3RqEk5FDHz9CTS4a8w",
+  announcement: "Program and speaker details will be announced.",
   introduction:
     "Disasters test the systems people depend on—and the laws that hold them together. This symposium brings four connected questions into focus: how we govern emerging technology, protect rights, sustain legal operations, and prepare for overlapping crises.",
   topics: [

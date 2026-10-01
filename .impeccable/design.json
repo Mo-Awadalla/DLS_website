@@ -215,10 +215,16 @@
       },
       "navigation-label": {
         "displayName": "Navigation Label",
-        "purpose": "Uppercase site navigation links."
+        "purpose": "Compact title-case navigation labels, 14px desktop and 16px mobile."
       }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "navigation-glass",
+        "value": "0 6px 18px rgba(15, 15, 14, 0.12), inset 0 1px 1px rgba(250, 250, 247, 0.8)",
+        "purpose": "Bounded depth and the bright material edge of the shared glass navigation."
+      }
+    ],
     "motion": [
       {
         "name": "ease-press",
@@ -229,6 +235,11 @@
         "name": "primary-transition",
         "value": "150ms background-color; 160ms transform",
         "purpose": "Primary action hover and press states."
+      },
+      {
+        "name": "navigation-selection",
+        "value": "250ms clip-path cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Current-page selection continuity; immediate for keyboard, resize, and reduced motion."
       }
     ],
     "breakpoints": [
@@ -260,12 +271,12 @@
       "css": ".ds-booking { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 52px; padding: 14px 20px; background: var(--paper); color: var(--ink); border-radius: 0; font: 500 15px/1.4 'IBM Plex Sans', sans-serif; text-decoration: none; transition: background-color 150ms ease; } .ds-booking:hover { background: var(--surface); } .ds-booking:focus-visible { outline: 3px solid var(--paper); outline-offset: 5px; }"
     },
     {
-      "name": "Navigation Link",
+      "name": "Liquid Glass Navigation",
       "kind": "nav",
-      "refersTo": "navigation-label",
-      "description": "An uppercase link with a fine underline for hover and active states.",
-      "html": "<a class=\"ds-nav-link\" href=\"#\" aria-current=\"page\">Venue</a>",
-      "css": ".ds-nav-link { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding-block: 8px; color: #f6f2e9; font: 500 14px/1.5 'IBM Plex Sans', sans-serif; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; } .ds-nav-link::after { content: ''; position: absolute; inset: auto 0 0; height: 1.5px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 250ms cubic-bezier(.23, 1, .32, 1); } .ds-nav-link:hover::after, .ds-nav-link[aria-current='page']::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid #f6f2e9; outline-offset: 4px; }"
+      "refersTo": "navigation-glass",
+      "description": "Light paper glass with a measured internal-page selection pill, a distinct external registration action, and content-aware collapse to a mobile popover.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main\"><a href=\"/\" aria-current=\"page\">Home</a><a href=\"/venue/\">Venue</a></nav>",
+      "css": ".ds-nav { display: inline-flex; gap: 4px; padding: 4px; color: var(--ink); background: rgba(250,250,247,.62); border: 1px solid rgba(250,250,247,.48); border-radius: 999px; backdrop-filter: blur(18px) saturate(160%); box-shadow: 0 6px 18px rgba(15,15,14,.12), inset 0 1px 1px rgba(250,250,247,.8); } .ds-nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; color: inherit; font: 500 14px/1.5 'IBM Plex Sans', sans-serif; text-decoration: none; } .ds-nav a[aria-current='page'] { background: rgba(250,250,247,.84); } .ds-nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; }"
     },
     {
       "name": "Destination Tabs",
@@ -291,7 +302,7 @@
       "Editorial serif headings paired with functional sans-serif text.",
       "Warm neutral surfaces, charcoal ink, and terracotta actions.",
       "Open layouts organized by spacing, contrast, and thin rules.",
-      "Square controls and a restrained, responsive navigation system."
+      "Square content controls paired with light liquid-glass navigation and a moving selection pill."
     ],
     "rules": [
       {
@@ -306,14 +317,14 @@
       },
       {
         "name": "The Flat Surface Rule",
-        "body": "Keep resting content flat. Use tone and separators to distinguish sections before adding elevation.",
+        "body": "Keep resting content flat. The user-requested glass navigation is the only shared-shell material exception; do not spread its blur, rounded forms, or shadows into page content.",
         "section": "elevation"
       }
     ],
     "dos": [
       "Do keep Source Serif 4 for display headings and IBM Plex Sans for functional text.",
       "Do use the terracotta accent for actions, active states, and wayfinding.",
-      "Do preserve the open section spacing, square controls, and visible keyboard focus.",
+      "Do preserve open section spacing, square content controls, and visible keyboard focus; keep the glass treatment scoped to navigation.",
       "Do label schematic maps as not to scale and link directions to a real map service."
     ],
     "donts": [

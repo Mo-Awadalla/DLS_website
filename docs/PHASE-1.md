@@ -1,18 +1,19 @@
 # Phase 1 — Urban Signal
 
-The approved direction uses the existing NYC skyline under a dark scrim, grey-white sections, charcoal text, Source Serif 4 headlines, and IBM Plex Sans body text. The skyline remains the visual anchor. The transparent NYCEM logo is rendered white over the hero image. The header and hero are integrated, with no separate header band, navigation, or adjacent symposium label. Preserve this treatment when changing the sections below.
+The approved direction uses the existing NYC skyline under a dark scrim, grey-white sections, charcoal text, Source Serif 4 headlines, and IBM Plex Sans body text. The skyline remains the visual anchor. The transparent NYCEM logo is rendered white over the hero image. The shared glass navigation overlays the hero without a separate full-width header band. Preserve this treatment when changing the sections below.
 
-Audience: legal practitioners and emergency management professionals checking the event and saving the date. The page introduces four numbered topics, establishes the date and venue in the hero, and offers a calendar download and contact email. The standalone venue section has been removed; topics flow directly into the footer.
+Audience: legal practitioners and emergency management professionals checking the event and reaching registration. The page introduces four numbered topics, establishes the date and venue in the hero, and provides shared navigation to Zoom Events plus a contact email. The homepage Save the date button and calendar-reminder note have been removed; the all-day calendar endpoint remains public. Topics flow directly into the footer.
 
 The approved staging refinement uses grey-white (`#f5f5f2`), charcoal text (`#262724`), muted text (`#5e605a`), and terracotta accents (`#984b33`). The photographic hero retains light text and orange accents. Topics use a static shadcn Item composition adapted to the existing CSS system, with visible descriptions and thin separators. The independent preview remains in `archive/staging-topics/`; its comparison controls are not part of the public page.
 
 ## Publication boundary
 
-- Only `/` is a public content page. There is a custom 404 with a homepage link.
+- `/` and `/venue/` are public content pages. There is a custom 404 with a homepage link.
 - Confirmed: October 29, 2026; John Jay College of Criminal Justice; Manhattan / New York City.
 - `data/published-event.ts` owns the readonly published event record, approved facts, and four topic summaries. Active app components must not import draft sessions, speakers, registration configuration, or editorial data.
 - No session times, speaker names, keynote, credit allocations, CLE approval claims, registration form, or email-notification workflow are public.
-- Room, entrance, street address, arrival, timing, and registration details are not asserted. Details will follow.
+- Room, entrance, arrival, and session timing details are not asserted. Details will follow.
+- The owner-approved Zoom Events registration URL is published in `data/published-event.ts.registrationUrl` and linked from desktop and mobile navigation. The registration action opens a new tab with opener isolation; `/register/` remains unpublished.
 - `/disaster-law-symposium-2026.ics` is generated at build time from the published event record. DTSTART is DATE 20261029; DTEND is exclusive DATE 20261030. It is an all-day placeholder, not a timing announcement.
 - The only public image assets are the existing agency logo and skyline. Photograph attribution is in `docs/ASSET-CREDITS.md`.
 
@@ -28,4 +29,4 @@ Later speaker work must use explicitly approved speaker names, biographies, imag
 
 `npm run preview` (or `npm start`) serves `out/` on http://localhost:3000. Set `PORT` to choose another port. It serves missing paths with the exported `404.html` and HTTP 404; it does not rewrite missing paths to the homepage.
 
-Netlify uses `404.html` for missing routes. The calendar download link and Netlify headers supply a filename and calendar content type. Netlify's built-in `URL` variable supplies the canonical URL at build time, unless overridden with `NEXT_PUBLIC_SITE_URL`. No backend is needed; the calendar route handler runs during the build.
+Netlify uses `404.html` for missing routes. The calendar endpoint and Netlify headers supply a filename and calendar content type; there is no homepage download control. Netlify's built-in `URL` variable supplies the canonical URL at build time, unless overridden with `NEXT_PUBLIC_SITE_URL`. No backend is needed; the calendar route handler runs during the build.

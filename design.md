@@ -37,10 +37,13 @@ typography:
     fontFamily: "IBM Plex Sans, Helvetica Neue, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 500
-    letterSpacing: "0.04em"
+    letterSpacing: "0"
     lineHeight: 1.5
 rounded:
   square: "0px"
+  navigation-pill: "999px"
+  navigation-popover: "24px"
+  navigation-mobile-link: "20px"
 spacing:
   unit: "4px"
   shell-gutter: "40px"
@@ -60,6 +63,15 @@ components:
     rounded: "{rounded.square}"
     height: "52px"
     padding: "14px 20px"
+  navigation-glass:
+    backgroundColor: "rgba(250, 250, 247, 0.62)"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.navigation-pill}"
+    padding: "4px"
+    backdropFilter: "blur(18px) saturate(160%)"
+    selectionColor: "rgba(250, 250, 247, 0.84)"
+    selectionDuration: "250ms"
+    selectionEasing: "cubic-bezier(0.77, 0, 0.175, 1)"
 ---
 
 # Design System: Disaster Law Symposium 2026
@@ -76,7 +88,7 @@ Warm neutral surfaces and hairline rules organize the pages. The venue experienc
 - Editorial serif headings paired with functional sans-serif text.
 - Warm neutral surfaces, charcoal ink, and terracotta actions.
 - Open layouts organized by spacing, contrast, and thin rules.
-- Square controls and a restrained, responsive navigation system.
+- Square content controls paired with light liquid-glass navigation and a moving selection pill.
 
 ## Colors
 
@@ -109,7 +121,7 @@ The shared palette is warm and low-chroma, with terracotta reserved for actions,
 - **Display** (400, responsive 60–88px, 1.06 line height, tight tracking): page titles and hero headlines.
 - **Headline** (400, responsive 32–44px, 1.17 line height): venue and section headings.
 - **Body** (400, 16px, 1.6 line height): addresses, explanations, and event details.
-- **Navigation label** (500, 14px desktop, 16px mobile, +0.04em tracking, uppercase): primary navigation links.
+- **Navigation label** (500, 14px desktop and toggle, 16px mobile links, normal tracking and title case): compact functional labels leave room for future destinations.
 
 **The Two Voice Rule.** Keep display headings in Source Serif 4 and functional text in IBM Plex Sans; use weight and size to establish hierarchy rather than bolding every heading.
 
@@ -121,13 +133,13 @@ At 1100px the venue columns tighten and type scales down. At 680px the page beco
 
 ## Elevation & Depth
 
-The current pages use flat surfaces without box shadows. Hierarchy comes from the canvas and surface fills, generous spacing, and hairline separators. The mobile navigation uses a blurred dark backdrop; it is the only translucent surface treatment in the shared shell.
+Content remains flat, with hierarchy from surface fills, generous spacing, and hairline separators. The shared navigation is the deliberate exception: light liquid glass floats over the skyline or dark masthead, using a bounded 18px backdrop blur, a bright material edge, and a soft 6px-offset shadow. A more opaque selection pill identifies the current page without introducing another accent color.
 
-**The Flat Surface Rule.** Keep resting content flat. Use tone and separators to distinguish sections before adding elevation.
+**The Flat Surface Rule.** Keep resting content flat. The user-requested glass navigation is the only shared-shell material exception; do not spread its blur, rounded forms, or shadows into page content.
 
 ## Shapes
 
-The form language is square-edged. Buttons, navigation, tabs, and the map use unrounded geometry; 1px rules separate content, and the selected-tab indicator is 2px. Preserve clear focus outlines and the 44px minimum desktop navigation target.
+Content buttons and tabs retain square edges and hairline separators. Navigation alone uses capsule controls, a 24px mobile popover, and a 20px mobile link radius. Preserve clear inset keyboard focus and at least 44px navigation targets; mobile links are at least 48px high.
 
 ## Components
 
@@ -138,7 +150,13 @@ The form language is square-edged. Buttons, navigation, tabs, and the map use un
 - **Interaction:** primary buttons darken on hover and compress slightly while pressed; focus remains visible with a high-contrast outline.
 
 ### Navigation
-The shared header sits over the dark masthead or hero. Desktop links are uppercase, have a 44px minimum height, and reveal a fine underline on hover or when active. At 680px, the links move into a dark mobile drawer; its stacked links are at least 52px high.
+The shared header keeps its logo and existing placement. Desktop links sit in one light liquid-glass capsule: paper at 62% opacity, an 18px backdrop blur with 160% saturation, a fine 48%-opacity paper edge, and a soft offset shadow. Labels stay charcoal, compact, and in title case. The active pill uses 84%-opacity paper. Selection is measured from the real link bounds, not hard-coded link counts or widths.
+
+Internal links use client navigation so the capsule survives a route change. A clipped selection surface moves between destinations in 250ms with `cubic-bezier(0.77, 0, 0.175, 1)`; only the clip animates, not layout dimensions. Interruption starts from the current visible position. Keyboard activation, resizing, and reduced motion update selection immediately.
+
+Registration is a separate charcoal-filled capsule with paper text and an external-link arrow inside the glass rail. It opens the approved Zoom Events destination in a new tab and closes the mobile popover, without replacing the current internal page's selection. Its focus outline is paper against charcoal. Registration is the navigation action; the homepage no longer shows a Save the date control or calendar-reminder note.
+
+At 680px, or earlier when the logo and all navigation links no longer fit, a glass Menu/Close control opens a compact right-aligned popover with 48px links. At 360px and below, its visible label hides while the icon and accessible name remain. Escape closes the popover without animation and returns focus to the toggle. Higher-contrast and reduced-transparency preferences replace the glass with opaque paper and a defined charcoal border.
 
 ### Destination Tabs
 Venue and hotel tabs use equal-width, 44px controls. The active label and a thin moving underline use the action color; the tab panel changes the destination shown in the map schematic.
@@ -151,7 +169,7 @@ The venue page uses a quiet street grid with a labeled destination marker. It ex
 ### Do:
 - **Do** keep Source Serif 4 for display headings and IBM Plex Sans for functional text.
 - **Do** use the terracotta accent for actions, active states, and wayfinding.
-- **Do** preserve the open section spacing, square controls, and visible keyboard focus.
+- **Do** preserve open section spacing, square content controls, and visible keyboard focus; keep the glass treatment scoped to navigation.
 - **Do** label schematic maps as not to scale and link directions to a real map service.
 
 ### Don't:

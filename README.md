@@ -1,6 +1,6 @@
 # Disaster Law Symposium 2026
 
-Phase 1 is a single static overview page in the **Urban Signal** direction. October 29, 2026 at John Jay College of Criminal Justice.
+Static event overview and venue guide in the **Urban Signal** direction. October 29, 2026 at John Jay College of Criminal Justice, with registration on Zoom Events.
 
 ## Development and checks
 
@@ -23,10 +23,11 @@ Netlify serves the page at `/` without a repository prefix. Its built-in `URL` e
 
 ## Published content
 
-- `/`: overview with date and venue, four numbered topics, contact.
-- `/disaster-law-symposium-2026.ics`: downloadable all-day calendar placeholder.
+- `/`: overview with date and venue, four numbered topics, contact, and shared navigation to external registration. The Save the date control has been removed.
+- `/venue/`: venue, travel, and attendee hotel information.
+- `/disaster-law-symposium-2026.ics`: downloadable all-day calendar placeholder, retained without a homepage control.
 - All other content routes return the custom 404. Configure the static host to serve `404.html` with status 404, not a homepage fallback.
-- `sitemap.xml` lists only the homepage.
+- `sitemap.xml` lists the homepage and venue page.
 
 Approved copy lives in `data/published-event.ts`, the single active published-event module. Public assets contain only the logo and skyline. See [Phase 1 constraints and later-phase handoff](docs/PHASE-1.md) and [photograph credits](docs/ASSET-CREDITS.md).
 

@@ -43,7 +43,7 @@ const home = readFileSync(resolve(root, "index.html"), "utf8");
 const basePath = getBasePath();
 const canonicalUrl = getCanonicalUrl();
 assert(!home.includes("Stay tuned for the 2026 Symposium"), "The placeholder must not ship");
-for (const path of ["/assets/nyc-skyline.jpg", "/assets/nycem-logo-transparent.png", "/disaster-law-symposium-2026.ics"]) {
+for (const path of ["/assets/nyc-skyline.jpg", "/assets/nycem-logo-transparent.png"]) {
   assert(home.includes(`"${basePath}${path}"`), `Missing deployment prefix for ${path}`);
 }
 const renderedCanonical = home.match(/rel="canonical" href="([^"]+)"/)?.[1];
@@ -53,7 +53,7 @@ for (const [, url] of home.matchAll(/(?:src|href)="(\/[^"]*)"/g)) {
   const path = url.slice(basePath.length).split(/[?#]/)[0];
   assert(existsSync(resolve(root, `.${path}`)), `Missing public resource: ${url}`);
 }
-for (const fact of ["October 29, 2026", "John Jay College of Criminal Justice", "AI governance", "Rights and equity", "Continuity of Operations", "Cascading disaster risks", "Save the date"]) assert(home.includes(fact), `Missing overview content: ${fact}`);
+for (const fact of ["October 29, 2026", "John Jay College of Criminal Justice", "AI governance", "Rights and equity", "Continuity of Operations", "Cascading disaster risks"]) assert(home.includes(fact), `Missing overview content: ${fact}`);
 for (const id of ["overview", "topics", "main-content"]) assert(home.includes(`id="${id}"`));
 assert(!home.includes("Staging comparison"), "Staging controls must not ship");
 assert(home.includes('href="mailto:disasterlawsymposium@oem.nyc.gov"'));
@@ -69,6 +69,5 @@ assert(unfolded.includes("DTSTART;VALUE=DATE:20261029\r\n"));
 assert(unfolded.includes("DTEND;VALUE=DATE:20261030\r\n"));
 assert(unfolded.includes("SUMMARY:Disaster Law Symposium 2026: Law at the Crossroads"));
 assert(unfolded.includes("LOCATION:John Jay College of Criminal Justice\\, New York City"));
-assert(unfolded.includes("Timing and registration details will follow."));
 assert(!unfolded.includes("TZID"), "All-day calendar dates must be timezone-independent");
 console.log("Phase 1 export verified: overview only, approved assets, metadata, 404, sitemap, and all-day calendar.");

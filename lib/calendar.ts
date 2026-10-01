@@ -31,7 +31,7 @@ export function renderCalendar(event: PublishedEvent) {
     `DTEND;VALUE=DATE:${event.date.calendarEnd}`,
     `SUMMARY:${calendarText(`${event.title}: ${event.theme}`)}`,
     `LOCATION:${calendarText(`${event.venue.name}, ${event.venue.city}`)}`,
-    `DESCRIPTION:${calendarText(`${event.tagline} Timing and registration details will follow. Room and arrival details will follow. Contact: ${event.contact.email}`)}`,
+    `DESCRIPTION:${calendarText(`${event.tagline} Timing details will follow. Room and arrival details will follow. Contact: ${event.contact.email}`)}`,
     `URL:${event.canonicalUrl}`,
     "TRANSP:TRANSPARENT",
     "END:VEVENT",
