@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:,">
+  <title>Header staging ground — Disaster Law Symposium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/staging.js" defer></script>
+</head>
+<body>
+  <main id="board" class="board">
+    <div class="board-intro">
+      <div><h1>Header staging ground</h1><p>Three spacing options. Same logo, same glass. Production unchanged.</p></div>
+      <div class="controls">
+        <div class="device-controls" role="group" aria-label="Preview device"><button type="button" data-device="desktop" aria-pressed="true">Desktop</button><button type="button" data-device="mobile" aria-pressed="false">Mobile</button></div>
+        <label class="hero-control"><input id="show-hero" type="checkbox"> Show hero</label>
+        <label class="surface-control">Surface <select id="surface"><option value="home">Home</option><option value="venue">Venue</option></select></label>
+      </div>
+    </div>
+    <div class="options">
+      <section class="option" data-variant="compact">
+        <div class="option-description"><div><h2>1. Compact pair</h2><p>Logo and glass navigation grouped with a 40px gap, aligned to the hero.</p></div><a class="inspect" href="/preview/?variant=compact" target="_blank" rel="noopener">Inspect full size <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8"/></svg></a></div>
+        <div class="preview-shell"><iframe title="Compact pair header preview" src="/preview/?variant=compact"></iframe></div>
+      </section>
+      <section class="option" data-variant="split">
+        <div class="option-description"><div><h2>2. Tighter split</h2><p>Logo left, navigation right. A narrower 960px header pulls the ends inward.</p></div><a class="inspect" href="/preview/?variant=split" target="_blank" rel="noopener">Inspect full size <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8"/></svg></a></div>
+        <div class="preview-shell"><iframe title="Tighter split header preview" src="/preview/?variant=split"></iframe></div>
+      </section>
+      <section class="option" data-variant="three-zone">
+        <div class="option-description"><div><h2>3. Three-zone header</h2><p>NYCEM at the left edge, centered page links, and matching glass registration.</p></div><a class="inspect" href="/preview/?variant=three-zone" target="_blank" rel="noopener">Inspect full size <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8"/></svg></a></div>
+        <div class="preview-shell"><iframe title="Three-zone header preview" src="/preview/?variant=three-zone"></iframe></div>
+      </section>
+    </div>
+    <p class="board-note">All three preserve the desktop logo’s visible size, remove its transparent layout padding, and use a smaller mobile mark. Menus and navigation are interactive. These are isolated header previews, not production routes.</p>
+    <p id="staging-error" role="alert" hidden></p>
+  </main>
+</body>
+</html>

@@ -83,23 +83,22 @@ function MainNavigation({ pathname, mobile = false, visible = true, onNavigate }
               </NavigationMenuItem>
             );
           })}
-          <NavigationMenuItem className={styles.navItem}>
-            <NavigationMenuLink asChild>
-              <a
-                href={publishedEvent.registrationUrl}
-                className={cn(styles.navLink, mobile && styles.mobileNavLink, styles.registrationLink)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Registration (opens in a new tab)"
-                onClick={onNavigate}
-              >
-                Registration
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M4 12 12 4M4 4h8v8" />
-                </svg>
-              </a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+          {mobile && pathname !== "/" && (
+            <NavigationMenuItem className={styles.navItem}>
+              <NavigationMenuLink asChild>
+                <a
+                  href={publishedEvent.registrationUrl}
+                  className={cn(styles.navLink, styles.mobileNavLink)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Registration (opens in a new tab)"
+                  onClick={onNavigate}
+                >
+                  Registration
+                </a>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          )}
         </NavigationMenuList>
       </div>
     </NavigationMenu>
@@ -118,19 +117,23 @@ export function Header() {
     const inner = innerRef.current;
     const track = desktopRef.current?.querySelector<HTMLElement>(`.${styles.navTrack}`);
     const logo = inner?.querySelector<HTMLElement>(`.${styles.homeLink}`);
+    const registration = inner?.querySelector<HTMLElement>(`.${styles.registrationStandalone}`);
     if (!inner || !track || !logo) return;
 
     const updateLayout = () => {
-      const needsMenu = logo.getBoundingClientRect().width + track.getBoundingClientRect().width + 24 > inner.clientWidth;
+      const sideWidth = Math.max(logo.getBoundingClientRect().width, registration?.getBoundingClientRect().width ?? 0);
+      const needsMenu = sideWidth * 2 + track.getBoundingClientRect().width + 48 > inner.clientWidth;
       setCollapsed(needsMenu);
       if (!needsMenu) setOpen(false);
     };
     const observer = new ResizeObserver(updateLayout);
     observer.observe(inner);
     observer.observe(track);
+    observer.observe(logo);
+    if (registration) observer.observe(registration);
     updateLayout();
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <header
@@ -151,6 +154,17 @@ export function Header() {
         <div ref={desktopRef} className={styles.desktopNav}>
           <MainNavigation pathname={pathname} />
         </div>
+        {pathname !== "/" && (
+          <a
+            href={publishedEvent.registrationUrl}
+            className={cn(styles.navLink, styles.registrationStandalone)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Registration (opens in a new tab)"
+          >
+            Registration
+          </a>
+        )}
         <button
           ref={toggleRef}
           className={styles.menuToggle}

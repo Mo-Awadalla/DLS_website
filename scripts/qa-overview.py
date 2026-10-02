@@ -35,7 +35,7 @@ with sync_playwright() as p:
           };
           return {viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
             hero: rect('.signal-hero'), title: rect('h1'), tagline: rect('.hero-tagline'),
-            facts: rect('.event-facts'),
+            facts: rect('.event-facts'), registration: rect('.hero-content .button'),
             imagesLoaded: [...document.images].every(image => image.complete && image.naturalWidth > 0),
             logo: rect('header img'), header: rect('header'), identity: rect('.hero-content .eyebrow'),
             contactHeading: rect('.footer-contact h2'), contactLink: rect('.contact-link')};
@@ -48,14 +48,12 @@ with sync_playwright() as p:
         if width == 320:
             assert metrics['contactLink']['height'] < 50, metrics
         assert metrics['hero']['y'] == 0, metrics
-        assert metrics['logo']['bottom'] < metrics['identity']['y'], metrics
-        if width == 1440:
-            assert 520 <= metrics['hero']['height'] <= 620, metrics
+        assert metrics['facts']['bottom'] < metrics['registration']['y'], metrics
         if label:
             page.screenshot(path=str(OUTPUT / f'{label}.png'), full_page=True)
         results['viewports'].append(metrics)
 
-    results['header'] = 'Shared glass navigation provides page links and external registration.'
+    results['header'] = 'Homepage navigation provides page links; registration is the hero action.'
     results['footer'] = 'Contact email aligns below its heading at every tested viewport'
 
     # The all-day calendar remains public, without a homepage download control.

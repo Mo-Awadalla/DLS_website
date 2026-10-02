@@ -17,6 +17,7 @@ export default function HomePage() {
             <div><dt>Date</dt><dd><time dateTime={publishedEvent.date.iso}>{publishedEvent.date.label}</time></dd></div>
             <div><dt>Venue</dt><dd>{publishedEvent.venue.name}</dd></div>
           </dl>
+          <a className="button" href={publishedEvent.registrationUrl} target="_blank" rel="noopener noreferrer" aria-label="Register Here! (opens in a new tab)">Register Here!</a>
         </div>
       </section>
 

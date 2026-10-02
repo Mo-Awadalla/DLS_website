@@ -2,7 +2,7 @@
 
 The approved direction uses the existing NYC skyline under a dark scrim, grey-white sections, charcoal text, Source Serif 4 headlines, and IBM Plex Sans body text. The skyline remains the visual anchor. The transparent NYCEM logo is rendered white over the hero image. The shared glass navigation overlays the hero without a separate full-width header band. Preserve this treatment when changing the sections below.
 
-Audience: legal practitioners and emergency management professionals checking the event and reaching registration. The page introduces four numbered topics, establishes the date and venue in the hero, and provides shared navigation to Zoom Events plus a contact email. The homepage Save the date button and calendar-reminder note have been removed; the all-day calendar endpoint remains public. Topics flow directly into the footer.
+Audience: legal practitioners and emergency management professionals checking the event and reaching registration. The page introduces four numbered topics, establishes the date and venue in the hero, and provides a square coral Registration button below those facts plus a contact email. Header registration is omitted on the homepage and retained on other pages, including mobile navigation. The all-day calendar endpoint remains public without a homepage download control or calendar-reminder note. Topics flow directly into the footer.
 
 The approved staging refinement uses grey-white (`#f5f5f2`), charcoal text (`#262724`), muted text (`#5e605a`), and terracotta accents (`#984b33`). The photographic hero retains light text and orange accents. Topics use a static shadcn Item composition adapted to the existing CSS system, with visible descriptions and thin separators. The independent preview remains in `archive/staging-topics/`; its comparison controls are not part of the public page.
 
@@ -13,7 +13,7 @@ The approved staging refinement uses grey-white (`#f5f5f2`), charcoal text (`#26
 - `data/published-event.ts` owns the readonly published event record, approved facts, and four topic summaries. Active app components must not import draft sessions, speakers, registration configuration, or editorial data.
 - No session times, speaker names, keynote, credit allocations, CLE approval claims, registration form, or email-notification workflow are public.
 - Room, entrance, arrival, and session timing details are not asserted. Details will follow.
-- The owner-approved Zoom Events registration URL is published in `data/published-event.ts.registrationUrl` and linked from desktop and mobile navigation. The registration action opens a new tab with opener isolation; `/register/` remains unpublished.
+- The owner-approved Zoom Events registration URL is published in `data/published-event.ts.registrationUrl` and linked from the homepage hero and from desktop and mobile navigation on other pages. The registration action opens a new tab with opener isolation; `/register/` remains unpublished.
 - `/disaster-law-symposium-2026.ics` is generated at build time from the published event record. DTSTART is DATE 20261029; DTEND is exclusive DATE 20261030. It is an all-day placeholder, not a timing announcement.
 - The only public image assets are the existing agency logo and skyline. Photograph attribution is in `docs/ASSET-CREDITS.md`.
 
