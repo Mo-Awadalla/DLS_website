@@ -121,13 +121,24 @@
   outline-offset: -4px;
 }
 
-.registrationStandalone { grid-column: 3; justify-self: end; }
+.registrationStandalone {
+  grid-column: 3;
+  justify-self: end;
+  background: #ff794f;
+  color: #171717;
+  border-color: #ff794f;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+.registrationStandalone:focus-visible { outline-color: var(--paper); }
 
 @media (hover: hover) and (pointer: fine) {
   .navLink:hover:not([aria-current="page"]) { background: rgba(250, 250, 247, 0.3); }
   .menuToggle:hover { background: rgba(250, 250, 247, 0.82); }
-  .navLink.registrationStandalone:hover { background: rgba(250, 250, 247, 0.62); }
+  .navLink.registrationStandalone:hover { background: #ff9976; }
 }
+.navLink.registrationStandalone:active { background: #f06942; }
 
 .menuToggle {
   display: none;
@@ -239,8 +250,7 @@
 
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .navTrack,
-  .menuToggle,
-  .registrationStandalone {
+  .menuToggle {
     background: var(--paper);
     border-color: var(--ink);
     backdrop-filter: none;
