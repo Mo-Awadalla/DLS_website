@@ -21,7 +21,7 @@ Run `node scripts/header-staging.mjs` and open http://localhost:3110 (`PORT` sel
 
 The staging server reads approved event content from `data/published-event.ts` and serves the existing public logo and skyline. The preview markup lives in `staging/header/`; it does not require a Next.js build, add production routes, modify the shared header, or enter the Netlify `out/` export. Restart the server after changing approved event data.
 
-Production uses the approved Three-zone header: centered page links, matching transparent registration glass on other pages, and a 19px left logo inset on desktop and mobile.
+Production uses the approved Three-zone header: centered glass page links, a coral registration capsule on other pages matching the homepage action, and a 19px left logo inset on desktop and mobile.
 
 ## Publishing
 

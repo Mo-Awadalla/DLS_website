@@ -274,7 +274,7 @@
       "name": "Liquid Glass Navigation",
       "kind": "nav",
       "refersTo": "navigation-glass",
-      "description": "Three-zone header with a 19px left logo inset, centered internal-page selection pill, matching 50%-opacity glass registration on other pages, and content-aware mobile collapse.",
+      "description": "Three-zone header with a 19px left logo inset, centered 50%-opacity glass navigation, a coral desktop registration capsule matching the homepage action, and content-aware mobile collapse.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Main\"><a href=\"/\" aria-current=\"page\">Home</a><a href=\"/venue/\">Venue</a></nav>",
       "css": ".ds-nav { display: inline-flex; gap: 4px; padding: 4px; color: var(--ink); background: rgba(250,250,247,.5); border: 1px solid rgba(250,250,247,.48); border-radius: 999px; backdrop-filter: blur(18px) saturate(160%); box-shadow: 0 6px 18px rgba(15,15,14,.12), inset 0 1px 1px rgba(250,250,247,.8); } .ds-nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; color: inherit; font: 500 14px/1.5 'IBM Plex Sans', sans-serif; text-decoration: none; } .ds-nav a[aria-current='page'] { background: rgba(250,250,247,.84); } .ds-nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; }"
     },
