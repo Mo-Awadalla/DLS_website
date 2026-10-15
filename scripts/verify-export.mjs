@@ -37,7 +37,7 @@ for (const route of releaseManifest.routes.retired) {
 assert.deepEqual(paths.filter((path) => path.startsWith("assets/")).sort(), releaseManifest.publicAssets.map((asset) => asset.replace(/^\//, "")).sort());
 assert(!paths.some((path) => /\.(pdf|map)$/i.test(path)), "Private PDFs or source maps were exported");
 for (const file of files.filter((path) => /\.(html|txt|js|css|json)$/i.test(path))) {
-  assert(!/Jeh Johnson|Keynote Address|editorial draft|Request updates by email|CLE approval|Cybersecurity, Privacy, and Data Protection credits|redesign-staging|urban-signal-date/.test(readFileSync(file, "utf8")), `Unpublished content in ${relative(root, file)}`);
+  assert(!/editorial draft|Request updates by email|CLE approval|Cybersecurity, Privacy, and Data Protection credits|redesign-staging|urban-signal-date/.test(readFileSync(file, "utf8")), `Unpublished content in ${relative(root, file)}`);
 }
 const home = readFileSync(resolve(root, "index.html"), "utf8");
 const basePath = getBasePath();
@@ -48,19 +48,25 @@ for (const path of ["/assets/nyc-skyline.jpg", "/assets/nycem-logo-transparent.p
 }
 const renderedCanonical = home.match(/rel="canonical" href="([^"]+)"/)?.[1];
 assert.equal(renderedCanonical?.replace(/\/$/, ""), canonicalUrl.replace(/\/$/, ""));
-for (const [, url] of home.matchAll(/(?:src|href)="(\/[^"]*)"/g)) {
-  assert(url.startsWith(`${basePath}/`), `Unprefixed local URL: ${url}`);
-  const path = url.slice(basePath.length).split(/[?#]/)[0];
-  assert(existsSync(resolve(root, `.${path}`)), `Missing public resource: ${url}`);
+const speakersPage = readFileSync(resolve(root, "speakers/index.html"), "utf8");
+for (const page of [home, speakersPage]) {
+  for (const [, url] of page.matchAll(/(?:src|href)="(\/[^"]*)"/g)) {
+    assert(url.startsWith(`${basePath}/`), `Unprefixed local URL: ${url}`);
+    const path = url.slice(basePath.length).split(/[?#]/)[0];
+    assert(existsSync(resolve(root, `.${path}`)), `Missing public resource: ${url}`);
+  }
 }
-for (const fact of ["October 29, 2026", "John Jay College of Criminal Justice", "AI governance", "Rights and equity", "Continuity of Operations", "Cascading disaster risks"]) assert(home.includes(fact), `Missing overview content: ${fact}`);
+for (const fact of ["October 29, 2026", "John Jay College of Criminal Justice"]) assert(home.includes(fact), `Missing overview content: ${fact}`);
 for (const id of ["overview", "topics", "main-content"]) assert(home.includes(`id="${id}"`));
 assert(!home.includes("Staging comparison"), "Staging controls must not ship");
 assert(home.includes('href="mailto:disasterlawsymposium@oem.nyc.gov"'));
 assert(home.includes('name="twitter:description"'));
 assert(readFileSync(resolve(root, "404.html"), "utf8").includes("Go to the homepage"));
+for (const fact of ["Speakers.", "Steve Banks", "Taa Grays", "Dennis Boyd", "Sonja Orgias", "Lucette Moran", "Opening Remarks", "Moderator", "Algorithmic Response: Governing Artificial Intelligence and Emerging Technologies in Emergencies", "Justice Under Pressure: Protecting Rights and Advancing Equity During Disasters", "When the Firm Goes Dark: Ethical Duties, Continuity of Operations, and Client Protection During Disasters", "Climate Change, The Next Disaster Landscape: Legal Preparedness for Cascading and Complex Risks"]) assert(speakersPage.includes(fact), `Missing speakers content: ${fact}`);
+for (const name of ["Traci Wheelwright", "Rob DeVoogd", "Michael Wasser"]) assert(speakersPage.includes(name) || readFileSync(resolve(root, "speakers/index.txt"), "utf8").includes(name), `Missing speaker: ${name}`);
+for (const fact of ["Jeh Johnson", "Keynote"]) assert(speakersPage.includes(fact), `Missing speakers content: ${fact}`);
 const sitemap = readFileSync(resolve(root, "sitemap.xml"), "utf8");
-assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]), [canonicalUrl, `${canonicalUrl}/venue`]);
+assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]), [canonicalUrl, `${canonicalUrl}/speakers`, `${canonicalUrl}/venue`]);
 const calendar = readFileSync(resolve(root, "disaster-law-symposium-2026.ics"), "utf8");
 assert(!/(?<!\r)\n/.test(calendar), "Calendar must use CRLF");
 assert(calendar.split("\r\n").every((line) => Buffer.byteLength(line) <= 75), "Calendar line exceeds 75 octets");
@@ -70,4 +76,4 @@ assert(unfolded.includes("DTEND;VALUE=DATE:20261030\r\n"));
 assert(unfolded.includes("SUMMARY:Disaster Law Symposium 2026: Law at the Crossroads"));
 assert(unfolded.includes("LOCATION:John Jay College of Criminal Justice\\, New York City"));
 assert(!unfolded.includes("TZID"), "All-day calendar dates must be timezone-independent");
-console.log("Phase 1 export verified: overview only, approved assets, metadata, 404, sitemap, and all-day calendar.");
+console.log("Export verified: overview, speakers, and venue only, approved assets, metadata, 404, sitemap, and all-day calendar.");

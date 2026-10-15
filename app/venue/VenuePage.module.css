@@ -1,7 +1,7 @@
 .page { background: var(--canvas); }
 .page button { font: inherit; }
 .page button:focus-visible, .tabContent:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
-.masthead { height: 88px; background: var(--ink); }
+.masthead { height: calc(88px + var(--safe-top)); background: var(--ink); }
 .sheet { display: grid; grid-template-columns: 1fr 1.35fr; column-gap: 96px; padding-block: 64px 88px; }
 .sheet > * { min-width: 0; }
 .introduction { grid-column: 1 / -1; padding-bottom: 40px; margin-bottom: 64px; border-bottom: 1px solid var(--line); text-align: center; }
@@ -27,7 +27,8 @@
 .hotelSelected { transform: translateX(100%); }
 .tabContent { margin-top: 16px; }
 .mapFrame { position: relative; height: 340px; overflow: hidden; background: var(--surface); border-radius: 4px; }
-.mapEmbed { display: block; width: 100%; height: 100%; border: 0; }
+.mapEmbed { display: block; width: 100%; height: 100%; border: 0; opacity: 1; transition: opacity 200ms var(--ease-press); }
+.mapEmbed[data-loaded="false"] { opacity: 0; }
 .mapCaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; margin-top: 14px; }
 .mapCaption > span { font-size: .8125rem; }
 .mapCaption .link { padding-bottom: 5px; }
@@ -41,7 +42,6 @@
 .bookingLayout { display: grid; grid-template-columns: 1.3fr 1fr auto; align-items: center; gap: 40px; padding-block: 48px; }
 .bookingLayout h2 { font-size: clamp(2rem, 3.25vw, 2.75rem); line-height: 1.13; letter-spacing: -.025em; }
 .bookingLayout h2 a { color: inherit; text-decoration: none; }
-.bookingLayout h2 a:hover { text-decoration: underline; text-underline-offset: .12em; }
 .bookingLayout p { margin-top: 10px; font-size: .875rem; line-height: 1.5; color: var(--paper); }
 .bookingDeadline { margin: 0; padding-left: 36px; border-left: 1px solid color-mix(in srgb, var(--paper) 38%, transparent); }
 .bookingDeadline dt { font-size: .75rem; }
@@ -52,12 +52,16 @@
 .bookingAction p { font-size: .6875rem; }
 .closingRule { border-bottom: 1px solid var(--line); }
 @media (hover: hover) and (pointer: fine) {
+  .bookingLayout h2 a:hover { text-decoration: underline; text-underline-offset: .12em; }
   .link:hover { color: var(--accent-hover); }
   .tabsTrigger:hover { color: var(--accent); background: var(--surface); }
   .bookingButton:hover { background: var(--surface); }
 }
 .link:active { color: var(--accent-pressed); }
 .bookingButton:active { background: var(--line); }
+.bookingLayout h2 a:active { text-decoration: underline; text-underline-offset: .12em; }
+.tabsTrigger:active:not(:disabled) { color: var(--accent); background: var(--surface); }
+.link, .bookingButton { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 @media (max-width: 1100px) {
   .sheet, .hotel { column-gap: 56px; }
   .introduction { column-gap: 40px; }
@@ -68,7 +72,7 @@
   .bookingDeadline { padding-left: 24px; }
 }
 @media (max-width: 680px) {
-  .masthead { height: 80px; }
+  .masthead { height: calc(80px + var(--safe-top)); }
   .sheet { display: flex; flex-direction: column; padding-block: 36px 40px; }
   .introduction { display: block; margin-bottom: 48px; padding-bottom: 36px; }
   .introduction h1 { font-size: clamp(3rem, 14vw, 4rem); max-width: none; margin-inline: auto; line-height: 1.04; }

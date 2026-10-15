@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,7 +11,8 @@ import { publishedEvent } from "@/data/published-event";
 import styles from "./Header.module.css";
 
 const navLinks = [
-  { href: sitePath("/"), path: "/", label: "Home" },
+  { href: sitePath("/"), path: "/", label: "Overview" },
+  { href: sitePath("/speakers/"), path: "/speakers", label: "Speakers" },
   { href: sitePath("/venue/"), path: "/venue", label: "Venue" },
 ] as const;
 
@@ -107,11 +108,19 @@ function MainNavigation({ pathname, mobile = false, visible = true, onNavigate }
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const innerRef = useRef<HTMLDivElement>(null);
   const desktopRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname().replace(/\/$/, "") || "/";
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 8);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   useLayoutEffect(() => {
     const inner = innerRef.current;
@@ -139,6 +148,7 @@ export function Header() {
     <header
       className={styles.header}
       data-collapsed={collapsed}
+      data-scrolled={scrolled}
       onKeyDown={(event) => {
         if (event.key === "Escape" && open) {
           if (toggleRef.current) toggleRef.current.dataset.animate = "false";
@@ -147,6 +157,8 @@ export function Header() {
         }
       }}
     >
+      <div className={styles.material} aria-hidden="true" />
+      <div className={styles.edge} aria-hidden="true" />
       <div ref={innerRef} className={styles.headerInner}>
         <a className={styles.homeLink} href={sitePath("/")} aria-label={`${publishedEvent.title} home`}>
           <Image className={styles.logo} src={sitePath("/assets/nycem-logo-transparent.png")} alt={publishedEvent.organization} width={2500} height={834} priority />

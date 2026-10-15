@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { sitePath } from "@/lib/site-path";
+import { AgendaSection } from "@/components/agenda/AgendaSection";
 import { TopicsSection } from "@/components/TopicsSection";
 import { publishedEvent } from "@/data/published-event";
 
@@ -21,7 +22,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <TopicsSection introduction={publishedEvent.introduction} topics={publishedEvent.topics} />
+      <TopicsSection introduction={publishedEvent.introduction} />
+      <AgendaSection />
     </>
   );
 }

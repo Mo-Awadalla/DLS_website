@@ -46,7 +46,6 @@ export type PublishedEvent = Readonly<{
   description: string;
   calendarPath: string;
   registrationUrl: string;
-  announcement: string;
   introduction: string;
   topics: readonly PublishedTopic[];
 }>;
@@ -57,7 +56,7 @@ export const publishedEvent = {
   title: "Disaster Law Symposium 2026",
   theme: "Law at the Crossroads",
   themeDisplay: ["Law at the", "Crossroads."] as const,
-  tagline: "Strengthening systems for a new era of disasters.",
+  tagline: "Strengthening systems for a new era of disasters",
   date: {
     label: "October 29, 2026",
     iso: "2026-10-29",
@@ -79,8 +78,8 @@ export const publishedEvent = {
     zip: "10019",
     phone: "+1 212-253-6000",
     bookingUrl: "https://www.hilton.com/en/attend-my-event/disasterlawsymposiumoct2026/",
-    bookingDeadline: "October 17, 2026",
-    bookingDeadlineIso: "2026-10-17",
+    bookingDeadline: "October 19, 2026",
+    bookingDeadlineIso: "2026-10-19",
     walkingDistance: "10-minute walk from venue",
   },
   organization: "New York City Emergency Management",
@@ -89,31 +88,30 @@ export const publishedEvent = {
   },
   canonicalUrl: canonicalUrl(),
   description:
-    "Disaster Law Symposium 2026: Law at the Crossroads. October 29, 2026 at John Jay College of Criminal Justice in New York City. Explore AI governance, rights and equity, continuity of operations, and cascading disaster risks.",
+    "Disaster Law Symposium 2026: Law at the Crossroads. October 29, 2026 at John Jay College of Criminal Justice in New York City. Explore four courses: Algorithmic Response, Justice Under Pressure, When the Firm Goes Dark, and Climate Change, The Next Disaster Landscape.",
   calendarPath: sitePath(manifest.routes.calendar),
   registrationUrl: "https://events.zoom.us/ev/AsHFA0irP2t67JdWfX_Zxhamap59FzTzvn4mPZbsuG1ZzDs_dpsv~AsUnMxBiWXsQs7nYZns6rmNZJLxj27uBtmt42vBt3RqEk5FDHz9CTS4a8w",
-  announcement: "Program and speaker details will be announced.",
   introduction:
-    "Disasters test the systems people depend on—and the laws that hold them together. This symposium brings four connected questions into focus: how we govern emerging technology, protect rights, sustain legal operations, and prepare for overlapping crises.",
+    "Disasters test the systems people depend on and the laws that hold them together. This symposium brings four connected questions into focus: how we govern emerging technology, protect rights, sustain legal operations, and prepare for overlapping crises.",
   topics: [
     {
-      id: "ai-governance",
-      title: "AI governance",
+      id: "algorithmic-response",
+      title: "Algorithmic Response: Governing Artificial Intelligence and Emerging Technologies in Emergencies",
       summary: "Accountability, transparency, and privacy when artificial intelligence informs emergency decisions and the allocation of resources.",
     },
     {
-      id: "rights-and-equity",
-      title: "Rights and equity",
+      id: "justice-under-pressure",
+      title: "Justice Under Pressure: Protecting Rights and Advancing Equity During Disasters",
       summary: "Protecting civil liberties and due process, and addressing the unequal impacts of disasters on communities.",
     },
     {
-      id: "continuity-of-operations",
-      title: "Continuity of Operations",
+      id: "when-the-firm-goes-dark",
+      title: "When the Firm Goes Dark: Ethical Duties, Continuity of Operations, and Client Protection During Disasters",
       summary: "Addressing the ethical and operational challenges attorneys face when disaster conditions disrupt business operations, government offices, legal service organizations or the courts.",
     },
     {
-      id: "cascading-risks",
-      title: "Cascading disaster risks",
+      id: "climate-change-next-disaster-landscape",
+      title: "Climate Change, The Next Disaster Landscape: Legal Preparedness for Cascading and Complex Risks",
       summary: "Legal preparedness for climate events, infrastructure failures, cyber incidents, and other emergencies that compound one another.",
     },
   ],
