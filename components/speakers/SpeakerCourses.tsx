@@ -19,7 +19,7 @@ export function SpeakerCourses({ speakers, groups }: SpeakerCoursesProps) {
   const courses = useMemo(
     () =>
       groups
-        .map(group => ({ ...group, items: speakers.filter(speaker => speaker.group === group.id).sort((a, b) => Number(b.role === "Moderator") - Number(a.role === "Moderator")) }))
+        .map(group => ({ ...group, items: speakers.filter(speaker => speaker.groups?.includes(group.id)).sort((a, b) => Number(b.role === "Moderator") - Number(a.role === "Moderator")) }))
         .filter(course => course.items.length),
     [groups, speakers],
   );

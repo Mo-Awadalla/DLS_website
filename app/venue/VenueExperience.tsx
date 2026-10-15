@@ -9,6 +9,7 @@ import styles from "./VenuePage.module.css";
 const directionsUrl = (name: string, address: string, cityState: string, zip: string) =>
   `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${name}, ${address}, ${cityState} ${zip}`)}`;
 const venueMapUrl = directionsUrl(event.venue.name, event.venue.address, event.venue.cityState, event.venue.zip);
+const accessibilityMapUrl = directionsUrl(event.venue.name, event.venue.accessibilityEntranceAddress, event.venue.cityState, event.venue.zip);
 const hotelMapUrl = directionsUrl(event.hotel.name, event.hotel.address, event.hotel.cityState, event.hotel.zip);
 const venueEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(`${event.venue.name}, ${event.venue.address}, ${event.venue.cityState} ${event.venue.zip}`)}&output=embed`;
 const hotelEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(`${event.hotel.name}, ${event.hotel.address}, ${event.hotel.cityState} ${event.hotel.zip}`)}&output=embed`;
@@ -71,7 +72,20 @@ export function VenueExperience() {
           <h2 id="location-title">{event.venue.name}</h2><p className={styles.role}>Symposium venue</p>
           <address className={styles.address}>{event.venue.address}<br />{event.venue.cityState} {event.venue.zip}</address>
           <ExternalLink href={venueMapUrl} label="Get directions to John Jay College">Venue directions</ExternalLink>
-          <div className={styles.arrival}><h3>On arrival</h3><p>Room, entrance, and arrival details will be shared closer to the event.</p></div>
+          <div className={styles.arrival}>
+            <h3>Accessibility Entrance</h3>
+            <address className={styles.address}>{event.venue.accessibilityEntranceAddress}<br />{event.venue.cityState} {event.venue.zip}</address>
+            <ExternalLink href={accessibilityMapUrl} label="Get directions to the John Jay College accessibility entrance">Accessibility entrance directions</ExternalLink>
+          </div>
+          <div className={styles.arrival} id="accommodations">
+            <h3>Accommodations</h3>
+            <p>{event.venue.accommodations.availability}</p>
+            <p>
+              {event.venue.accommodations.instruction}{" "}
+              <a className={styles.accommodationsLink} href={`mailto:${event.venue.accommodations.email}`}>{event.venue.accommodations.email}</a>
+            </p>
+          </div>
+          <div className={styles.arrival}><h3>On arrival</h3><p>Room and other arrival details will be shared closer to the event.</p></div>
         </section>
         <section className={styles.travel} id="travel" aria-labelledby="travel-title">
           <h2 id="travel-title">Find your way.</h2>

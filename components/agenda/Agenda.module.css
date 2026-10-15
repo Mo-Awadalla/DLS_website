@@ -49,6 +49,7 @@
 
 .speakers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; margin: 0; padding: 0; list-style: none; }
 .speakers li { display: flex; flex-direction: column; min-width: 0; }
+.speakers li:only-child { grid-column: 1 / -1; }
 .speakerName { font-weight: 500; }
 .speakerRole { color: var(--muted); font-size: .875rem; line-height: 1.5; }
 

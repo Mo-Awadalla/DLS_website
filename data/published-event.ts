@@ -22,6 +22,12 @@ export type PublishedEvent = Readonly<{
   venue: Readonly<{
     name: string;
     address: string;
+    accessibilityEntranceAddress: string;
+    accommodations: Readonly<{
+      availability: string;
+      instruction: string;
+      email: string;
+    }>;
     cityState: string;
     zip: string;
     area: string;
@@ -66,6 +72,13 @@ export const publishedEvent = {
   venue: {
     name: "John Jay College of Criminal Justice",
     address: "524 West 59th Street",
+    // John Jay Public Safety: https://www.jjay.cuny.edu/about/senior-leadership/finance-administration/public-safety/public-safety-desk-locations-hours
+    accessibilityEntranceAddress: "860 Eleventh Avenue",
+    accommodations: {
+      availability: "This event will include wheelchair-accessible entrances and restrooms, American Sign Language (ASL) interpretation, and CART (real-time captioning).",
+      instruction: "To request additional accommodations or modifications, please email us at",
+      email: "legalsymposiuminfo@oem.nyc.gov",
+    },
     cityState: "New York, NY",
     zip: "10019",
     area: "Manhattan / New York City",

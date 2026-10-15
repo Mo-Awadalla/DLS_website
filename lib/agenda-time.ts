@@ -16,9 +16,10 @@ export function clock(minutes: number) {
   };
 }
 
-/** "9:30–10:30 a.m." or "11:45 a.m.–12:00 p.m."; the meridiem is stated once when both ends share it. */
-export function formatRange(start: number, end: number) {
+/** Formats a time range, or just the start when the event's end time has not been supplied. */
+export function formatRange(start: number, end?: number) {
   const from = clock(start);
+  if (end === undefined) return `${from.text} ${from.meridiem}`;
   const to = clock(end);
   return from.meridiem === to.meridiem
     ? `${from.text}\u2013${to.text} ${to.meridiem}`

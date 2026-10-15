@@ -8,9 +8,9 @@ import { sitePath } from "@/lib/site-path";
  *  - Omitted: the lengthy "CLE Description" paragraphs to keep the agenda focused, the credit
  *    boilerplate repeated in every PDF (shown once, see `agendaCredit`), "Esq."/"PhD" postnominals, and each
  *    course's timed outline (people only).
- *  - People marked "pending confirmation" carry `confirmed: false` and are never rendered. Every Opening Remarks
- *    speaker is unconfirmed for now, so that entry shows no names; flip each flag when confirmed.
- *  - "12:00 p.m. and 1:30 p.m." is the keynote lunch, 12:00 p.m. to 1:30 p.m.
+ *  - People marked "pending confirmation" carry `confirmed: false` and are never rendered. Christina Farrell,
+ *    Nisha Agarwal, and Karol Mason are confirmed for Opening Remarks; the remaining names stay hidden.
+ *  - The owner's corrections set keynote lunch to end at 1:15 p.m. and Closing Remarks to start at 3:45 p.m.
  *  - "Taa Graves" in the Justice Under Pressure PDF is written "Taa Grays" (agenda text and bio).
  *  - Course 4 uses the owner's agenda title, which differs from the PDF and the speakers page's course title.
  */
@@ -35,7 +35,8 @@ export interface AgendaEntry {
   kind: EntryKind;
   /** Minutes after midnight. */
   start: number;
-  end: number;
+  /** Omitted when the owner has supplied only a start time, such as Closing Remarks. */
+  end?: number;
   title: string;
   /** Text after the colon in a course title. */
   subtitle?: string;
@@ -62,7 +63,7 @@ export const speakersPath = sitePath("/speakers/");
 /** Minutes after midnight. */
 export const at = (hour: number, minute = 0) => hour * 60 + minute;
 
-const FRIAS_COLON = "Hon. Patria Frias-Colón";
+const FRIAS_COLON = "Justice Patria Frias-Colón";
 
 export const agenda: Agenda = {
   entries: [
@@ -74,9 +75,9 @@ export const agenda: Agenda = {
       end: at(9, 30),
       title: "Opening Remarks",
       speakers: [
-        { name: "Christina Farrell", role: "Commissioner", confirmed: false },
-        { name: "Nisha Agarwal", role: "Commissioner", confirmed: false },
-        { name: "Karol Mason", role: "President, John Jay College", confirmed: false },
+        { name: "Christina Farrell", role: "Commissioner", confirmed: true },
+        { name: "Nisha Agarwal", role: "Commissioner", confirmed: true },
+        { name: "Karol Mason", role: "President, John Jay College", confirmed: true },
         { name: "Taa Grays", role: "President, New York State Bar Association", confirmed: false },
         { name: "Steve Banks", role: "Corporation Counsel, NYC Law Department", confirmed: false },
       ],
@@ -113,9 +114,9 @@ export const agenda: Agenda = {
       id: "keynote-lunch",
       kind: "keynote",
       start: at(12),
-      end: at(13, 30),
+      end: at(13, 15),
       title: "Keynote Address & Lunch",
-      speakers: [{ name: "Jeh Johnson", role: "Secretary", confirmed: true }],
+      speakers: [{ name: "Jeh Johnson", role: "Former Secretary of the Department of Homeland Security", confirmed: true }],
     },
     {
       id: "firm-goes-dark",
@@ -144,6 +145,7 @@ export const agenda: Agenda = {
       instructors: ["Brian Baer", "Timothy Fennell", "Alessandra Jerolleman", "Hilary Meltzer"],
       credit: { hours: 1, category: "Professional Practice" },
     },
+    { id: "closing-remarks", kind: "remarks", start: at(15, 45), title: "Closing Remarks" },
     { id: "reception", kind: "reception", start: at(16), end: at(17), title: "Networking Reception" },
   ],
 };
