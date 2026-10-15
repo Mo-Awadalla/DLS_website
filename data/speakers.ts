@@ -87,10 +87,13 @@ export const speakers: readonly Speaker[] = [
     id: "nisha-agarwal",
     name: "Nisha Agarwal",
     title: "Commissioner",
-    headshot: null,
+    organization: "Mayor’s Office for People with Disabilities",
+    headshot: "/assets/headshots/nisha-agarwal.jpg",
     featured: true,
     featuredLabel: "Opening Remarks",
-    bio: [],
+    bio: [
+      "Commissioner Nisha Agarwal currently serves as Commissioner of the Mayor’s Office for People with Disabilities, where she works to advance accessibility, equity, and inclusion for New Yorkers with disabilities. Throughout her career in public service, advocacy, and law, Commissioner Agarwal has focused on expanding access and opportunity across communities, with leadership roles spanning public health, immigrant justice, and civic engagement. Prior to joining MOPD, she served in several senior city government roles, including leading the Mayor’s Office of Immigrant Affairs, where she helped advance initiatives such as IDNYC. She brings a longstanding commitment to ensuring government is more responsive, inclusive, and accessible for all New Yorkers.",
+    ],
   },
   {
     id: "karol-mason",
