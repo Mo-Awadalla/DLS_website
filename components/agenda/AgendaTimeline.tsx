@@ -1,14 +1,14 @@
 "use client";
 
 import { Fragment, useState, useSyncExternalStore, type CSSProperties } from "react";
-import { confirmedSpeakers, type AgendaEntry } from "@/data/agenda";
+import type { AgendaEntry } from "@/data/agenda";
 import { clock, formatDuration, formatRange } from "@/lib/agenda-time";
 import { CourseLabel, CreditLine, People, ViewSpeakersLink, hasDetails } from "./AgendaParts";
 import styles from "./Agenda.module.css";
 
 const desktopQuery = "(min-width: 901px)";
 
-/** Wide screens show a detail panel beside the rail; narrow screens expand the course in place. */
+/** Wide screens show a detail panel beside the rail; narrow screens expand the entry in place. */
 function useIsDesktop() {
   return useSyncExternalStore(
     notify => {
@@ -42,7 +42,7 @@ function Rail({ marker }: { marker?: "course" | "plain" }) {
   );
 }
 
-function CourseSummary({ entry }: { entry: AgendaEntry }) {
+function EntrySummary({ entry }: { entry: AgendaEntry }) {
   return (
     <span className={styles.summary}>
       <CourseLabel entry={entry} />
@@ -54,46 +54,37 @@ function CourseSummary({ entry }: { entry: AgendaEntry }) {
 }
 
 function PlainBlock({ entry }: { entry: AgendaEntry }) {
-  const speakers = confirmedSpeakers(entry);
   return (
     <div className={`${styles.block} ${styles.blockPlain}`}>
       <span className={styles.title}>{entry.title}</span>
       {entry.kind === "keynote" ? <span className={styles.range}>{formatRange(entry.start, entry.end)}</span> : null}
-      {speakers.length > 0 ? (
-        <ul className={styles.speakers} aria-label={`${entry.title} speakers`}>
-          {speakers.map(speaker => (
-            <li key={speaker.name}>
-              <span className={styles.speakerName}>{speaker.name}</span>
-              {speaker.role ? <span className={styles.speakerRole}>{speaker.role}</span> : null}
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      <People entry={entry} />
     </div>
   );
 }
 
-interface CourseCellProps {
+interface DetailsCellProps {
   entry: AgendaEntry;
   open: boolean;
+  controlsId: string;
   onToggle: () => void;
 }
 
-/** Course block: a button that selects it (wide) or expands its details beneath it (narrow). */
-function CourseCell({ entry, open, onToggle }: CourseCellProps) {
+/** Select an entry in the wide panel or expand its details beneath the row on narrow screens. */
+function DetailsCell({ entry, open, controlsId, onToggle }: DetailsCellProps) {
   if (!hasDetails(entry)) {
     return (
       <div className={`${styles.block} ${styles.blockCourse}`}>
-        <CourseSummary entry={entry} />
+        <EntrySummary entry={entry} />
       </div>
     );
   }
   const detailsId = `agenda-details-${entry.id}`;
   return (
     <div className={styles.cell}>
-      <button type="button" className={styles.courseButton} aria-expanded={open} aria-controls={detailsId} onClick={onToggle}>
+      <button type="button" className={styles.courseButton} aria-expanded={open} aria-controls={controlsId} onClick={onToggle}>
         <span className={`${styles.block} ${styles.blockCourse}`}>
-          <CourseSummary entry={entry} />
+          <EntrySummary entry={entry} />
           <span className={styles.more}>
             Details
             <svg className={styles.chevron} aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
@@ -112,7 +103,7 @@ function CourseCell({ entry, open, onToggle }: CourseCellProps) {
   );
 }
 
-function CoursePanel({ entry, animate }: { entry: AgendaEntry; animate: boolean }) {
+function DetailsPanel({ entry, animate }: { entry: AgendaEntry; animate: boolean }) {
   return (
     <article className={styles.panelBody} data-switched={animate || undefined}>
       <header className={styles.panelHeader}>
@@ -132,13 +123,13 @@ function CoursePanel({ entry, animate }: { entry: AgendaEntry; animate: boolean 
 
 export function AgendaTimeline({ entries }: { entries: readonly AgendaEntry[] }) {
   const isDesktop = useIsDesktop();
-  const courses = entries.filter(entry => entry.kind === "course" && hasDetails(entry));
-  // Wide: one course is always selected. Narrow: courses start collapsed and toggle independently.
-  const [selectedId, setSelectedId] = useState(courses[0]?.id);
+  const detailEntries = entries.filter(hasDetails);
+  // Preserve the initial course selection; remarks join the same panel when selected.
+  const [selectedId, setSelectedId] = useState(() => detailEntries.find(entry => entry.kind === "course")?.id ?? detailEntries[0]?.id);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  // The panel fades only after the visitor switches courses, never on first paint.
+  // The panel fades only after the visitor switches entries, never on first paint.
   const [switched, setSwitched] = useState(false);
-  const selected = courses.find(course => course.id === selectedId);
+  const selected = detailEntries.find(entry => entry.id === selectedId);
 
   const isOpen = (id: string) => (isDesktop ? selectedId === id : expandedId === id);
   const toggle = (id: string) => {
@@ -174,8 +165,13 @@ export function AgendaTimeline({ entries }: { entries: readonly AgendaEntry[] })
                   <div className={`${styles.block} ${styles.blockBreak}`}>
                     {entry.title}{entry.end === undefined ? null : ` · ${formatDuration(entry.end - entry.start)}`}
                   </div>
-                ) : entry.kind === "course" ? (
-                  <CourseCell entry={entry} open={isOpen(entry.id)} onToggle={() => toggle(entry.id)} />
+                ) : entry.kind === "course" || hasDetails(entry) ? (
+                  <DetailsCell
+                    entry={entry}
+                    open={isOpen(entry.id)}
+                    controlsId={isDesktop ? "agenda-selected-details" : `agenda-details-${entry.id}`}
+                    onToggle={() => toggle(entry.id)}
+                  />
                 ) : (
                   <PlainBlock entry={entry} />
                 )}
@@ -185,8 +181,8 @@ export function AgendaTimeline({ entries }: { entries: readonly AgendaEntry[] })
         })}
       </ol>
       {selected ? (
-        <aside className={styles.panel} aria-live="polite" aria-label="Course details">
-          <CoursePanel key={selected.id} entry={selected} animate={switched} />
+        <aside id="agenda-selected-details" className={styles.panel} aria-live="polite" aria-label="Agenda details">
+          <DetailsPanel key={selected.id} entry={selected} animate={switched} />
         </aside>
       ) : null}
     </div>

@@ -18,4 +18,4 @@ The website renders the artwork white with CSS (`brightness(0) invert(1)`) over 
 
 `assets/headshots/traci-wheelwright.jpg`: supplied by the site owner as `image.png`. Converted to JPEG at the original 1312 × 1199 resolution, with the site's existing responsive portrait crop. It replaces the previously supplied `Traci_Wheelwright_1.jpg` portrait.
 
-`assets/headshots/nisha-agarwal.jpg`: supplied by the site owner as `Nisha head shot.jpg`, together with the approved biography. Cropped to an upper-body 4:5 portrait and resized to 960 × 1200 pixels for the speaker card and biography dialog.
+`assets/headshots/nisha-agarwal.jpg`: supplied by the site owner as `Nisha head shot.jpg`, together with the approved biography. Cropped to a face-centered, upper-body 4:5 portrait and resized to 960 × 1200 pixels for the speaker card and biography dialog.
