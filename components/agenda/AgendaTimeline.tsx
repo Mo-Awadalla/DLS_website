@@ -58,6 +58,7 @@ function PlainBlock({ entry }: { entry: AgendaEntry }) {
   return (
     <div className={`${styles.block} ${styles.blockPlain}`}>
       <span className={styles.title}>{entry.title}</span>
+      {entry.kind === "keynote" ? <span className={styles.range}>{formatRange(entry.start, entry.end)}</span> : null}
       {speakers.length > 0 ? (
         <ul className={styles.speakers} aria-label={`${entry.title} speakers`}>
           {speakers.map(speaker => (
@@ -154,7 +155,9 @@ export function AgendaTimeline({ entries }: { entries: readonly AgendaEntry[] })
       <ol className={styles.list} aria-label="Agenda">
         {entries.map((entry, index) => {
           const previous = entries[index - 1];
-          const gap = previous ? entry.start - previous.end : 0;
+          const gap = previous?.end === undefined ? 0 : entry.start - previous.end;
+          // A start-only announcement occupies the rail until the next slot; it does not claim an end time.
+          const layoutEnd = entry.end ?? entries[index + 1]?.start ?? entry.start;
           return (
             <Fragment key={entry.id}>
               {gap > 0 ? (
@@ -164,12 +167,12 @@ export function AgendaTimeline({ entries }: { entries: readonly AgendaEntry[] })
                   <span />
                 </li>
               ) : null}
-              <li className={styles.row} style={minutesStyle(entry.end - entry.start)}>
+              <li className={styles.row} style={minutesStyle(layoutEnd - entry.start)}>
                 <Start entry={entry} />
                 <Rail marker={entry.kind === "break" ? undefined : entry.kind === "course" ? "course" : "plain"} />
                 {entry.kind === "break" ? (
                   <div className={`${styles.block} ${styles.blockBreak}`}>
-                    {entry.title} · {formatDuration(entry.end - entry.start)}
+                    {entry.title}{entry.end === undefined ? null : ` · ${formatDuration(entry.end - entry.start)}`}
                   </div>
                 ) : entry.kind === "course" ? (
                   <CourseCell entry={entry} open={isOpen(entry.id)} onToggle={() => toggle(entry.id)} />

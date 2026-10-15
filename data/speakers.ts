@@ -15,15 +15,15 @@ export interface Speaker {
   organization?: string;
   /** Short label such as "Moderator". */
   role?: string;
-  /** Course id; see `speakerGroups`. */
-  group?: string;
+  /** Course ids; see `speakerGroups`. */
+  groups?: readonly string[];
   /** Public path to a headshot, or null for the initials fallback. */
   headshot: string | null;
   /** CSS object-position for cropping the 4:5 portrait. Defaults to centre. */
   headshotPosition?: string;
   /** Paragraphs. Empty when no biography has been supplied. */
   bio: string[];
-  /** Shown above the course tabs. A featured speaker with a `group` is also listed in that course. */
+  /** Shown above the course tabs and also in any assigned courses. */
   featured?: boolean;
   /** Label for the featured strip, e.g. "Opening Remarks". */
   featuredLabel?: string;
@@ -38,7 +38,7 @@ export interface SpeakerGroup {
 }
 
 /**
- * Courses, in tab order. A speaker without a `group` is not listed in any tab;
+ * Courses, in tab order. Speakers without `groups` are not listed in any tab;
  * featured speakers also appear above the tabs. Titles supplied by the owner.
  */
 export const speakerGroups: readonly SpeakerGroup[] = [
@@ -75,11 +75,39 @@ export const speakers: readonly Speaker[] = [
     bio: [],
   },
   {
+    id: "christina-farrell",
+    name: "Christina Farrell",
+    title: "Commissioner",
+    headshot: null,
+    featured: true,
+    featuredLabel: "Opening Remarks",
+    bio: [],
+  },
+  {
+    id: "nisha-agarwal",
+    name: "Nisha Agarwal",
+    title: "Commissioner",
+    headshot: null,
+    featured: true,
+    featuredLabel: "Opening Remarks",
+    bio: [],
+  },
+  {
+    id: "karol-mason",
+    name: "Karol Mason",
+    title: "President",
+    organization: "John Jay College",
+    headshot: null,
+    featured: true,
+    featuredLabel: "Opening Remarks",
+    bio: [],
+  },
+  {
     id: "taa-grays",
     name: "Taa Grays",
     title: "President",
     organization: "New York State Bar Association",
-    group: "rights-equity",
+    groups: ["rights-equity"],
     headshot: "/assets/headshots/taa-grays.jpg",
     featured: true,
     featuredLabel: "Opening Remarks",
@@ -94,6 +122,7 @@ export const speakers: readonly Speaker[] = [
   {
     id: "jeh-johnson",
     name: "Jeh Johnson",
+    title: "Former Secretary of the Department of Homeland Security",
     headshot: null,
     featured: true,
     featuredLabel: "Keynote",
@@ -101,9 +130,9 @@ export const speakers: readonly Speaker[] = [
   },
   {
     id: "patria-frias-colon",
-    name: "Hon. Patria Frias-Colón",
+    name: "Justice Patria Frias-Colón",
     title: "Justice of the Supreme Court, Civil Term, Kings County",
-    group: "ai",
+    groups: ["ai", "continuity"],
     headshot: "/assets/headshots/patria-frias-colon.jpg",
     bio: [
       "The Hon. Patria Frias-Colón was elected in 2022 as Justice of the Supreme Court, Civil Term of Kings County where she currently serves in the Medical Malpractice Part. Before this, she was the Supervising Judge for the Civil Court in Queens County and served in both the Civil Court of Kings County and Family Court of New York County.",
@@ -118,7 +147,7 @@ export const speakers: readonly Speaker[] = [
     name: "Marissa J. Moran",
     title: "Professor and Chair, Law and Paralegal Studies Department",
     organization: "New York City College of Technology, CUNY",
-    group: "ai",
+    groups: ["ai"],
     headshot: "/assets/headshots/marissa-moran.jpg",
     bio: [
       "Marissa J. Moran is an attorney admitted to practice before the U.S. Supreme Court, New York State, New Jersey, and the United States District Courts. She received her B.A. in Economics from Fordham University and her law degree from Brooklyn Law School. While in law school she interned at the U.S. Attorney’s Office, Southern District of New York, and upon graduation, clerked for U.S. Bankruptcy Chief Judge Burton R. Lifland in the Southern District of New York. She later worked as an associate at two New York law firms, Kaye, Scholer, Fierman, Hays & Handler and Emmet, Marvin & Martin.",
@@ -133,7 +162,7 @@ export const speakers: readonly Speaker[] = [
     name: "Susan Garcia Nofi",
     title: "Legal Director",
     organization: "TechTonic Justice",
-    group: "ai",
+    groups: ["ai"],
     headshot: "/assets/headshots/susan-garcia-nofi.jpg",
     bio: [
       "Susan Garcia Nofi is TechTonic Justice's Legal Director. She spent most of her career as a frontline legal aid attorney at Vermont Legal Aid, Central West Justice Center (MA) and New Haven Legal Assistance (CT), where she also served as Deputy Director and Executive Director. As an advocate, Susan has represented clients in housing, public benefits, employment, and disability rights matters. She also spent a decade working for the State of Connecticut Department of Labor as an Appeals Referee, as Board of Review legal staff, and most recently as Chair of the Board of Review and executive head of the appeals division.",
@@ -144,7 +173,7 @@ export const speakers: readonly Speaker[] = [
     name: "Rebecca Lipman",
     title: "Deputy Chief, Ethics and Compliance Division",
     organization: "New York City Law Department",
-    group: "ai",
+    groups: ["ai"],
     headshot: "/assets/headshots/rebecca-lipman.jpg",
     bio: [
       "Rebecca Lipman is the Deputy Chief of the Ethics and Compliance Division at the New York City Law Department. Rebecca joined the Legal Counsel Division of the Law Department in 2016 after clerking for the Honorable Anne E. Thompson in the District of New Jersey. Rebecca left the Law Department in 2021 to become the General Counsel for the Mayor's Office of Operations. In 2024, Rebecca moved to the Department of Sanitation, where she was the Assistant Commissioner for Legal Affairs. Rebecca is now thrilled to return back to the Law Department, which has some of the kindest and smartest lawyers in New York City. She is a graduate of Harvard Law School and is admitted to practice in the State of New York.",
@@ -155,7 +184,7 @@ export const speakers: readonly Speaker[] = [
     name: "Alessandra Jerolleman, PhD, JD, MPA, CFM",
     title: "Disaster Resilience and Adaptation Senior Fellow",
     organization: "Livelihoods Knowledge Exchange Network",
-    group: "cascading-risks",
+    groups: ["cascading-risks"],
     headshot: "/assets/headshots/alessandra-jerolleman.jpg",
     bio: [
       "Alessandra Jerolleman is the Disaster Resilience and Adaptation Senior Fellow at the Livelihoods Knowledge Exchange Network and is admitted to the Louisiana Bar. Dr. Jerolleman serves as the Part-Time Director of Research for the Center for Environment, Land and Law, at Loyola University New Orleans College of Law where she runs a Community Based Research Lab. She previously served as an Associate Professor and Director of the Doctoral Program in Emergency Management at Jacksonville State University. Dr. Jerolleman supported the U.S. Geological Survey’s National Climate Adaptation Science Centers as the National Climate Justice Lead from 2023-2025. She is a community resilience specialist and applied researcher at the Lowlander Center with expertise in disaster recovery, risk reduction, and hazard policy. She has published several books and articles including: The Relationship between Persons and Property: Implications for Climate Change and Resettlement. She has a long history of working with the public, private, and nonprofit sectors; as well as tribal nations. Her experience includes: independent research on disaster risk reduction and hazard mitigation; lead grant writer and emergency planner for the First Peoples’ Conservation Council; community based resilience planning across the United States; working with Save the Children USA following hurricanes and tornadoes, on a resilience initiative; hazard mitigation planning at the local, state and campus level; community education and outreach regarding mitigation measures and preparedness; development of collaborative networks among practitioners; and, delivery of training and education.",
@@ -166,7 +195,7 @@ export const speakers: readonly Speaker[] = [
     name: "Hilary Meltzer",
     title: "Chief, Environmental Law Division",
     organization: "New York City Law Department",
-    group: "cascading-risks",
+    groups: ["cascading-risks"],
     headshot: "/assets/headshots/hilary-meltzer.jpg",
     bio: [
       "Hilary Meltzer became Chief of the Environmental Law Division of the New York City Law Department in 2019 after serving as Deputy Chief for nine years and a member of that Division since 1992. She practices environmental and municipal law, focusing on a variety of infrastructure, land use, and policy issues facing New York City.",
@@ -179,7 +208,7 @@ export const speakers: readonly Speaker[] = [
     name: "Brian Baer",
     title: "Founder and Executive Director",
     organization: "The Elevated Studio",
-    group: "cascading-risks",
+    groups: ["cascading-risks"],
     headshot: "/assets/headshots/brian-baer.jpg",
     bio: [
       "Brian Baer is the founder and executive director for a nonprofit design, advocacy, management and education organization. The Elevated Studio promotes social equality by expanding access to values-driven design that helps individuals and communities achieve economic and physical resilience and sustainability. Brian is a licensed architect with four decades of experience implementing sustainable, community-aided design solutions for a wide variety of projects across the United States. Deftly combining versatile leadership, design, and managerial skills, Brian has collaborated with a wide variety of constituencies to bring consensus and success to the design and building process. Brian has been working across the country, using the skills necessary to support innovative long term recovery, mitigation and preparedness solutions to vulnerable households and communities affected by natural and man-made disasters. Over the course of his career, Brian has supported communities in recovery through federally declared, state-only declared, and low-attention incidents throughout the United States and its territories.",
@@ -192,7 +221,7 @@ export const speakers: readonly Speaker[] = [
     name: "Timothy J. Fennell, Esq.",
     title: "Managing Partner",
     organization: "Amdursky, Pelky, Fennell & Wallen, P.C.",
-    group: "cascading-risks",
+    groups: ["cascading-risks"],
     headshot: "/assets/headshots/timothy-fennell.jpg",
     bio: [
       "Timothy J. Fennell is Managing Partner of Amdursky, Pelky, Fennell & Wallen, P.C. in Oswego, New York. A graduate of Albany Law School, Union University (J.D., 1983) and LeMoyne College (B.A., political science, cum laude), he joined the firm in 1983 and became a partner in 1987. He is admitted to the New York State and federal courts and practices civil and criminal law, with emphasis on litigation, trusts and estates, matrimonial law, and real estate. He has presented cases to the Court of Appeals and the United States Supreme Court.",
@@ -204,7 +233,7 @@ export const speakers: readonly Speaker[] = [
     name: "Clay Garner",
     title: "Director of Continuity and Mission Assurance",
     organization: "New York City Emergency Management",
-    group: "continuity",
+    groups: ["continuity"],
     headshot: "/assets/headshots/clay-garner.jpg",
     bio: [
       "Clay Garner serves as Director of Continuity and Mission Assurance at New York City Emergency Management. He leads citywide continuity and preparedness initiatives, with a focus on strengthening the resilience of essential services and improving readiness for disruptions. Garner also supports NYCEM’s emergency operations during major incidents and planned events as a Planning Section Chief. Before joining the City of New York, Garner served as Chief Innovation Officer and Deputy Chief of Staff to the Mayor of San Jose, California. He led the Mayor’s Office of Technology and Innovation, advancing cross-departmental initiatives in public safety, digital services, transportation, privacy and data governance, digital inclusion, and emerging technology. He also supported the City’s response and resident service delivery during the COVID-19 pandemic. Earlier in his career, Garner worked at Google as an Associate Product Marketing Manager. He holds a B.A. from Stanford University with Honors and Distinction and was a Schwarzman Scholar at Tsinghua University, where he received a Master of Global Affairs. He is fluent in Spanish, Chinese, and Portuguese and a former volunteer Emergency Medical Technician in New York City’s 911 system.",
@@ -215,7 +244,7 @@ export const speakers: readonly Speaker[] = [
     name: "Seth M. Rosner",
     title: "Principal",
     organization: "Seth M. Rosner, P.C.",
-    group: "continuity",
+    groups: ["continuity"],
     headshot: "/assets/headshots/seth-rosner.jpg",
     headshotPosition: "50% 10%",
     bio: [
@@ -233,7 +262,7 @@ export const speakers: readonly Speaker[] = [
     title: "Executive Civil and Human Rights Counsel",
     organization: "New York City Emergency Management",
     role: "Moderator",
-    group: "rights-equity",
+    groups: ["rights-equity"],
     headshot: "/assets/headshots/dennis-boyd.jpg",
     bio: [
       "Dennis Boyd grew up on the Upper West Side of Manhattan and went out of state for both college and law school. Returning to New York City in 1987, he worked for Legal Aid’s Criminal Appeals and Civil Divisions before starting a focus on disability rights in 1999. With this focus, he first worked for New York Lawyers for the Public Interest, a local disability Protection and Advocacy law firm. There he tried cases and developed policy on de-institutionalization, access to housing, voting, health care and public accommodations. This included enforcing compliance with the requirements of the federal Americans with Disabilities Act (ADA) and Sections 504 and 508 of the Rehabilitation Act, as well as with state and city human rights laws. He has also worked for an Independent Living Center and served as a consultant for the United Nations, developing reports on the UN Secretariat’s compliance with the Convention on the Rights of Persons with Disabilities (CRPD).",
@@ -245,7 +274,7 @@ export const speakers: readonly Speaker[] = [
     name: "Jason Rivera",
     title: "Professor and Chair, Department of Public Management",
     organization: "John Jay College of Criminal Justice",
-    group: "rights-equity",
+    groups: ["rights-equity"],
     headshot: "/assets/headshots/jason-rivera.jpg",
     bio: [
       "Dr. Jason Rivera is Professor and Chair of the Department of Public Management at John Jay College of Criminal Justice. He is also the Chair of the Section on Emergency and Crisis Management within the American Society for Public Administration. Jason’s research focuses on the intersection of public administration, emergency management, and social equity. Over the last twenty years, he has worked in various disaster and national contexts helping to enhance the capacity of governments’ emergency management systems. Along these lines, he has contributed to the development of emergency and disaster management policies at the local and state-levels in the United States, and at the national-level within The Gambia and El Salvador. Samples of his work can be found in Public Administration Review, the International Journal of Disaster Risk Reduction, and State & Local Government Review to name a few.",
@@ -256,7 +285,7 @@ export const speakers: readonly Speaker[] = [
     name: "Jennifer Mathis",
     title: "Deputy Director",
     organization: "Bazelon Center for Mental Health Law",
-    group: "rights-equity",
+    groups: ["rights-equity"],
     headshot: "/assets/headshots/jennifer-mathis.jpg",
     bio: [
       "Jennifer Mathis is Deputy Director of the Bazelon Center for Mental Health Law. She has worked at the Center since 1999 except for two periods of federal government service. Between December 2021 and January 2025, Jennifer served as a Deputy Assistant Attorney General in the Justice Department’s Civil Rights Division, supervising the disability rights work among other functions. Jennifer uses litigation as well as policy advocacy to promote equal opportunity for people with disabilities in all areas of life, including community living, health care, housing, employment, education, parental and family rights, voting, and other areas. She played a key role in coordinating strategy and briefing when the Olmstead case was heard by the Supreme Court. Jennifer served on the disability community negotiating team that worked with business community representatives to craft language that became the ADA Amendments Act and played a lead role in securing passage of the ADAAA. Between 2010 and 2011, Jennifer served as Special Assistant to Commissioner Chai Feldblum at the U.S. Equal Employment Opportunity Commission, helping to draft regulations implementing the ADA Amendments Act and the Genetic Information Non-discrimination Act.",
@@ -265,7 +294,7 @@ export const speakers: readonly Speaker[] = [
   {
     id: "michael-wasser",
     name: "Michael Wasser",
-    group: "rights-equity",
+    groups: ["rights-equity"],
     headshot: null,
     bio: [],
   },
@@ -275,7 +304,7 @@ export const speakers: readonly Speaker[] = [
     title: "Chief Counsel",
     organization: "New York City Emergency Management",
     role: "Moderator",
-    group: "continuity",
+    groups: ["continuity"],
     headshot: "/assets/headshots/sonja-orgias.jpg",
     headshotPosition: "40% 50%",
     bio: [
@@ -291,7 +320,7 @@ export const speakers: readonly Speaker[] = [
     title: "Agency Counsel",
     organization: "New York City Emergency Management",
     role: "Moderator",
-    group: "cascading-risks",
+    groups: ["cascading-risks"],
     headshot: "/assets/headshots/lucette-moran.jpg",
     bio: [
       "Lucette Moran has served as Agency Counsel in the Office of the Chief Counsel for New York City Emergency Management (NYCEM) since November 2025. In her role, Moran conducts research and provides advice to executives and staff on strategic, legal, and policy issues. She engages in transactional work and advises on agency staff policy and conflicts of interest rules. In addition to her legal duties, Moran co-leads the Retention & Recruitment Committee for the agency’s Equity, Diversity, and Inclusion Council. And during emergencies, she serves as an Emergency Support Function Coordinator for Transportation, Utilities, and Infrastructure public and private sector partners.",
@@ -304,7 +333,7 @@ export const speakers: readonly Speaker[] = [
     title: "Deputy Chief Counsel",
     organization: "New York City Emergency Management",
     role: "Moderator",
-    group: "ai",
+    groups: ["ai"],
     headshot: "/assets/headshots/traci-wheelwright.jpg",
     bio: [
       "Traci Wheelwright serves as Deputy Chief Counsel at NYC Emergency Management, where she leads a team of attorneys and professionals in providing strategic legal guidance on emergency response, civil rights, privacy, and procurement law. With over two decades of legal experience, Traci has built a distinguished career across city, state, and federal agencies, including the NYC Department of Transportation, Amtrak, the Long Island Railroad, and Nassau County. Her expertise spans rulemaking, litigation, public contracting, and compliance.",
@@ -317,7 +346,7 @@ export const speakers: readonly Speaker[] = [
     title: "Senior Agency Counsel and FOIL Officer",
     organization: "New York City Emergency Management",
     role: "Moderator",
-    group: "cascading-risks",
+    groups: ["cascading-risks"],
     headshot: "/assets/headshots/rob-devoogd.jpg",
     bio: [
       "Rob DeVoogd is Senior Agency Counsel and FOIL officer at New York City Emergency Management. He has been with the agency for 8 years.",
