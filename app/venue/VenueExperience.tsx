@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { publishedEvent as event } from "@/data/published-event";
@@ -29,12 +29,21 @@ function ExternalLink({ href, children, className = styles.link, label }: { href
   return <a className={className} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens in a new tab)`}>{children}<Arrow diagonal /></a>;
 }
 
-function DestinationMap({ destination }: { destination: (typeof destinations)[number] }) {
+function DestinationMap({ destination, fadeIn }: { destination: (typeof destinations)[number]; fadeIn: boolean }) {
+  // The first map renders visible so a failed script never hides it; later swaps fade in once loaded.
+  const [loaded, setLoaded] = useState(!fadeIn);
+  useEffect(() => {
+    if (loaded) return;
+    const fallback = setTimeout(() => setLoaded(true), 3000);
+    return () => clearTimeout(fallback);
+  }, [loaded]);
   return (
     <>
       <div className={styles.mapFrame}>
         <iframe
           className={styles.mapEmbed}
+          data-loaded={loaded}
+          onLoad={() => setLoaded(true)}
           src={destination.embedUrl}
           title={`Map showing ${destination.name}`}
           loading="lazy"
@@ -49,6 +58,7 @@ function DestinationMap({ destination }: { destination: (typeof destinations)[nu
 
 export function VenueExperience() {
   const [destination, setDestination] = useState("venue");
+  const [switched, setSwitched] = useState(false);
   return (
     <div className={styles.page}>
       <div className={styles.masthead} aria-hidden="true" />
@@ -65,12 +75,12 @@ export function VenueExperience() {
         </section>
         <section className={styles.travel} id="travel" aria-labelledby="travel-title">
           <h2 id="travel-title">Find your way.</h2>
-          <Tabs value={destination} onValueChange={setDestination} className={styles.destinationTabs}>
+          <Tabs value={destination} onValueChange={value => { setSwitched(true); setDestination(value); }} className={styles.destinationTabs}>
             <TabsList aria-label="Map destination" className={styles.tabsList}>
               {destinations.map(item => <TabsTrigger key={item.id} value={item.id} className={styles.tabsTrigger}>{item.label}</TabsTrigger>)}
               <span className={`${styles.tabIndicator} ${destination === "hotel" ? styles.hotelSelected : ""}`} aria-hidden="true" />
             </TabsList>
-            {destinations.map(item => <TabsContent key={item.id} value={item.id} className={styles.tabContent}><DestinationMap destination={item} /></TabsContent>)}
+            {destinations.map(item => <TabsContent key={item.id} value={item.id} className={styles.tabContent}><DestinationMap destination={item} fadeIn={switched} /></TabsContent>)}
           </Tabs>
         </section>
         <section className={styles.hotel} id="hotel" aria-labelledby="hotel-title">

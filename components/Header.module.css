@@ -1,30 +1,58 @@
 .header {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto;
   z-index: 10;
   --ease-selection: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+.material,
+.edge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms var(--ease-press);
+}
+
+.material {
+  background: rgb(23 23 23 / 0.78);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+.edge {
+  inset: 100% 0 auto;
+  height: 20px;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.15), transparent);
+}
+
+.header[data-scrolled="true"] .material,
+.header[data-scrolled="true"] .edge { opacity: 1; }
+
 .headerInner {
+  position: relative;
   width: 100%;
-  min-height: 88px;
+  min-height: calc(var(--header-height) + var(--safe-top));
   margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  padding: 17px 40px;
+  padding: var(--safe-top) calc(40px + var(--safe-right)) 0 calc(40px + var(--safe-left));
   color: #f6f2e9;
 }
 
 .homeLink {
-  --mark-width: 197px;
+  --mark-width: 150px;
   position: relative;
   display: block;
   width: var(--mark-width);
   height: calc(var(--mark-width) * .223166);
   justify-self: start;
-  transform: translateX(-21px);
+  transform: translateX(-16px);
 }
+
+.homeLink::before { content: ""; position: absolute; inset: -6px 0; }
+.homeLink:active { opacity: .75; }
 
 .homeLink:focus-visible {
   outline: 3px solid currentColor;
@@ -60,7 +88,7 @@
 .navTrack {
   position: relative;
   width: max-content;
-  padding: 4px;
+  padding: 2px;
   isolation: isolate;
 }
 
@@ -82,7 +110,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -95,17 +123,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 10px 20px;
+  min-height: 36px;
+  padding: 0 16px;
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.5;
   white-space: nowrap;
   text-decoration: none;
   border-radius: 999px;
   transition: background-color 150ms ease, transform 160ms var(--ease-press);
+}
+
+.navLink::before {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
 }
 
 .navTrack:not([data-ready="true"]) .navLink[aria-current="page"] {
@@ -118,7 +152,7 @@
 .menuToggle:focus-visible,
 .navLink:focus-visible {
   outline: 2px solid var(--ink);
-  outline-offset: -4px;
+  outline-offset: -3px;
 }
 
 .registrationStandalone {
@@ -194,8 +228,12 @@
   display: none;
   position: absolute;
   top: calc(100% + 8px);
-  right: max(40px, calc((100vw - 1180px) / 2));
-  width: min(320px, calc(100vw - 80px));
+  right: calc(max(40px, (100vw - 1180px) / 2) + var(--safe-right));
+  width: min(320px, calc(100vw - 80px - var(--safe-left) - var(--safe-right)));
+  /* Short landscape screens must scroll the menu, not clip its last action. */
+  max-height: calc(100dvh - var(--header-height) - var(--safe-top) - var(--safe-bottom) - 16px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .mobileNavMenu,
@@ -209,6 +247,7 @@
   font-size: 1rem;
   border-radius: 20px;
 }
+.mobileNavLink::before { content: none; }
 
 /* Keep the natural rail measurable when additional links no longer fit. */
 .header[data-collapsed="true"] .desktopNav,
@@ -223,7 +262,7 @@
 .header[data-collapsed="true"] .mobileNavOpen { display: block; }
 
 @media (max-width: 680px) {
-  .headerInner { display: flex; justify-content: space-between; min-height: 76px; padding: 16px 20px; gap: 24px; }
+  .headerInner { display: flex; justify-content: space-between; min-height: calc(var(--header-height) + var(--safe-top)); padding: calc(16px + var(--safe-top)) calc(20px + var(--safe-right)) 16px calc(20px + var(--safe-left)); gap: 24px; }
   .homeLink { --mark-width: 176px; transform: translateX(-1px); }
   .desktopNav,
   .registrationStandalone {
@@ -235,7 +274,7 @@
   }
   .menuToggle { display: flex; }
   .mobileNavOpen { display: block; }
-  .mobileNav { right: 20px; width: min(320px, calc(100vw - 40px)); }
+  .mobileNav { right: calc(20px + var(--safe-right)); width: min(320px, calc(100vw - 40px - var(--safe-left) - var(--safe-right))); }
 }
 
 @media (max-width: 360px) {
@@ -249,6 +288,12 @@
 }
 
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .material {
+    background: #171717;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .edge { display: none; }
   .navTrack,
   .menuToggle {
     background: var(--paper);

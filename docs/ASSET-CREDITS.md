@@ -13,3 +13,7 @@ Asset: https://home4.nyc.gov/assets/em/images/content/header/logo.png
 Agency page using the asset: https://home4.nyc.gov/site/em/index.page
 
 The website renders the artwork white with CSS (`brightness(0) invert(1)`) over the skyline. The header is integrated with the hero, with no separate backing or header band. The source file is unchanged. The previous logo is retained locally in `archive/phase-1/assets/nycem-logo.png`.
+
+## Speaker portraits
+
+`assets/headshots/traci-wheelwright.jpg`: supplied by the site owner as `Traci_Wheelwright_1.jpg`. The replacement is used unchanged at 1024 × 941 pixels, with the site's existing responsive portrait crop. It replaces the earlier work-ID photograph.

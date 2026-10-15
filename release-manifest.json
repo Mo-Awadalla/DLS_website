@@ -8,13 +8,13 @@
   "routes": {
     "public": [
       "/",
+      "/speakers/",
       "/venue/",
       "/disaster-law-symposium-2026.ics"
     ],
     "calendar": "/disaster-law-symposium-2026.ics",
     "retired": [
       "/program/",
-      "/speakers/",
       "/register/",
       "/sponsors/",
       "/staging/",
@@ -23,7 +23,26 @@
   },
   "publicAssets": [
     "/assets/nyc-skyline.jpg",
-    "/assets/nycem-logo-transparent.png"
+    "/assets/nycem-logo-transparent.png",
+    "/assets/headshots/alessandra-jerolleman.jpg",
+    "/assets/headshots/brian-baer.jpg",
+    "/assets/headshots/clay-garner.jpg",
+    "/assets/headshots/dennis-boyd.jpg",
+    "/assets/headshots/hilary-meltzer.jpg",
+    "/assets/headshots/jason-rivera.jpg",
+    "/assets/headshots/jennifer-mathis.jpg",
+    "/assets/headshots/lucette-moran.jpg",
+    "/assets/headshots/marissa-moran.jpg",
+    "/assets/headshots/patria-frias-colon.jpg",
+    "/assets/headshots/rebecca-lipman.jpg",
+    "/assets/headshots/rob-devoogd.jpg",
+    "/assets/headshots/seth-rosner.jpg",
+    "/assets/headshots/sonja-orgias.jpg",
+    "/assets/headshots/steve-banks.jpg",
+    "/assets/headshots/susan-garcia-nofi.jpg",
+    "/assets/headshots/taa-grays.jpg",
+    "/assets/headshots/timothy-fennell.jpg",
+    "/assets/headshots/traci-wheelwright.jpg"
   ],
   "staticExport": {
     "output": "export",
