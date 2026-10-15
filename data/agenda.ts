@@ -144,7 +144,7 @@ export const agenda: Agenda = {
       instructors: ["Brian Baer", "Timothy Fennell", "Alessandra Jerolleman", "Hilary Meltzer"],
       credit: { hours: 1, category: "Professional Practice" },
     },
-    { id: "reception", kind: "reception", start: at(16), end: at(17), title: "Cocktail Hour and Networking Reception" },
+    { id: "reception", kind: "reception", start: at(16), end: at(17), title: "Networking Reception" },
   ],
 };
 
