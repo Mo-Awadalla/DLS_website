@@ -2,6 +2,7 @@ import Image from "next/image";
 import { sitePath } from "@/lib/site-path";
 import { AgendaSection } from "@/components/agenda/AgendaSection";
 import { TopicsSection } from "@/components/TopicsSection";
+import { AttendanceNotice, RegistrationDisclosure } from "@/components/EventNotices";
 import { publishedEvent } from "@/data/published-event";
 
 export default function HomePage() {
@@ -18,7 +19,9 @@ export default function HomePage() {
             <div><dt>Date</dt><dd><time dateTime={publishedEvent.date.iso}>{publishedEvent.date.label}</time></dd></div>
             <div><dt>Venue</dt><dd>{publishedEvent.venue.name}</dd></div>
           </dl>
+          <AttendanceNotice />
           <a className="button" href={publishedEvent.registrationUrl} target="_blank" rel="noopener noreferrer" aria-label="Register Here! (opens in a new tab)">Register Here!</a>
+          <RegistrationDisclosure />
         </div>
       </section>
 

@@ -70,6 +70,13 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .event-facts > div { max-width: 32ch; }
 .event-facts dt { color: var(--ink); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .3rem; }
 .event-facts dd { font-size: 1rem; font-weight: 500; margin: 0; line-height: 1.45; }
+.attendance-note { width: min(100%, 42rem); margin-block: .25rem 1.25rem; padding: .8rem 1rem; border-left: 3px solid var(--accent); background: var(--surface); color: var(--ink); font-size: .9rem; font-weight: 500; line-height: 1.5; }
+.signal-hero .attendance-note { background: rgb(255 255 255 / 9%); }
+.registration-disclosure { max-width: 43rem; margin-top: .75rem; color: var(--muted); font-size: .75rem; line-height: 1.55; }
+.registration-disclosure a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: .15em; }
+.registration-disclosure a:focus-visible { outline-color: currentColor; }
+.signal-hero .registration-disclosure { color: rgb(246 242 233 / 82%); }
+.signal-hero .registration-disclosure a { color: var(--ink); }
 .button { background: var(--accent); color: var(--canvas); display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: .75rem 1.2rem; font-size: .875rem; font-weight: 600; transition: background-color 150ms ease, transform 160ms var(--ease-press); }
 @media (hover: hover) and (pointer: fine) {
   .button:hover { background: var(--accent-hover); }
@@ -105,6 +112,7 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
   .hero-content { min-height: 0; padding-block: calc(6rem + var(--safe-top)) 3rem; }
   .hero-content h1 { font-size: clamp(2rem, 12.5vw, 4.75rem); line-height: 1.08; }
   .event-facts { flex-direction: column; gap: 1.1rem; margin-block: 1.5rem; }
+  .attendance-note { margin-bottom: 1rem; }
   .section-pad { padding-block: 3rem; }
   .topics-section { padding-block: 3rem; }
   .section-intro h2 { font-size: 2.25rem; }

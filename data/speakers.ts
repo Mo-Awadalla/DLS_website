@@ -65,15 +65,6 @@ export const speakerGroups: readonly SpeakerGroup[] = [
 
 export const speakers: readonly Speaker[] = [
   {
-    id: "steve-banks",
-    name: "Steve Banks",
-    title: "Corporation Counsel",
-    headshot: "/assets/headshots/steve-banks.jpg",
-    featured: true,
-    featuredLabel: "Opening Remarks",
-    bio: [],
-  },
-  {
     id: "christina-farrell",
     name: "Christina Farrell",
     title: "Commissioner",
@@ -86,18 +77,6 @@ export const speakers: readonly Speaker[] = [
       "Farrell joined NYCEM in 2003 as the department’s first director of grants. She created the department’s external affairs division, first serving as the assistant commissioner of the division and then as deputy commissioner. During her tenure in external affairs, she oversaw programs including Community Emergency Response Teams and Ready NY, created initiatives to educate the public, and enhanced partnerships with elected officials, community organizations, neighborhood leaders, and private and non-profit sector partners.",
       "Farrell began serving the City of New York in 1994 as a coordinator in the Mayor’s Office of the Criminal Justice Coordinator. She also served as the deputy director of the NYC High Intensity Drug Trafficking Area and the deputy director and director of the Mayor’s Office of Grants Administration, where she worked on the creation of the Twin Towers Fund after 9/11.",
       "Farrell holds a bachelor’s degree in international relations and economics from Colgate University and a Master of Public Administration from the University of North Carolina at Chapel Hill. She is also a graduate of the executive leaders program at the Naval Postgraduate School in Monterey, California.",
-    ],
-  },
-  {
-    id: "nisha-agarwal",
-    name: "Nisha Agarwal",
-    title: "Commissioner",
-    organization: "Mayor’s Office for People with Disabilities",
-    headshot: "/assets/headshots/nisha-agarwal.jpg",
-    featured: true,
-    featuredLabel: "Opening Remarks",
-    bio: [
-      "Commissioner Nisha Agarwal currently serves as Commissioner of the Mayor’s Office for People with Disabilities, where she works to advance accessibility, equity, and inclusion for New Yorkers with disabilities. Throughout her career in public service, advocacy, and law, Commissioner Agarwal has focused on expanding access and opportunity across communities, with leadership roles spanning public health, immigrant justice, and civic engagement. Prior to joining MOPD, she served in several senior city government roles, including leading the Mayor’s Office of Immigrant Affairs, where she helped advance initiatives such as IDNYC. She brings a longstanding commitment to ensuring government is more responsive, inclusive, and accessible for all New Yorkers.",
     ],
   },
   {
@@ -126,6 +105,27 @@ export const speakers: readonly Speaker[] = [
       "Grays has received numerous accolades, including the New York State Bar Association’s Diversity Trailblazer Award in 2008. She was named one of Crain’s New York Business’s 100 Leading Women Lawyers in New York in 2017, recognized as a Visionary Leader in Litigation by Inside Counsel in 2016, included among the Most Influential Black Lawyers in 2015, and listed as Ready to Rise for general counsel roles in 2013 and 2015. In the broader legal community, the New York City Bar Association honored Grays as a Diversity Champion in 2015, while the Metropolitan Black Bar Association presented her with its inaugural Bar Leaders of the Year Award in 2010 for her dedication and leadership.",
       "Grays holds a Juris Doctor from Georgetown University Law Center and a Bachelor of Arts from Harvard University.",
     ],
+  },
+  {
+    id: "nisha-agarwal",
+    name: "Nisha Agarwal",
+    title: "Commissioner",
+    organization: "Mayor’s Office for People with Disabilities",
+    headshot: "/assets/headshots/nisha-agarwal.jpg",
+    featured: true,
+    featuredLabel: "Opening Remarks",
+    bio: [
+      "Commissioner Nisha Agarwal currently serves as Commissioner of the Mayor’s Office for People with Disabilities, where she works to advance accessibility, equity, and inclusion for New Yorkers with disabilities. Throughout her career in public service, advocacy, and law, Commissioner Agarwal has focused on expanding access and opportunity across communities, with leadership roles spanning public health, immigrant justice, and civic engagement. Prior to joining MOPD, she served in several senior city government roles, including leading the Mayor’s Office of Immigrant Affairs, where she helped advance initiatives such as IDNYC. She brings a longstanding commitment to ensuring government is more responsive, inclusive, and accessible for all New Yorkers.",
+    ],
+  },
+  {
+    id: "steve-banks",
+    name: "Steve Banks",
+    title: "Corporation Counsel",
+    headshot: "/assets/headshots/steve-banks.jpg",
+    featured: true,
+    featuredLabel: "Opening Remarks",
+    bio: [],
   },
   {
     id: "jeh-johnson",

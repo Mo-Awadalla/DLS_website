@@ -103,7 +103,7 @@ export const publishedEvent = {
   description:
     "Disaster Law Symposium 2026: Law at the Crossroads. October 29, 2026 at John Jay College of Criminal Justice in New York City. Explore four courses: Algorithmic Response, Justice Under Pressure, When the Firm Goes Dark, and Climate Change, The Next Disaster Landscape.",
   calendarPath: sitePath(manifest.routes.calendar),
-  registrationUrl: "https://events.zoom.us/ev/AsHFA0irP2t67JdWfX_Zxhamap59FzTzvn4mPZbsuG1ZzDs_dpsv~AsUnMxBiWXsQs7nYZns6rmNZJLxj27uBtmt42vBt3RqEk5FDHz9CTS4a8w",
+  registrationUrl: "https://nysba.org/events/2026-disaster-law-symposium/",
   introduction:
     "Disasters test the systems people depend on and the laws that hold them together. This symposium brings four connected questions into focus: how we govern emerging technology, protect rights, sustain legal operations, and prepare for overlapping crises.",
   topics: [

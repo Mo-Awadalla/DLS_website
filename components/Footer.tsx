@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { publishedEvent } from "@/data/published-event";
 import { sitePath } from "@/lib/site-path";
+import { RegistrationDisclosure } from "@/components/EventNotices";
 import styles from "./Footer.module.css";
 
 const links = [
@@ -32,6 +33,7 @@ export function Footer() {
           <p className={styles.label}>Contact</p>
           <a className={styles.email} href={`mailto:${publishedEvent.contact.email}`}>{publishedEvent.contact.email}</a>
           <a className={styles.registration} href={publishedEvent.registrationUrl} target="_blank" rel="noopener noreferrer" aria-label="Registration (opens in a new tab)">Registration</a>
+          <RegistrationDisclosure />
         </div>
       </div>
       <div className={styles.bottomBar}>

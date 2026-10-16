@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SpeakerCourses } from "@/components/speakers/SpeakerCourses";
 import { SpeakerEntry } from "@/components/speakers/SpeakerEntry";
+import { AttendanceNotice } from "@/components/EventNotices";
 import { publishedEvent } from "@/data/published-event";
 import { speakerGroups, speakers } from "@/data/speakers";
 import styles from "./SpeakersPage.module.css";
@@ -19,6 +20,7 @@ export default function SpeakersPage() {
       <section className={`page-shell ${styles.sheet}`} aria-labelledby="speakers-title">
         <div className={styles.introduction}>
           <h1 id="speakers-title">Speakers.</h1>
+          <AttendanceNotice />
         </div>
         <section className={styles.featuredSplit} aria-label="Featured speakers">
           {keynote ? (
