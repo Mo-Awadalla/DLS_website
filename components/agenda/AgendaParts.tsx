@@ -4,9 +4,13 @@ import styles from "./Agenda.module.css";
 
 export function hasDetails(entry: AgendaEntry) {
   return Boolean(
-    entry.moderators?.length || entry.instructors?.length || entry.speakersPanel ||
+    entry.description || entry.moderators?.length || entry.instructors?.length || entry.speakersPanel ||
     (entry.kind === "remarks" && entry.speakers?.some(speaker => speaker.confirmed)),
   );
+}
+
+export function CourseDescription({ entry }: { entry: AgendaEntry }) {
+  return entry.description ? <p className={styles.description}>{entry.description}</p> : null;
 }
 
 export function CourseLabel({ entry }: { entry: AgendaEntry }) {

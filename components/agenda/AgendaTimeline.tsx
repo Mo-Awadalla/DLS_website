@@ -3,7 +3,7 @@
 import { Fragment, useState, useSyncExternalStore, type CSSProperties } from "react";
 import type { AgendaEntry } from "@/data/agenda";
 import { clock, formatDuration, formatRange } from "@/lib/agenda-time";
-import { CourseLabel, CreditLine, People, ViewSpeakersLink, hasDetails } from "./AgendaParts";
+import { CourseDescription, CourseLabel, CreditLine, People, ViewSpeakersLink, hasDetails } from "./AgendaParts";
 import styles from "./Agenda.module.css";
 
 const desktopQuery = "(min-width: 901px)";
@@ -94,6 +94,7 @@ function DetailsCell({ entry, open, controlsId, onToggle }: DetailsCellProps) {
       <div id={detailsId} className={styles.inline} data-open={open || undefined}>
         <div className={styles.inlineClip}>
           <div className={styles.inlineBody}>
+            <CourseDescription entry={entry} />
             <People entry={entry} />
             <ViewSpeakersLink entry={entry} />
           </div>
@@ -115,6 +116,7 @@ function DetailsPanel({ entry, animate }: { entry: AgendaEntry; animate: boolean
         {entry.subtitle ? <p className={styles.panelSubtitle}>{entry.subtitle}</p> : null}
         <CreditLine entry={entry} />
       </header>
+      <CourseDescription entry={entry} />
       <People entry={entry} />
       <ViewSpeakersLink entry={entry} />
     </article>
