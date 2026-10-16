@@ -71,3 +71,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+
+// Netlify production redeploy trigger; no runtime behavior.
