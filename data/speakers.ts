@@ -1,6 +1,5 @@
 /**
- * Speaker content supplied by the owner (panel folders and the "Dennis Materials"
- * folder, October 2026).
+ * Speaker content supplied by the organizers.
  *
  * Editorial changes to submitted text, all minimal: contact details removed (Baer);
  * credential string garbled in the source dropped from the first sentence (Baer);
@@ -39,7 +38,7 @@ export interface SpeakerGroup {
 
 /**
  * Courses, in tab order. Speakers without `groups` are not listed in any tab;
- * featured speakers also appear above the tabs. Titles supplied by the owner.
+ * featured speakers also appear above the tabs. Titles as supplied.
  */
 export const speakerGroups: readonly SpeakerGroup[] = [
   {

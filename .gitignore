@@ -3,3 +3,21 @@ node_modules/
 out/
 *.tsbuildinfo
 .DS_Store
+
+# Local-only working material
+.DS_Store
+.vscode/
+.impeccable/
+.codex/
+archive/
+artifacts/
+staging/
+plans/
+graphify-out/
+design.md
+PRODUCT.md
+AGENTS.md
+docs/PHASE-1.md
+qa_smoke.py
+scripts/qa-overview.py
+scripts/header-staging.mjs
