@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AttendanceNotice } from "@/components/EventNotices";
 import { publishedEvent as event } from "@/data/published-event";
 import styles from "./VenuePage.module.css";
 
@@ -66,6 +67,7 @@ export function VenueExperience() {
       <section className={`page-shell ${styles.sheet}`} aria-labelledby="venue-title">
         <div className={styles.introduction}>
           <h1 id="venue-title"><span>Venue</span>{" "}<span className={styles.ampersand}>&amp;</span>{" "}<span>Travel</span></h1>
+          <AttendanceNotice />
           <div className={styles.mobileActions}><ExternalLink href={venueMapUrl} label="Get venue directions">Directions</ExternalLink><ExternalLink href={event.hotel.bookingUrl} label="Book the attendee hotel">Book a room</ExternalLink></div>
         </div>
         <section className={styles.venue} id="venue" aria-labelledby="location-title">
