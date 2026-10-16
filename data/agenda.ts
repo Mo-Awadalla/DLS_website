@@ -40,6 +40,8 @@ export interface AgendaEntry {
   title: string;
   /** Text after the colon in a course title. */
   subtitle?: string;
+  /** Approved course description shown in the agenda detail panel. */
+  description?: string;
   /** 1-based course order within the day's agenda. */
   courseNumber?: number;
   speakers?: readonly Speaker[];
@@ -91,6 +93,8 @@ export const agenda: Agenda = {
       end: at(10, 30),
       title: "Algorithmic Response",
       subtitle: "Governing Artificial Intelligence and Emerging Technologies in Emergencies",
+      description:
+        "This course examines the expanding role of artificial intelligence and emerging technologies in emergency management and disaster legal practice. As jurisdictions adopt wider use and implementation of artificial intelligence and other emerging technologies, attorneys face new ethical and legal challenges. Panelists will assess how AI shapes public decision making, resource allocation, privacy considerations, and the legal rights of affected communities, particularly during moments of crisis when speed, accuracy, and bias mitigation are critical. The session explores risk governance, transparency, and accountability structures necessary to regulate AI tools used by governments, nonprofits, and private sector partners responding to disasters.",
       moderators: ["Traci Wheelwright"],
       instructors: [FRIAS_COLON, "Rebecca Lipman", "Marissa Moran", "Susan Garcia Nofi"],
       credit: { hours: 1, category: "Cybersecurity (General)" },
@@ -105,6 +109,8 @@ export const agenda: Agenda = {
       end: at(11, 45),
       title: "Justice Under Pressure",
       subtitle: "Protecting Rights and Advancing Equity During Disasters",
+      description:
+        "This course explores the heightened vulnerability of civil liberties, due process, and equity during large scale disasters. When essential systems falter marginalized populations often experience disproportionate harm. Attorneys must navigate the tension between emergency operations and individual rights, ensuring legal protections remain intact even under extraordinary operational pressure. Panelists will analyze the ways disaster conditions can compound pre-existing inequities, discuss legal tools to safeguard rights, and examine strategies for advancing equitable outcomes through advocacy, planning and community partnership. One subject the panel will address is the Supreme Court’s 1999 decision in Olmstead v. L.C., interpreting Title II of the ADA’s integration mandate, including the potential impact of a recent opinion of the Federal Office of Legal Counsel’s (OLC), which adopts a narrow view of how the ADA’s integration mandate applies.",
       moderators: ["Dennis R. Boyd"],
       instructors: ["Michael Wasser", "Taa Grays", "Jason Rivera", "Jennifer Mathis"],
       credit: { hours: 1, category: "Diversity, Inclusion and Elimination of Bias" },
@@ -127,6 +133,8 @@ export const agenda: Agenda = {
       end: at(14, 30),
       title: "When the Firm Goes Dark",
       subtitle: "Ethical Duties, Continuity of Operations, and Client Protection During Disasters",
+      description:
+        "This course focuses on the ethical and operational challenges attorneys face when disaster conditions disrupt law firm operations, government agencies, or legal service organizations. Whether the disruption stems from infrastructure failure, communication outages, or displacement of staff and clients, lawyers must ensure continuity of representation and protection of client interests. Panelists will evaluate ethical duties related to competence, communication, supervision, confidentiality, and safeguarding client property when normal workflows collapse. The session highlights practical continuity planning, emergency protocols, and resilience strategies for legal practitioners across all settings.",
       moderators: ["Sonja Orgias"],
       instructors: ["Clay Garner", "Seth Rosner", FRIAS_COLON],
       credit: { hours: 1, category: "Ethics" },
@@ -141,6 +149,8 @@ export const agenda: Agenda = {
       end: at(15, 45),
       title: "The Next Disaster Landscape",
       subtitle: "Legal Preparedness for Cascading and Complex Risks",
+      description:
+        "This course examines the emerging horizon of multifaceted and cascading disaster risks, focusing on the role of climate change as a key factor in (or catalyst of) those risks. Attorneys must be prepared for scenarios where multiple crises interact, amplify harm, and destabilize legal systems. Panelists will explore the climate change threats to New York City; anticipate challenges in insurance, landlord/tenant, and housing; consider lessons on preparedness for climate disasters from other regions; and assess frameworks for collaboration across different sectors, multi-hazard planning, and legal readiness. The session emphasizes forward looking strategies that equip lawyers to advise clients, institutions, and communities in an era of compounding risks and systemic volatility.",
       moderators: ["Robert DeVoogd", "Lucette Moran"],
       instructors: ["Brian Baer", "Timothy Fennell", "Alessandra Jerolleman", "Hilary Meltzer"],
       credit: { hours: 1, category: "Professional Practice" },
