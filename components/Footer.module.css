@@ -13,6 +13,7 @@
 .email { position: relative; display: inline-flex; align-items: center; width: fit-content; max-width: 100%; height: 28px; color: var(--accent); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
 .email::before { content: ""; position: absolute; inset: -8px 0; }
 .registration { display: inline-flex; align-items: center; width: fit-content; height: 40px; margin-top: 10px; padding-inline: 20px; border-radius: 999px; background: #ff794f; color: #171717; font-size: 14px; font-weight: 600; transition: background-color 150ms ease, transform 160ms var(--ease-press); }
+.contact .registration + :global(.registration-disclosure) { margin-top: 8px; max-width: 38ch; }
 .registration:active { background: #f06942; transform: scale(.97); }
 .brand:active { opacity: .75; }
 .navLink:active { color: var(--accent-pressed); text-decoration: underline; }
