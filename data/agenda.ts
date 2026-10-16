@@ -1,25 +1,25 @@
 import { sitePath } from "@/lib/site-path";
 
 /**
- * Agenda for the overview page. Sources: the owner's day-of-event agenda (October 2026) and the four timed
- * course agendas submitted for CLE credit. The owner approved publication with the production release.
+ * Agenda for the overview page. Sources: the organizers' day-of-event agenda and the four timed
+ * course agendas submitted for CLE credit.
  *
- * Deliberate edits, each one reversible by the owner:
+ * Deliberate edits, each one reversible:
  *  - Omitted: the lengthy "CLE Description" paragraphs to keep the agenda focused, the credit
  *    boilerplate repeated in every PDF (shown once, see `agendaCredit`), "Esq."/"PhD" postnominals, and each
  *    course's timed outline (people only).
  *  - People marked "pending confirmation" carry `confirmed: false` and are never rendered. Christina Farrell,
  *    Nisha Agarwal, and Karol Mason are confirmed for Opening Remarks; the remaining names stay hidden.
- *  - The owner's corrections set keynote lunch to end at 1:15 p.m. and Closing Remarks to start at 3:45 p.m.
+ *  - Organizer corrections set keynote lunch to end at 1:15 p.m. and Closing Remarks to start at 3:45 p.m.
  *  - "Taa Graves" in the Justice Under Pressure PDF is written "Taa Grays" (agenda text and bio).
- *  - Course 4 uses the owner's agenda title, which differs from the PDF and the speakers page's course title.
+ *  - Course 4 uses the organizers' agenda title, which differs from the PDF and the speakers page's course title.
  */
 
 export type EntryKind = "arrival" | "remarks" | "course" | "break" | "keynote" | "reception";
 
 export interface Speaker {
   name: string;
-  /** Role as the owner wrote it: "Commissioner", "President, John Jay College". */
+  /** Role as supplied: "Commissioner", "President, John Jay College". */
   role?: string;
   /** Unconfirmed people stay in the data but are never rendered. */
   confirmed: boolean;
@@ -35,7 +35,7 @@ export interface AgendaEntry {
   kind: EntryKind;
   /** Minutes after midnight. */
   start: number;
-  /** Omitted when the owner has supplied only a start time, such as Closing Remarks. */
+  /** Omitted when only a start time is supplied, such as Closing Remarks. */
   end?: number;
   title: string;
   /** Text after the colon in a course title. */
