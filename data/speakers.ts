@@ -78,10 +78,16 @@ export const speakers: readonly Speaker[] = [
     id: "christina-farrell",
     name: "Christina Farrell",
     title: "Commissioner",
-    headshot: null,
+    organization: "New York City Emergency Management",
+    headshot: "/assets/headshots/christina-farrell.jpg",
     featured: true,
     featuredLabel: "Opening Remarks",
-    bio: [],
+    bio: [
+      "Christina Farrell is a lifelong public servant with more than 23 years of experience working to improve the lives of New Yorkers before, during, and after emergencies. As First Deputy Commissioner of the New York City Emergency Management Department (NYCEM), she helped to lead the City’s emergency preparedness, response, and recovery efforts and collaborated with City leadership and regional, state, and federal partners on emergency management matters. Farrell has served in senior leadership roles during some of the most complex crises of the past two decades, coordinating emergency operations during the citywide blackout of 2003, Hurricane Sandy, blizzards, the COVID-19 pandemic, power outages, transportation disruptions, extreme heat, steam pipe explosions, building collapses, significant fires, and other emergencies. Since 2021, Farrell has set the strategic direction for emergency management and prioritized employee engagement, wellness, and retention and equity, diversity, and inclusion efforts for more than 300 staff.",
+      "Farrell joined NYCEM in 2003 as the department’s first director of grants. She created the department’s external affairs division, first serving as the assistant commissioner of the division and then as deputy commissioner. During her tenure in external affairs, she oversaw programs including Community Emergency Response Teams and Ready NY, created initiatives to educate the public, and enhanced partnerships with elected officials, community organizations, neighborhood leaders, and private and non-profit sector partners.",
+      "Farrell began serving the City of New York in 1994 as a coordinator in the Mayor’s Office of the Criminal Justice Coordinator. She also served as the deputy director of the NYC High Intensity Drug Trafficking Area and the deputy director and director of the Mayor’s Office of Grants Administration, where she worked on the creation of the Twin Towers Fund after 9/11.",
+      "Farrell holds a bachelor’s degree in international relations and economics from Colgate University and a Master of Public Administration from the University of North Carolina at Chapel Hill. She is also a graduate of the executive leaders program at the Naval Postgraduate School in Monterey, California.",
+    ],
   },
   {
     id: "nisha-agarwal",
@@ -297,9 +303,16 @@ export const speakers: readonly Speaker[] = [
   {
     id: "michael-wasser",
     name: "Michael Wasser",
+    title: "Senior Counsel",
+    organization: "New York City Law Department",
     groups: ["rights-equity"],
-    headshot: null,
-    bio: [],
+    headshot: "/assets/headshots/michael-wasser.jpg",
+    bio: [
+      "Michael J. Wasser, Esq. is Senior Counsel in the Tax and Bankruptcy Litigation Division of the New York City Law Department, where he has practiced for more than 25 years, focusing on real property tax litigation, title clearance in eminent domain matters, closings, and IT projects.",
+      "A committed advocate for disability inclusion, Michael serves on his office’s Diversity, Equity, and Inclusion Committee and led the effort to make the office the first public law office to sign the American Bar Association’s Pledge for Change, advocating for attorneys with disabilities. He also serves as Vice President of the Board of Directors of the Brooklyn Center for Independence of the Disabled and on the Board of Directors of NMD United, and is a past recipient of the Muscular Dystrophy Association National Personal Achievement Award, an ABA Spotlight Attorney, and featured in several publications.",
+      "During Hurricane Sandy, he experienced firsthand the particular challenges that a major disaster can create for people who rely on accessible infrastructure, power-dependent equipment, transportation, and essential support services. That lived experience, paired with 25+ years as a litigator, has shaped a pragmatic, solutions-oriented approach — as comfortable identifying a problem as rolling up his sleeves to fix it, whether through policy advocacy, institutional reform, or direct board leadership.",
+      "Born with a severe form of Becker Muscular Dystrophy, Michael is functionally quadriplegic and uses a motorized wheelchair. He is a Phi Beta Kappa graduate of Brooklyn College (CUNY) and earned his J.D. from Brooklyn Law School.",
+    ],
   },
   {
     id: "sonja-orgias",
