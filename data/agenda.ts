@@ -134,7 +134,7 @@ export const agenda: Agenda = {
       title: "When the Firm Goes Dark",
       subtitle: "Ethical Duties, Continuity of Operations, and Client Protection During Disasters",
       description:
-        "This course focuses on the ethical and operational challenges attorneys face when disaster conditions disrupt law firm operations, government agencies, or legal service organizations. Whether the disruption stems from infrastructure failure, communication outages, or displacement of staff and clients, lawyers must ensure continuity of representation and protection of client interests. Panelists will evaluate ethical duties related to competence, communication, supervision, confidentiality, and safeguarding client property when normal workflows collapse. The session highlights practical continuity planning, emergency protocols, and resilience strategies for legal practitioners across all settings.",
+        "Ethical Duties When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
       moderators: ["Sonja Orgias"],
       instructors: ["Clay Garner", "Seth Rosner", FRIAS_COLON],
       credit: { hours: 1, category: "Ethics" },
