@@ -377,4 +377,3 @@ export const speakers: readonly Speaker[] = [
     ],
   },
 ];
-
