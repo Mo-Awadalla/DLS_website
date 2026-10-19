@@ -66,7 +66,7 @@ for (const fact of ["Speakers.", "Steve Banks", "Taa Grays", "Dennis Boyd", "Son
 for (const name of ["Traci Wheelwright", "Rob DeVoogd", "Michael Wasser"]) assert(speakersPage.includes(name) || readFileSync(resolve(root, "speakers/index.txt"), "utf8").includes(name), `Missing speaker: ${name}`);
 for (const fact of ["Jeh Johnson", "Keynote"]) assert(speakersPage.includes(fact), `Missing speakers content: ${fact}`);
 const sitemap = readFileSync(resolve(root, "sitemap.xml"), "utf8");
-assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]), [canonicalUrl, `${canonicalUrl}/speakers`, `${canonicalUrl}/venue`]);
+assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]), [canonicalUrl, `${canonicalUrl}/speakers`, `${canonicalUrl}/venue`, `${canonicalUrl}/sponsors`]);
 const calendar = readFileSync(resolve(root, "disaster-law-symposium-2026.ics"), "utf8");
 assert(!/(?<!\r)\n/.test(calendar), "Calendar must use CRLF");
 assert(calendar.split("\r\n").every((line) => Buffer.byteLength(line) <= 75), "Calendar line exceeds 75 octets");
@@ -76,4 +76,4 @@ assert(unfolded.includes("DTEND;VALUE=DATE:20261030\r\n"));
 assert(unfolded.includes("SUMMARY:Disaster Law Symposium 2026: Law at the Crossroads"));
 assert(unfolded.includes("LOCATION:John Jay College of Criminal Justice\\, New York City"));
 assert(!unfolded.includes("TZID"), "All-day calendar dates must be timezone-independent");
-console.log("Export verified: overview, speakers, and venue only, approved assets, metadata, 404, sitemap, and all-day calendar.");
+console.log("Export verified: overview, speakers, venue, and sponsors only, approved assets, metadata, 404, sitemap, and all-day calendar.");

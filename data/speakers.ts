@@ -84,7 +84,7 @@ export const speakers: readonly Speaker[] = [
     name: "Karol Mason",
     title: "President",
     organization: "John Jay College",
-    headshot: null,
+    headshot: "/assets/headshots/karol-mason.jpg",
     featured: true,
     featuredLabel: "Opening Remarks",
     bio: [],

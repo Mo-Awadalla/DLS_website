@@ -10,13 +10,13 @@
       "/",
       "/speakers/",
       "/venue/",
+      "/sponsors/",
       "/disaster-law-symposium-2026.ics"
     ],
     "calendar": "/disaster-law-symposium-2026.ics",
     "retired": [
       "/program/",
       "/register/",
-      "/sponsors/",
       "/staging/",
       "/staging/hero/"
     ]
@@ -24,6 +24,9 @@
   "publicAssets": [
     "/assets/nyc-skyline.jpg",
     "/assets/nycem-logo-transparent.png",
+    "/assets/sponsors/acia.jpg",
+    "/assets/sponsors/nyc-law-department.png",
+    "/assets/sponsors/nysba.png",
     "/assets/headshots/alessandra-jerolleman.jpg",
     "/assets/headshots/brian-baer.jpg",
     "/assets/headshots/christina-farrell.jpg",
@@ -33,6 +36,7 @@
     "/assets/headshots/jason-rivera.jpg",
     "/assets/headshots/jeh-johnson.jpg",
     "/assets/headshots/jennifer-mathis.jpg",
+    "/assets/headshots/karol-mason.jpg",
     "/assets/headshots/lucette-moran.jpg",
     "/assets/headshots/marissa-moran.jpg",
     "/assets/headshots/michael-wasser.jpg",

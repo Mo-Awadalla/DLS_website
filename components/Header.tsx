@@ -14,6 +14,7 @@ const navLinks = [
   { href: sitePath("/"), path: "/", label: "Overview" },
   { href: sitePath("/speakers/"), path: "/speakers", label: "Speakers" },
   { href: sitePath("/venue/"), path: "/venue", label: "Venue" },
+  { href: sitePath("/sponsors/"), path: "/sponsors", label: "Sponsors" },
 ] as const;
 
 function MainNavigation({ pathname, mobile = false, visible = true, onNavigate }: { pathname: string; mobile?: boolean; visible?: boolean; onNavigate?: () => void }) {
