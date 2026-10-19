@@ -23,3 +23,5 @@ The website renders the artwork white with CSS (`brightness(0) invert(1)`) over 
 `assets/headshots/christina-farrell.jpg`: supplied by the organizers, together with the approved biography. Cropped to a face-centered, upper-body 4:5 portrait and resized to 960 × 1200 pixels.
 
 `assets/headshots/michael-wasser.jpg`: supplied by the organizers, together with the approved biography. Cropped to a 4:5 portrait (876 × 1095 pixels) centered on the subject.
+
+`assets/headshots/jeh-johnson.jpg`: supplied by the organizers. Original JPEG preserved unchanged; displayed in the existing 4:5 portrait frame with a top-centered crop to preserve the full face and head.
