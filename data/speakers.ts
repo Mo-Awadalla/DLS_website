@@ -54,7 +54,7 @@ export const speakerGroups: readonly SpeakerGroup[] = [
   {
     id: "continuity",
     label: "When the Firm Goes Dark",
-    title: "When the Firm Goes Dark: Ethical Duties, Continuity of Operations, and Client Protection During Disasters",
+    title: "Ethical Duties When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
   },
   {
     id: "cascading-risks",
