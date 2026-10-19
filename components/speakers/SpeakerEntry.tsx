@@ -51,8 +51,8 @@ export function SpeakerEntry({ speaker, eyebrow, layout = "default" }: EntryProp
     <Dialog>
       <DialogTrigger asChild>
         <button type="button" className={styles.entry}>
-          <Summary speaker={speaker} label={label} tagClassName={tagClassName} layout={layout} action={layout === "opening" ? readBio : undefined} />
-          {layout !== "opening" ? readBio : null}
+          <Summary speaker={speaker} label={label} tagClassName={tagClassName} layout={layout} action={layout !== "default" ? readBio : undefined} />
+          {layout === "default" ? readBio : null}
         </button>
       </DialogTrigger>
       <DialogPortal>

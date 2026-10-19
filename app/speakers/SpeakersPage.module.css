@@ -4,28 +4,31 @@
 .sheet > * { min-width: 0; }
 .introduction { margin-bottom: 16px; padding-bottom: 40px; border-bottom: 1px solid var(--line); text-align: center; }
 .introduction h1 { font-size: clamp(3.75rem, 6.3vw, 5.5rem); line-height: 1.06; letter-spacing: -.035em; }
-.featuredSplit { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; }
+.featuredSplit { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; }
 .keynote { display: flex; flex-direction: column; gap: 24px; min-width: 0; padding-block: 4px; }
-.keynoteCard { display: flex; flex: 1; align-items: center; min-width: 0; padding: 32px; background: var(--surface); }
+.keynoteCard { min-width: 0; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
 .opening { display: flex; flex-direction: column; gap: 24px; min-width: 0; padding-block: 4px; }
 .featuredTitle { color: var(--accent); font-family: var(--sans); font-size: .6875rem; font-weight: 600; letter-spacing: .14em; line-height: 1.5; text-transform: uppercase; }
 .keynote .featuredTitle { font-weight: 700; }
-.openingRoster { display: flex; flex-direction: column; gap: 24px; margin: 0; padding: 0; list-style: none; }
+.openingRoster { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; margin: 0; padding: 0; list-style: none; }
 .openingRoster > li { min-width: 0; }
-.openingRoster > li + li { padding-top: 24px; border-top: 1px solid var(--line); }
 @media (max-width: 1100px) {
   .introduction h1 { font-size: 4rem; }
 }
 @media (max-width: 1000px) {
-  .featuredSplit { gap: 28px; }
-  .keynoteCard { padding: 28px; }
+  .openingRoster { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
 }
 @media (max-width: 700px) {
-  .featuredSplit { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .keynoteCard { padding-bottom: 32px; }
+  .openingRoster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 680px) {
   .masthead { height: calc(80px + var(--safe-top)); }
   .sheet { gap: 40px; padding-block: 36px 40px; }
   .introduction { margin-bottom: 8px; padding-bottom: 36px; }
   .introduction h1 { font-size: clamp(3rem, 14vw, 4rem); line-height: 1.04; }
+}
+@media (max-width: 479px) {
+  .openingRoster { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .openingRoster > li + li { padding-top: 24px; border-top: 1px solid var(--line); }
 }
