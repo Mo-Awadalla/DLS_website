@@ -131,8 +131,7 @@ export const agenda: Agenda = {
       courseNumber: 3,
       start: at(13, 30),
       end: at(14, 30),
-      title: "When the Firm Goes Dark",
-      subtitle: "Ethical Duties, Continuity of Operations, and Client Protection During Disasters",
+      title: "Ethical Duties When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
       description:
         "Ethical Duties When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
       moderators: ["Sonja Orgias"],
