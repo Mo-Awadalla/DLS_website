@@ -131,7 +131,8 @@ export const speakers: readonly Speaker[] = [
     id: "jeh-johnson",
     name: "Jeh Johnson",
     title: "Former U.S. Secretary of Homeland Security (2013–2017)",
-    headshot: null,
+    headshot: "/assets/headshots/jeh-johnson.jpg",
+    headshotPosition: "50% 0%",
     featured: true,
     featuredLabel: "Keynote",
     // Biography supplied by the organizers in Jeh_Johnson_Bio.pdf.
