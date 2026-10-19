@@ -130,11 +130,20 @@ export const speakers: readonly Speaker[] = [
   {
     id: "jeh-johnson",
     name: "Jeh Johnson",
-    title: "Former Secretary of the Department of Homeland Security",
+    title: "Former U.S. Secretary of Homeland Security (2013–2017)",
     headshot: null,
     featured: true,
     featuredLabel: "Keynote",
-    bio: [],
+    // Biography supplied by the organizers in Jeh_Johnson_Bio.pdf.
+    bio: [
+      "In public life, Johnson was Secretary of Homeland Security (2013–2017) and General Counsel of the Department of Defense (2009–2012) in the Obama Administration, and General Counsel of the Department of the Air Force (1998–2001) in the Clinton Administration. Earlier, he was an Assistant United States Attorney in the Southern District of New York (1989–1991).",
+      "Jeh Johnson is co-chair and a member of the Executive Committee of the Board of Trustees of Columbia University. He serves on the boards of directors of MetLife and the 9/11 Memorial and Museum. He previously served on the boards of Lockheed Martin, U.S. Steel, PG&E, and the Council on Foreign Relations.",
+      "For most of his career, Johnson was a lawyer and trial lawyer in private practice at Paul, Weiss, Rifkind, Wharton & Garrison. He is a Fellow of the American College of Trial Lawyers. In 1993, he became the first African American elected to partnership at Paul Weiss. He retired from the firm in June 2025.",
+      "In June 2020, the Chief Judge of New York named Johnson Special Adviser on Equal Justice in the Courts. Drawing on several hundred interviews with judges, clerks, court officers, and practitioners, his report called for a zero-tolerance discrimination policy, bias training for judges and court employees, juror reforms on implicit bias, and stronger complaint procedures. Its final recommendation was an independent monitor to track implementation, and the court system endorsed the report in full.",
+      "Johnson is a regular commentator on NBC’s Meet The Press, MSNBC’s Morning Joe, Fox’s Fox & Friends, CNN, NewsNation, and other networks. In September 2024, he played the incumbent President running for reelection in the PBS special “Deadlock.”",
+      "Johnson is a graduate of Morehouse College and Columbia Law School and the recipient of 13 honorary degrees. He has debated numerous times at the Oxford and Cambridge Unions in England, and he is an honorary life member of the Cambridge Union.",
+      "Johnson is the 2024 recipient of the Gold Medal, the New York State Bar Association’s highest honor; a 2024 recipient of the National Law Journal’s Lifetime Achievement Award; a 2022 recipient of the Ellis Island Medal of Honor; a 2021 recipient of the American Lawyer’s Lifetime Achievement Award, as “an American statesman [who] has devoted his career to the public interest”; and a 2018 recipient of the Ronald Reagan Peace Through Strength Award, presented at the Reagan Presidential Library for “contribut[ing] greatly to the defense of our nation” and “guiding us through turbulent times with courage and wisdom.”",
+    ],
   },
   {
     id: "patria-frias-colon",
