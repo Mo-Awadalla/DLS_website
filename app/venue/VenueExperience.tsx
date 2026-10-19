@@ -107,14 +107,20 @@ export function VenueExperience() {
           <address className={styles.address}>{event.hotel.address}<br />{event.hotel.cityState} {event.hotel.zip}</address>
           <p className={styles.walk}><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="14" cy="4" r="2" /><path d="m7 21 4-7m5 7-3-8 1-6m-7 6 3-4 4-2 3 5 4 1" /></svg>{event.hotel.walkingDistance}</p>
           </div>
+          <div className={styles.bookingBand} aria-labelledby="booking-title">
+            <div className={styles.bookingLayout}>
+              <div>
+                <h3 id="booking-title">Reserve directly with Hilton</h3>
+                <p>A group rate is available for symposium attendees.</p>
+                <dl className={styles.bookingDeadline}><dt>Book by</dt><dd><time dateTime={event.hotel.bookingDeadlineIso}>{event.hotel.bookingDeadline}</time></dd></dl>
+              </div>
+              <div className={styles.bookingAction}>
+                <ExternalLink href={event.hotel.bookingUrl} className={styles.bookingButton} label="Book your room with Hilton">Book your room</ExternalLink>
+                <a className={styles.hotelPhone} href={`tel:${event.hotel.phone.replace(/\s/g, "")}`}>{event.hotel.phone}</a>
+              </div>
+            </div>
+          </div>
         </section>
-      </section>
-      <section className={styles.bookingBand} aria-labelledby="booking-title">
-        <div className={`page-shell ${styles.bookingLayout}`}>
-          <div><h2 id="booking-title"><a href={`tel:${event.hotel.phone.replace(/\s/g, "")}`}>{event.hotel.phone}</a></h2><p>A group rate is available for symposium attendees.</p></div>
-          <dl className={styles.bookingDeadline}><dt>Book by</dt><dd><time dateTime={event.hotel.bookingDeadlineIso}>{event.hotel.bookingDeadline}</time></dd></dl>
-          <div className={styles.bookingAction}><ExternalLink href={event.hotel.bookingUrl} className={styles.bookingButton} label="Book your room with Hilton">Book your room</ExternalLink><p>Reserve directly with Hilton</p></div>
-        </div>
       </section>
       <div className={`page-shell ${styles.closingRule}`} />
     </div>

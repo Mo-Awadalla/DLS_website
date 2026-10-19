@@ -15,6 +15,7 @@ Website for the Disaster Law Symposium, October 29, 2026 at John Jay College of 
 - `data/published-event.ts`: event facts and copy.
 - `data/agenda.ts`: agenda.
 - `data/speakers.ts`: speakers and biographies. A speaker can belong to several courses through `groups`.
+- `components/EventNotices.tsx` and `app/globals.css`: shared attendance notice; centered beneath the Speakers and Venue headings, left-aligned with the overview registration content, with left-aligned text on every page.
 - `public/assets/headshots/`: speaker portraits (4:5).
 - `release-manifest.json`: the routes and assets allowed to ship. A new public asset must be listed here or the build fails.
 - `docs/ASSET-CREDITS.md`: image credits.
