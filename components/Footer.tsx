@@ -8,6 +8,7 @@ const links = [
   { label: "Overview", href: "/" },
   { label: "Speakers", href: "/speakers/" },
   { label: "Venue", href: "/venue/" },
+  { label: "Sponsors", href: "/sponsors/" },
 ] as const;
 
 export function Footer() {
