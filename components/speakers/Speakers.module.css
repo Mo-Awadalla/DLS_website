@@ -11,12 +11,14 @@
 .name { font-family: var(--serif); font-size: 1.25rem; line-height: 1.25; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .detail { font-size: .875rem; line-height: 1.5; }
 .organization { color: var(--muted); }
-  .keynote { grid-template-columns: 128px minmax(0, 1fr); align-items: center; gap: 24px; }
-  .keynote .text { gap: 12px; }
+  .keynote { grid-template-columns: 280px minmax(0, 1fr); align-items: center; gap: 48px; }
+  .keynote .text { max-width: 560px; gap: 12px; }
   .keynote .name { font-size: clamp(2.25rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -.035em; text-wrap: balance; }
-  .opening { grid-template-columns: 96px minmax(0, 1fr); align-items: center; gap: 24px; }
-  .opening .text { gap: 6px; }
-  .opening .name { font-size: 1.75rem; line-height: 1.1; letter-spacing: -.035em; text-wrap: balance; }
+  .keynote .readBio { margin-top: 0; }
+  .opening { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .opening > .portrait { width: 96px; }
+  .opening .text { gap: 8px; }
+  .opening .name { font-size: 1.5rem; line-height: 1.15; letter-spacing: -.025em; }
   .opening .readBio { margin-top: 0; }
 .tag { align-self: flex-start; padding: 2px 8px; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); background: color-mix(in srgb, var(--accent) 10%, var(--paper)); color: var(--accent); font-size: .6875rem; font-weight: 600; letter-spacing: .12em; line-height: 1.6; text-transform: uppercase; }
 .roleLabel { color: var(--accent); font-size: .6875rem; font-weight: 600; letter-spacing: .14em; line-height: 1.5; text-transform: uppercase; }
@@ -71,12 +73,9 @@
 @media (max-width: 1023px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 1000px) {
-  .keynote { grid-template-columns: minmax(80px, 120px) minmax(0, 1fr); gap: 20px; }
-}
 @media (max-width: 700px) {
-  .keynote { grid-template-columns: 112px minmax(0, 1fr); }
-  .opening { grid-template-columns: 80px minmax(0, 1fr); gap: 20px; }
+  .keynote { grid-template-columns: 160px minmax(0, 1fr); gap: 24px; }
+  .keynote .name { font-size: 2.25rem; }
 }
 @media (max-width: 639px) {
   .grid { grid-template-columns: minmax(0, 1fr); }
@@ -84,6 +83,10 @@
   .dialogHeader { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; }
 }
 @media (max-width: 479px) {
+  .keynote { grid-template-columns: minmax(0, 1fr); }
+  .keynote > .portrait { width: 200px; }
+  .opening { grid-template-columns: 80px minmax(0, 1fr); align-items: center; gap: 20px; }
+  .opening > .portrait { width: 80px; }
   .dialogBody { padding-top: 4rem; }
   .dialogHeader { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .dialogHeader > .portrait { width: 96px; }
