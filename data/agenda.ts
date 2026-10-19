@@ -79,9 +79,9 @@ export const agenda: Agenda = {
       speakers: [
         { name: "Christina Farrell", role: "Commissioner", confirmed: true },
         { name: "Karol Mason", role: "President, John Jay College", confirmed: true },
-        { name: "Taa Grays", role: "President, New York State Bar Association", confirmed: false },
+        { name: "Taa Grays", role: "President, New York State Bar Association", confirmed: true },
         { name: "Nisha Agarwal", role: "Commissioner", confirmed: true },
-        { name: "Steve Banks", role: "Corporation Counsel, NYC Law Department", confirmed: false },
+        { name: "Steve Banks", role: "Corporation Counsel, NYC Law Department", confirmed: true },
       ],
     },
     {

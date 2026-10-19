@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState, useSyncExternalStore, type CSSProperties } from "react";
+import { Fragment, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import type { AgendaEntry } from "@/data/agenda";
 import { clock, formatDuration, formatRange } from "@/lib/agenda-time";
 import { CourseDescription, CourseLabel, CreditLine, People, ViewSpeakersLink, hasDetails } from "./AgendaParts";
@@ -132,10 +132,12 @@ export function AgendaTimeline({ entries }: { entries: readonly AgendaEntry[] })
   // The panel fades only after the visitor switches entries, never on first paint.
   const [switched, setSwitched] = useState(false);
   const selected = detailEntries.find(entry => entry.id === selectedId);
+  const panelRef = useRef<HTMLElement>(null);
 
   const isOpen = (id: string) => (isDesktop ? selectedId === id : expandedId === id);
   const toggle = (id: string) => {
     if (isDesktop) {
+      if (id !== selectedId && panelRef.current) panelRef.current.scrollTop = 0;
       setSelectedId(id);
       setSwitched(true);
     } else {
@@ -183,7 +185,7 @@ export function AgendaTimeline({ entries }: { entries: readonly AgendaEntry[] })
         })}
       </ol>
       {selected ? (
-        <aside id="agenda-selected-details" className={styles.panel} aria-live="polite" aria-label="Agenda details">
+        <aside ref={panelRef} id="agenda-selected-details" className={styles.panel} tabIndex={0} aria-live="polite" aria-label="Agenda details">
           <DetailsPanel key={selected.id} entry={selected} animate={switched} />
         </aside>
       ) : null}

@@ -11,7 +11,7 @@
 .name { font-family: var(--serif); font-size: 1.25rem; line-height: 1.25; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .detail { font-size: .875rem; line-height: 1.5; }
 .organization { color: var(--muted); }
-  .keynote { grid-template-columns: minmax(100px, 160px) minmax(0, 1fr); align-items: center; gap: 28px; }
+  .keynote { grid-template-columns: 128px minmax(0, 1fr); align-items: center; gap: 24px; }
   .keynote .text { gap: 12px; }
   .keynote .name { font-size: clamp(2.25rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -.035em; text-wrap: balance; }
   .opening { grid-template-columns: 96px minmax(0, 1fr); align-items: center; gap: 24px; }
@@ -30,6 +30,7 @@
 .tab[data-state="active"]::after { opacity: 1; }
 .tab:active { color: var(--accent); background: var(--surface); }
 .panel { display: flex; flex-direction: column; gap: 40px; }
+.panel[hidden] { display: none; }
 .courses[data-switched] .panel { transition: opacity 200ms var(--ease-press), translate 200ms var(--ease-press); }
 @starting-style {
   .courses[data-switched] .panel { opacity: 0; translate: 0 6px; }
@@ -81,6 +82,12 @@
   .grid { grid-template-columns: minmax(0, 1fr); }
   .dialogBody { padding: 1.5rem; }
   .dialogHeader { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; }
+}
+@media (max-width: 479px) {
+  .dialogBody { padding-top: 4rem; }
+  .dialogHeader { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .dialogHeader > .portrait { width: 96px; }
+  .dialogIntro { padding-right: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .entry:active { transform: none; }

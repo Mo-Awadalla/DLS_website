@@ -27,6 +27,13 @@ export default function HomePage() {
 
       <TopicsSection introduction={publishedEvent.introduction} />
       <AgendaSection />
+      <section className="page-shell overview-registration" aria-labelledby="registration-title">
+        <h2 id="registration-title">Registration</h2>
+        <div className="overview-registration-action">
+          <a className="button" href={publishedEvent.registrationUrl} target="_blank" rel="noopener noreferrer" aria-label="Register Here! (opens in a new tab)">Register Here!</a>
+          <RegistrationDisclosure />
+        </div>
+      </section>
     </>
   );
 }

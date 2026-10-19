@@ -65,7 +65,8 @@
 .speakersLink:active { color: var(--accent-pressed); }
 
 /* Wide only: the selected course, beside the rail. */
-.panel { position: sticky; top: calc(6rem + var(--safe-top)); padding-top: 1.75rem; border-top: 1px solid var(--line); }
+.panel { --panel-top: calc(var(--header-height) + var(--safe-top) + 2rem); position: sticky; top: var(--panel-top); max-height: calc(100dvh - var(--panel-top) - var(--safe-bottom) - 1rem); overflow-y: auto; scrollbar-gutter: stable; padding: 1.75rem 4px .5rem; border-top: 1px solid var(--line); }
+.panel:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 .panelBody { display: flex; flex-direction: column; gap: 2rem; min-width: 0; overflow-wrap: anywhere; }
 .panelBody[data-switched] { animation: fadeIn 150ms var(--ease-press); }
 .panelHeader { display: flex; flex-direction: column; gap: 12px; }

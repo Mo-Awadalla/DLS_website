@@ -70,8 +70,8 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .event-facts > div { max-width: 32ch; }
 .event-facts dt { color: var(--ink); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .3rem; }
 .event-facts dd { font-size: 1rem; font-weight: 500; margin: 0; line-height: 1.45; }
-.attendance-note { width: min(100%, 42rem); margin-block: .25rem 1.25rem; padding: .8rem 1rem; border-left: 3px solid var(--accent); background: var(--surface); color: var(--ink); font-size: .9rem; font-weight: 500; line-height: 1.5; }
-.signal-hero .attendance-note { background: rgb(255 255 255 / 9%); }
+.attendance-note { width: min(100%, 42rem); margin: 1.5rem auto 0; padding: .8rem 1rem; border-left: 3px solid var(--accent); background: var(--surface); color: var(--ink); font-size: .9rem; font-weight: 500; line-height: 1.5; text-align: left; }
+.signal-hero .attendance-note { margin: .25rem 0 1.25rem; background: rgb(255 255 255 / 9%); }
 .registration-disclosure { max-width: 43rem; margin-top: .75rem; color: var(--muted); font-size: .75rem; line-height: 1.55; }
 .registration-disclosure a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: .15em; }
 .registration-disclosure a:focus-visible { outline-color: currentColor; }
@@ -91,6 +91,10 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .section-intro h2 { max-width: 17ch; font-size: clamp(2.25rem, 3.7vw, 3rem); line-height: 1.15; }
 .topics-content { min-width: 0; }
 .topics-content > p { max-width: 60ch; color: var(--muted); text-wrap: pretty; }
+
+.overview-registration { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.5rem 3rem; border-top: 1px solid var(--line); padding-block: clamp(2rem, 4vw, 3rem); }
+.overview-registration h2 { flex: 1 1 16rem; font-size: clamp(2rem, 3.7vw, 3rem); line-height: 1.15; }
+.overview-registration-action { flex: 1 1 28rem; min-width: 0; }
 
 .not-found { padding-block: 6rem; min-height: 50svh; }
 .not-found h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.2; margin-block: 1rem; }
@@ -112,7 +116,7 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
   .hero-content { min-height: 0; padding-block: calc(6rem + var(--safe-top)) 3rem; }
   .hero-content h1 { font-size: clamp(2rem, 12.5vw, 4.75rem); line-height: 1.08; }
   .event-facts { flex-direction: column; gap: 1.1rem; margin-block: 1.5rem; }
-  .attendance-note { margin-bottom: 1rem; }
+  .signal-hero .attendance-note { margin-bottom: 1rem; }
   .section-pad { padding-block: 3rem; }
   .topics-section { padding-block: 3rem; }
   .section-intro h2 { font-size: 2.25rem; }
