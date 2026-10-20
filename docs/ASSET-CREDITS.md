@@ -20,6 +20,8 @@ The website renders the artwork white with CSS (`brightness(0) invert(1)`) over 
 
 `assets/headshots/nisha-agarwal.jpg`: supplied by the organizers, together with the approved biography. Cropped to a face-centered, upper-body 4:5 portrait and resized to 960 × 1200 pixels for the speaker card and biography dialog.
 
+`assets/headshots/karol-mason.jpg`: supplied by John Jay College with President Mason's streamlined biography. Converted to JPEG at 1178 × 906 pixels; the website displays a centered 4:5 crop.
+
 `assets/headshots/christina-farrell.jpg`: supplied by the organizers, together with the approved biography. Cropped to a face-centered, upper-body 4:5 portrait and resized to 960 × 1200 pixels.
 
 `assets/headshots/michael-wasser.jpg`: supplied by the organizers, together with the approved biography. Cropped to a 4:5 portrait (876 × 1095 pixels) centered on the subject.
