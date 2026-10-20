@@ -87,7 +87,10 @@ export const speakers: readonly Speaker[] = [
     headshot: "/assets/headshots/karol-mason.jpg",
     featured: true,
     featuredLabel: "Opening Remarks",
-    bio: [],
+    bio: [
+      "At John Jay College of Criminal Justice, President Karol V. Mason's vision for student success has increased graduation rates, strengthened academic achievement, and expanded career preparation. She raised more than $47 million in direct student assistance through initiatives including My Brother's Keeper Connect, which supports men of color, and the Completion for Upper-Division Student Program, which pairs analytics with advising.",
+      "Mason founded the Future of Public Safety Initiative and drove the creation of an anti-racist curriculum framework. Before joining John Jay College, she led the U.S. Department of Justice's Office of Justice Programs, overseeing a $4 billion budget. She also spent three decades at Alston & Bird, where she chaired the firm's management committee. President Mason received her law degree from the University of Michigan Law School and her bachelor's degree from the University of North Carolina.",
+    ],
   },
   {
     id: "taa-grays",
