@@ -22,6 +22,8 @@ export interface Speaker {
   headshotPosition?: string;
   /** How the headshot fills the 4:5 portrait frame. Defaults to cover. */
   headshotFit?: "cover" | "contain";
+  /** Extra zoom applied after fitting the image in its portrait frame. */
+  headshotZoom?: number;
   /** Paragraphs. Empty when no biography has been supplied. */
   bio: string[];
   /** Shown above the course tabs and also in any assigned courses. */
@@ -88,6 +90,7 @@ export const speakers: readonly Speaker[] = [
     organization: "John Jay College",
     headshot: "/assets/headshots/karol-mason.jpg",
     headshotFit: "contain",
+    headshotZoom: 1.25,
     featured: true,
     featuredLabel: "Opening Remarks",
     bio: [

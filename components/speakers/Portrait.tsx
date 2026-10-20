@@ -12,6 +12,7 @@ export function Portrait({ speaker }: { speaker: Speaker }) {
   const imageStyle: CSSProperties = {
     ...(speaker.headshotPosition ? { objectPosition: speaker.headshotPosition } : {}),
     ...(speaker.headshotFit ? { objectFit: speaker.headshotFit } : {}),
+    ...(speaker.headshotZoom ? { transform: `scale(${speaker.headshotZoom})` } : {}),
   };
 
   return (
