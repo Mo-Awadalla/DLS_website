@@ -40,6 +40,8 @@ for (const file of files.filter((path) => /\.(html|txt|js|css|json)$/i.test(path
   assert(!/editorial draft|Request updates by email|CLE approval|Cybersecurity, Privacy, and Data Protection credits|redesign-staging|urban-signal-date/.test(readFileSync(file, "utf8")), `Unpublished content in ${relative(root, file)}`);
 }
 const home = readFileSync(resolve(root, "index.html"), "utf8");
+assert.equal([...home.matchAll(/<a\b[^>]*aria-label="Register Here! \(opens in a new tab\)"[^>]*>/g)].length, 1, "The overview must retain exactly one primary registration button");
+assert(!home.includes('id="registration-title"'), "The duplicate registration section before the footer must not return");
 const basePath = getBasePath();
 const canonicalUrl = getCanonicalUrl();
 assert(!home.includes("Stay tuned for the 2026 Symposium"), "The placeholder must not ship");
