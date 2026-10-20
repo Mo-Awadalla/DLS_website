@@ -20,6 +20,8 @@ export interface Speaker {
   headshot: string | null;
   /** CSS object-position for cropping the 4:5 portrait. Defaults to centre. */
   headshotPosition?: string;
+  /** How the headshot fills the 4:5 portrait frame. Defaults to cover. */
+  headshotFit?: "cover" | "contain";
   /** Paragraphs. Empty when no biography has been supplied. */
   bio: string[];
   /** Shown above the course tabs and also in any assigned courses. */
@@ -85,6 +87,7 @@ export const speakers: readonly Speaker[] = [
     title: "President",
     organization: "John Jay College",
     headshot: "/assets/headshots/karol-mason.jpg",
+    headshotFit: "contain",
     featured: true,
     featuredLabel: "Opening Remarks",
     bio: [
