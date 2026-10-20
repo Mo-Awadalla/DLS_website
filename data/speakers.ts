@@ -90,7 +90,7 @@ export const speakers: readonly Speaker[] = [
     organization: "John Jay College",
     headshot: "/assets/headshots/karol-mason.jpg",
     headshotFit: "contain",
-    headshotZoom: 1.25,
+    headshotZoom: 1.4,
     featured: true,
     featuredLabel: "Opening Remarks",
     bio: [
