@@ -34,4 +34,11 @@ export const sponsors: readonly Sponsor[] = [
     logoWidth: 339,
     logoHeight: 100,
   },
+  {
+    id: "john-jay-research",
+    name: "John Jay College of Criminal Justice Research",
+    logo: "/assets/sponsors/john-jay-research.png",
+    logoWidth: 1254,
+    logoHeight: 1254,
+  },
 ];
