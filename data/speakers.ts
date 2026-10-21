@@ -134,6 +134,7 @@ export const speakers: readonly Speaker[] = [
     headshot: "/assets/headshots/steve-banks.jpg",
     featured: true,
     featuredLabel: "Opening Remarks",
+    // Biography supplied by the organizers.
     bio: [
       "Nominated by Mayor Zohran Kwame Mamdani on December 30, 2025, and confirmed by the New York City Council on February 12, 2026, Steven Banks is the 83rd Corporation Counsel of the City of New York. He leads the New York City Law Department, the nation’s largest municipal law office, with more than 900 lawyers and 800 support professionals.",
       "Banks directs the City’s legal strategy across civil defense and affirmative litigation in federal and state trial and appellate courts; criminal and juvenile justice; housing, planning, and economic justice; social services and health care; legislative and regulatory initiatives; commercial and financial transactions and litigation; tax and bankruptcy; legal counsel; and public policy. He also advises City leaders, agencies, and elected officials on complex legal and policy issues affecting municipal operations and residents’ needs.",
