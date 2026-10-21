@@ -81,7 +81,7 @@ export const agenda: Agenda = {
         { name: "Karol Mason", role: "President, John Jay College", confirmed: true },
         { name: "Taa Grays", role: "President, New York State Bar Association", confirmed: true },
         { name: "Nisha Agarwal", role: "Commissioner", confirmed: true },
-        { name: "Steve Banks", role: "Corporation Counsel, NYC Law Department", confirmed: true },
+        { name: "Steven Banks", role: "Corporation Counsel, NYC Law Department", confirmed: true },
       ],
     },
     {
