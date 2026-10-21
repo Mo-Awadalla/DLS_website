@@ -129,7 +129,7 @@ export const speakers: readonly Speaker[] = [
   },
   {
     id: "steve-banks",
-    name: "Steve Banks",
+    name: "Steven Banks",
     title: "Corporation Counsel",
     headshot: "/assets/headshots/steve-banks.jpg",
     featured: true,
