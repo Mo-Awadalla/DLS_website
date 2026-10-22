@@ -119,7 +119,7 @@ export const publishedEvent = {
     },
     {
       id: "when-the-firm-goes-dark",
-      title: "Ethical Duties When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
+      title: "Ethical Considerations When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
       summary: "Addressing the ethical and operational challenges attorneys face when disaster conditions disrupt business operations, government offices, legal service organizations or the courts.",
     },
     {

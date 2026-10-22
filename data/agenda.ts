@@ -132,7 +132,7 @@ export const agenda: Agenda = {
       start: at(13, 30),
       end: at(14, 30),
       // Display title is separate from the CLE course description below.
-      title: "Ethical Duties When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
+      title: "Ethical Considerations When the Office Goes Dark: Continuity of Operations and Client Protection During Disasters",
       description:
         "This course focuses on the ethical and operational challenges attorneys face when disaster conditions disrupt law firm operations, government agencies, or legal service organizations. Whether the disruption stems from infrastructure failure, communication outages, or displacement of staff and clients, lawyers must ensure continuity of representation and protection of client interests. Panelists will evaluate ethical duties related to competence, communication, supervision, confidentiality, and safeguarding client property when normal workflows collapse. The session highlights practical continuity planning, emergency protocols, and resilience strategies for legal practitioners across all settings.",
       moderators: ["Sonja Orgias"],
