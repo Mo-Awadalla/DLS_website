@@ -35,7 +35,7 @@ for (const route of releaseManifest.routes.retired) {
   assert(!existsSync(resolve(root, path)), `Unpublished route exported: ${route}`);
 }
 assert.deepEqual(paths.filter((path) => path.startsWith("assets/")).sort(), releaseManifest.publicAssets.map((asset) => asset.replace(/^\//, "")).sort());
-assert(!paths.some((path) => /\.(pdf|map)$/i.test(path)), "Private PDFs or source maps were exported");
+assert(!paths.some((path) => /\.(pdf|map)$/i.test(path) && path !== "assets/2026-disaster-law-symposium-program.pdf"), "Only the approved symposium program PDF may be exported");
 for (const file of files.filter((path) => /\.(html|txt|js|css|json)$/i.test(path))) {
   assert(!/editorial draft|Request updates by email|CLE approval|Cybersecurity, Privacy, and Data Protection credits|redesign-staging|urban-signal-date/.test(readFileSync(file, "utf8")), `Unpublished content in ${relative(root, file)}`);
 }

@@ -13,3 +13,8 @@
   [headers.values]
     Content-Type = "text/calendar; charset=utf-8"
     Content-Disposition = 'attachment; filename="disaster-law-symposium-2026.ics"'
+
+[[headers]]
+  for = "/assets/2026-disaster-law-symposium-program.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
